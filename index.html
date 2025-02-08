@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--- used to adjust website for phone viewing -->
+    <title>Mmesoma's Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/dfc1a1308c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo no background.png" class="logo">
+                <ul id="sidemenu">
+                    <i class="fa-solid fa-xmark" onclick=closemenu()></i>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#expertise">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#awards">Awards</a></li>
+                    <li><a href="#cv">CV pdf</a></li>
+                    <li><a href="#contact">Contact</a></li>                 
+                </ul>
+                <i class="fa-solid fa-bars" onclick=openmenu()></i>
+            </nav>
+            <div class="header-text">
+                <p>Hi, I'm <span>Mmesoma</span><br> an award winning Software Engineer, <br> Data Scientist and <br>Machine learning Developer</p>
+            </div>
+    </div>
+
+<!----------------------------ABOUT--------------------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-1">
+                    <img src="images/pfp blackback.png">
+                </div>
+                <div class="about-2">
+                    <h1 class="subtitle">About Me</h1>
+                    <p>I'm a passionate software engineer specializing in data science, machine learning, and web development. 
+                        I build intelligent, data-driven applications and scalable web solutions that bridge technology with real-world impact. 
+                        My work focuses on creating innovative systems that deliver insights, efficiency, and meaningful user experiences.
+                    </p>
+
+                        <div class="tabtitles">
+                            <p class="tablinks activelink" onclick="opentab('skills')">Skills</p>
+                            <p class="tablinks" onclick="opentab('experience')">Experience</p>
+                            <p class="tablinks" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class ="tabcontents activetab" id="skills">
+                            <ul>
+                                <li><span>Artificial Intelligence</span><br>Large Language Models, RAG, NLP, Neuronetworks</li>
+                                <li><span>Web Developer</span><br>Frontend, Backend, Database management</li>
+                                <li><span> Data Science</span><br>Machine Learning, Visualization, Statistical Modelling</li>
+                            </ul>
+                        </div>
+                        <div class ="tabcontents" id="experience">
+                            <ul>
+                                <li><span>July 2024 - Jun 2025</span><br>Digital Services Year In Industry at National Highways</li>
+                                <li><span>July 2023 - Aug 2024</span><br>Machine Learning Developer at Uzuri Tribe</li>
+                                <li><span>Sept - Dec 2021</span><br>Software Engineering Intern at Paradigm Finance</li>
+                            </ul>
+                        </div>
+                        <div class ="tabcontents" id="education">
+                            <ul>
+                                <li><span>Sept 2022 - May 2026</span><br>Computer Science Undergraduate at Coventry University</li>
+                                <li><span>Jun - July 2023</span><br>Revolutions In Engineering at Imperial College</li>
+                                <li><span>Aug 2020 - July 2021</span><br>Canadian Plus Foundation (A-level Equivalent) at 16 Plus schools</li>
+                                <li><span>Sept 2014 - July 2020</span><br>West African Examination Certificate (GCSE Equvalent) at Grace High School</li>
+                            </ul>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!----------------------------EXPERTISE--------------------->
+<div id="expertise">
+    <div class="container">
+        <h1 class="subtitle">My Skills</h1>
+        <div class="expertiselist">
+            <div class="expertise-card">
+                <i class="fa-solid fa-robot"></i>
+                <h2>Machine Learning</h2>
+                <p>Specializing in NLP, Neuronetworks and LLMs for intelligent system development.</p>
+                <a href="#" class="learn-more" data-content="ai-content">Learn more</a>
+                <div class="expanded-content" id="ai-content">
+                    <ul>
+                        <li>Building and fine-tuning large language models</li>
+                        <li>Implementing NLP solutions for text analysis</li>
+                        <li>Creating computer vision systems</li>
+                        <li>Experience with Convocutional Neuronetworks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="expertise-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h2>Web Development</h2>
+                <p>Full-stack development with React, Django, and modern web technologies for websites and web applications</p>
+                <a href="#" class="learn-more" data-content="web-content">Learn more</a>
+                <div class="expanded-content" id="web-content">
+                    <ul>
+                        <li>Frontend: React, HTML5, CSS3, JavaScript</li>
+                        <li>Backend: Django, RESTful APIs</li>
+                        <li>Database: PostgreSQL</li>
+                        <li>DevOps: Git</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="expertise-card">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h2>Data Science</h2>
+                <p>Data-driven solutions for insights and decision-making.</p>
+                <a href="#" class="learn-more" data-content="cloud-content">Learn more</a>
+                <div class="expanded-content" id="cloud-content">
+                    <ul>
+                        <li>Data analysis and visualization</li>
+                        <li>Statistical modeling</li>
+                        <li>Machine learning applications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------------------------PROJECTS--------------------->
+
+<div id="projects">
+    <div class="container">
+        <h1 class="subtitle">My Projects</h1>
+        <div class="works">
+            <div class="work">
+                <img src="images/web.png">
+                <div class="layer">
+                    <h3>Personal Website portfolio</h3>
+                    <p>My personal website to show my experiences and achievments</p>
+                    <a href="https://mmesomadev.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/vennn.png">
+                <div class="layer">
+                    <h3>Vendor booking system</h3>
+                    <p>A web application that connects vendors with customers in the grooming and beauty industry</p>
+                    <a href="https://github.com/matlabb404/Avengers1.0" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/lllllmmmmm.png">
+                <div class="layer">
+                    <h3>Large Language Models for PDF processing</h3>
+                    <p>An LLM that process PDF's  with Knowledge Graphs, NLP and RAG to answer user prompts</p>
+                    <a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/verification.png">
+                <div class="layer">
+                    <h3>Image verification and recognition system</h3>
+                    <p>An image recognition and verification model made with convcutional neural networks</p>
+                    <a href="https://github.com/Nwachukwu1300/facereg" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/nexus.png">
+                <div class="layer">
+                    <h3>Career developing webapp</h3>
+                    <p>A webapp thatg uses AI to develop users career's</p>
+                    <a href="https://github.com/Nwachukwu1300/career_nexus" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/deweather.png">
+                <div class="layer">
+                    <h3>Deweathering model</h3>
+                    <p>A model that classifies and removes weather conditions from images</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+<!----------------------------AWARDS & CERTIFICATES--------------------->
+<div id="awards">
+    <div class="container">
+        <h1 class="subtitle">Scholarships, Awards & Certificates</h1>
+        <div class="awards-list">
+            <div class="award-card">
+                <h2>Machine Leaning and Artificial Intelligence Scholarship</h2>
+                <p>Awaded by Amazon Web Services(AWS), 2023</p>
+            </div>
+            <div class="award-card">
+                <h2>Best performing intern</h2>
+                <p>Awarded by Paradigm Finance, 2021</p>
+            </div>
+            <div class="award-card">
+                <h2>Santander Scholarship for University</h2>
+                <p>Awarded by Santander Bank, 2023</p>
+            </div>
+            <div class="award-card">
+                <h2>Best Canadian Foundation Student</h2>
+                <p>Awarded by 16 Plus Schools, 2021</p>
+            </div>
+            <div class="award-card">
+                <h2>Convocutional Neural networks</h2>
+                <p>Issued by Coursera, 2024</p>
+            </div>
+            <div class="award-card">
+                <h2>Revolutions in Engineering Scholarship</h2>
+                <p>Awarded by Imperial College London, 2023</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<!----------------------------REFERENCES--------------------->
+<div id="references">
+    <div class="container">
+        <h1 class="subtitle">References</h1>
+        <div class="references-list">
+            <!--<img src="images/john-doe.jpg" alt="John Doe" class="reference-photo"> FOR ADDING PHOTO'S TO REFERENCES-->
+            <div class="reference-card">
+                <p class="quote">
+                    "Mmesoma showed exceptional growth at Imperial College, helping transform his team from initial struggles at last place to 
+                    winning the projects innovation award through dedication and adaptability." 
+                </p>
+                <h3 class="name">Dr Popo-Ola Sunday</h3>
+                <p class="position">
+                    Director, Integrated Space Science & Engineering (ISSE) - Imperial College</p>
+            </div>
+            <div class="reference-card">
+                <p class="quote">
+                    "Mmesoma really stood out among his peers for his work ethic and his extreme willingness to learn new things"
+                </p>
+                <h3 class="name">George Okeahialam</h3>
+                <p class="position">Chief Executive Officer - Paradigm Finance</p>
+            </div>
+            <div class="reference-card">
+                <p class="quote">
+                    "Meso always impressed me with his strong work ethic, positive attitude, and eagerness to take on new challenges."
+                </p>
+                <h3 class="name">Mrs Ada Blessing</h3>
+                <p class="position">Strategic Logistics Study Lead - Jaguar Land Rover</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<!----------------------------CONTACT--------------------->
+<div id="contact">
+    <div class="container">
+        <h1 class="subtitle">Contact Me</h1>
+        <div class="contact-details">
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <p>07404517459</p>
+            </div>
+            <div class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <p><a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank">linkedin.com/in/mmesoma</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <p><a href="mailto:mmesomanwachukwu1300@gmail.com">mmesomanwachukwu1300@gmail.com</a></p>
+            </div>
+        </div>
+        <div id="cv">
+            <a href="mmesoma-cv.pdf" download class="btn btn2"> Download CV</a>
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="container">
+        <p>&copy; 2025 Mmesoma. All rights reserved.</p>
+        <p>Designed and developed by Mmesoma.</p>
+    </div>
+</footer>
+
+
+
+    <script>
+
+        var tablinks = document.getElementsByClassName("tablinks");
+        var tabcontents = document.getElementsByClassName("tabcontents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("activelink");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("activetab");
+            }
+            event.currentTarget.classList.add("activelink");
+            document.getElementById(tabname).classList.add("activetab")
+        }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const learnMoreLinks = document.querySelectorAll('.learn-more');
+
+    learnMoreLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent the page from jumping to the top
+            
+            // Get the content div associated with this link
+            const contentId = this.getAttribute('data-content');
+            const contentDiv = document.getElementById(contentId);
+
+            // Toggle the active class on the expanded content
+            contentDiv.classList.toggle('active');
+
+            // Update the link text
+            this.textContent = contentDiv.classList.contains('active') ? 'Show less' : 'Learn more';
+
+            // Close other expanded contents
+            learnMoreLinks.forEach(otherLink => {
+                const otherContentId = otherLink.getAttribute('data-content');
+                if (otherContentId !== contentId) {
+                    const otherContentDiv = document.getElementById(otherContentId);
+                    otherContentDiv.classList.remove('active');
+                    otherLink.textContent = 'Learn more';
+                }
+            });
+        });
+    });
+});
+
+
+
+
+
+    </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+
+
+
+    </script>
+</body>
+</html>
