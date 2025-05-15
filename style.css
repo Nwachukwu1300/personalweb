@@ -459,6 +459,11 @@ footer {
     margin-top: var(--spacing-md);
 }
 
+#education-full {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 /* Awards grid */
 .awards-grid {
     display: grid;
