@@ -25,9 +25,9 @@
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 40px;
-    --font-size-base: 16px;
-    --font-size-lg: 18px;
-    --font-size-xl: 20px;
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
 }
 
 /* Light theme class */
@@ -107,7 +107,7 @@ nav {
 }
 
 #hero h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: var(--spacing-md);
 }
 
@@ -119,7 +119,7 @@ nav {
 }
 
 .animated-role {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 700;
     color: var(--accent);
     opacity: 1;
@@ -166,7 +166,7 @@ section {
 }
 
 section h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-bottom: var(--spacing-xl);
     position: relative;
 }
@@ -216,12 +216,12 @@ section h2 {
 }
 
 .timeline-content h3 {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: var(--spacing-sm);
 }
 
 .timeline-content h4 {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--secondary-text);
     font-weight: normal;
     margin-bottom: var(--spacing-md);
@@ -242,9 +242,9 @@ section h2 {
 .tag {
     background-color: rgba(63, 140, 255, 0.1);
     color: var(--accent);
-    padding: 4px 8px;
+    padding: 3px 6px;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 /* Project styles */
@@ -269,7 +269,7 @@ section h2 {
 }
 
 .project-card h3 {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: var(--spacing-md);
 }
 
@@ -325,7 +325,7 @@ footer {
 /* Media queries */
 @media (max-width: 768px) {
     #hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .project-grid {
@@ -345,7 +345,7 @@ footer {
 
 @media (max-width: 480px) {
     #hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .social-links {
@@ -365,13 +365,13 @@ footer {
 }
 
 #portfolio-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: var(--spacing-md);
 }
 
 #portfolio-hero p {
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    font-size: 1rem;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -383,7 +383,7 @@ footer {
 }
 
 #about-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: var(--spacing-md);
 }
 
@@ -515,13 +515,13 @@ footer {
     }
     
     #about-hero h1, #portfolio-hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 480px) {
     #about-hero h1, #portfolio-hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -543,21 +543,21 @@ footer {
 }
 
 .hero-minimal h1 {
-    font-size: 4.5rem;
+    font-size: 3.8rem;
     margin-bottom: 0;
     font-weight: 700;
     letter-spacing: -1px;
 }
 
 .hero-minimal h2 {
-    font-size: 4.5rem;
+    font-size: 3.8rem;
     margin-bottom: var(--spacing-lg);
     font-weight: 700;
     letter-spacing: -1px;
 }
 
 .hero-minimal .animated-role {
-    font-size: 4rem;
+    font-size: 3.2rem;
     font-weight: 700;
     color: var(--accent);
     opacity: 1;
@@ -575,7 +575,7 @@ footer {
 }
 
 .nav-links a {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-right: var(--spacing-xl);
     color: var(--primary-text);
     transition: color 0.2s;
@@ -607,15 +607,15 @@ footer {
 @media (max-width: 768px) {
     .hero-minimal h1,
     .hero-minimal h2 {
-        font-size: 3.5rem;
-    }
-    
-    .hero-minimal .animated-role {
         font-size: 3rem;
     }
     
+    .hero-minimal .animated-role {
+        font-size: 2.6rem;
+    }
+    
     #hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .project-grid {
@@ -636,15 +636,15 @@ footer {
 @media (max-width: 480px) {
     .hero-minimal h1,
     .hero-minimal h2 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-minimal .animated-role {
         font-size: 2.2rem;
     }
     
-    #hero h1 {
+    .hero-minimal .animated-role {
         font-size: 1.8rem;
+    }
+    
+    #hero h1 {
+        font-size: 1.6rem;
     }
     
     .social-links {
