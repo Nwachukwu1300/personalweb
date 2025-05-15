@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mmesoma Nwachukwu - Software Engineer, Data Scientist and Machine Learning Developer. View my portfolio, projects and expertise.">
+    <meta name="keywords" content="software engineer, data scientist, machine learning, portfolio, web development, AI">
+    <meta name="author" content="Mmesoma Nwachukwu">
+    <meta property="og:title" content="Mmesoma's Portfolio">
+    <meta property="og:description" content="Award-winning Software Engineer, Data Scientist and Machine Learning Developer">
+    <meta property="og:image" content="images/logo no background.png">
+    <meta property="og:url" content="https://mmesomadev.com/portfolio">
+    <title>Portfolio | Mmesoma Nwachukwu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo no background.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/dfc1a1308c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Mmesoma</a>
+                <ul id="navigation">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="portfolio-hero">
+        <div class="container">
+            <h1>Portfolio</h1>
+            <p>Check out some of my recent projects</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Large Language Models for PDF processing</h3>
+                    <p>An LLM that processes PDFs with Knowledge Graphs, NLP and RAG to answer user prompts</p>
+                    <div class="tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">LLMs</span>
+                    </div>
+                    <a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank" class="project-link">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Vendor booking system</h3>
+                    <p>A web application that connects vendors with customers in the grooming and beauty industry</p>
+                    <div class="tags">
+                        <span class="tag">Web Development</span>
+                        <span class="tag">Frontend</span>
+                        <span class="tag">Backend</span>
+                    </div>
+                    <a href="https://github.com/matlabb404/Avengers1.0" target="_blank" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Image verification and recognition system</h3>
+                    <p>An image recognition and verification model made with convolutional neural networks</p>
+                    <div class="tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Neural Networks</span>
+                        <span class="tag">Deep Learning</span>
+                    </div>
+                    <a href="https://github.com/Nwachukwu1300/Faceregg" target="_blank" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Career developing webapp</h3>
+                    <p>A webapp that uses AI to develop users' careers</p>
+                    <div class="tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Web Development</span>
+                        <span class="tag">Career</span>
+                    </div>
+                    <a href="https://github.com/Nwachukwu1300/career_nexus" target="_blank" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Deweathering model</h3>
+                    <p>A model that classifies and removes weather conditions from images</p>
+                    <div class="tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">Deep Learning</span>
+                    </div>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Personal Website portfolio</h3>
+                    <p>My personal website to show my experiences and achievements</p>
+                    <div class="tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Web Development</span>
+                    </div>
+                    <a href="https://mmesomadev.com" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Mmesoma Nwachukwu. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Theme toggle script
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or use device preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else if (!savedTheme && !prefersDarkScheme.matches) {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.classList.remove('light-mode');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.add('light-mode');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html> 

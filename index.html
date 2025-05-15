@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--- used to adjust website for phone viewing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mmesoma Nwachukwu - Software Engineer, Data Scientist and Machine Learning Developer. View my portfolio, projects and expertise.">
     <meta name="keywords" content="software engineer, data scientist, machine learning, portfolio, web development, AI">
     <meta name="author" content="Mmesoma Nwachukwu">
@@ -11,423 +11,101 @@
     <meta property="og:description" content="Award-winning Software Engineer, Data Scientist and Machine Learning Developer">
     <meta property="og:image" content="images/logo no background.png">
     <meta property="og:url" content="https://mmesomadev.com">
-    <title>Mmesoma's Personal Portfolio</title>
+    <title>Mmesoma Nwachukwu</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo no background.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/dfc1a1308c.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX'); // Replace with your actual Google Analytics ID
-    </script>
 </head>
 <body>
-    <div id="header">
+    <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="minimal-home">
         <div class="container">
-            <nav>
-                <img src="images/logo no background.png" class="logo">
-                <ul id="sidemenu">
-                    <i class="fa-solid fa-xmark" onclick=closemenu()></i>
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#expertise">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#awards">Awards</a></li>
-                    <li><a href="#cv">CV pdf</a></li>
-                    <li><a href="#contact">Contact</a></li>                 
-                </ul>
-                <i class="fa-solid fa-bars" onclick=openmenu()></i>
-            </nav>
-            <div class="header-text">
-                <p>Hi, I'm <span>Mmesoma</span><br> an award winning Software Engineer, <br> Data Scientist and <br>Machine learning Developer</p>
-            </div>
-    </div>
-
-<!----------------------------ABOUT--------------------->
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-1" data-aos="fade-right">
-                    <img src="images/back2.png">
+            <div class="hero-minimal">
+                <div class="headline">
+                    <h1>Hi,</h1>
+                    <h2>I'm Mmesoma,</h2>
+                    <div class="role-animation">
+                        <span id="role-text" class="animated-role">software engineer</span>
+                    </div>
                 </div>
-                <div class="about-2" data-aos="fade-left">
-                    <h1 class="subtitle">About Me</h1>
-                    <p>I'm a passionate software engineer specializing in data science, machine learning, and web development. 
-                        I build intelligent, data-driven applications and scalable web solutions that bridge technology with real-world impact. 
-                        My work focuses on creating innovative systems that deliver insights, efficiency, and meaningful user experiences.
-                    </p>
-
-                        <div class="tabtitles">
-                            <p class="tablinks activelink" onclick="opentab('skills')">Skills</p>
-                            <p class="tablinks" onclick="opentab('experience')">Experience</p>
-                            <p class="tablinks" onclick="opentab('education')">Education</p>
-                        </div>
-                        <div class ="tabcontents activetab" id="skills">
-                            <ul>
-                                <li><span>Artificial Intelligence</span><br>Large Language Models, RAG, NLP, Neuronetworks</li>
-                                <li><span>Web Developer</span><br>Frontend, Backend, Database management</li>
-                                <li><span> Data Science</span><br>Machine Learning, Visualization, Statistical Modelling</li>
-                            </ul>
-                        </div>
-                        <div class ="tabcontents" id="experience">
-                            <ul>
-                                <li><span>July 2024 - Jun 2025</span><br>Digital Services Year In Industry at National Highways</li>
-                                <li><span>July 2023 - Aug 2024</span><br>Machine Learning Developer at Uzuri Tribe</li>
-                                <li><span>Sept - Dec 2021</span><br>Software Engineering Intern at Paradigm Finance</li>
-                            </ul>
-                        </div>
-                        <div class ="tabcontents" id="education">
-                            <ul>
-                                <li><span>Sept 2022 - May 2026</span><br>Computer Science Undergraduate at Coventry University</li>
-                                <li><span>Jun - July 2023</span><br>Revolutions In Engineering at Imperial College</li>
-                                <li><span>Aug 2020 - July 2021</span><br>Canadian Plus Foundation (A-level Equivalent) at 16 Plus schools</li>
-                                <li><span>Sept 2014 - July 2020</span><br>West African Examination Certificate (GCSE Equvalent) at Grace High School</li>
-                            </ul>
-                        </div>
-                        
+                
+                <div class="nav-section">
+                    <div class="nav-links">
+                        <a href="portfolio.html">Portfolio</a>
+                        <a href="about.html">About Me</a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/Nwachukwu1300" target="_blank" class="social-button">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank" class="social-button">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-<!----------------------------EXPERTISE--------------------->
-<div id="expertise">
-    <div class="container">
-        <h1 class="subtitle" data-aos="fade-up">My Skills</h1>
-        <div class="expertiselist">
-            <div class="expertise-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fa-solid fa-robot"></i>
-                <h2>Machine Learning</h2>
-                <p>Specializing in NLP, Neuronetworks and LLMs for intelligent system development.</p>
-                <a href="#" class="learn-more" data-content="ai-content">Learn more</a>
-                <div class="expanded-content" id="ai-content">
-                    <ul>
-                        <li>Building and fine-tuning large language models</li>
-                        <li>Implementing NLP solutions for text analysis</li>
-                        <li>Creating computer vision systems</li>
-                        <li>Experience with Convocutional Neuronetworks</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="expertise-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fa-solid fa-laptop-code"></i>
-                <h2>Web Development</h2>
-                <p>Full-stack development with React, Django, and modern web technologies for websites and web applications</p>
-                <a href="#" class="learn-more" data-content="web-content">Learn more</a>
-                <div class="expanded-content" id="web-content">
-                    <ul>
-                        <li>Frontend: React, HTML5, CSS3, JavaScript</li>
-                        <li>Backend: Django, RESTful APIs</li>
-                        <li>Database: PostgreSQL</li>
-                        <li>DevOps: Git</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="expertise-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                <h2>Data Science</h2>
-                <p>Data-driven solutions for insights and decision-making.</p>
-                <a href="#" class="learn-more" data-content="cloud-content">Learn more</a>
-                <div class="expanded-content" id="cloud-content">
-                    <ul>
-                        <li>Data analysis and visualization</li>
-                        <li>Statistical modeling</li>
-                        <li>Machine learning applications</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!----------------------------PROJECTS--------------------->
-
-<div id="projects">
-    <div class="container">
-        <h1 class="subtitle" data-aos="fade-up">My Projects</h1>
-        <div class="works">
-            <div class="work" data-aos="zoom-in" data-aos-delay="100">
-                <img src="images/web.png">
-                <div class="layer">
-                    <h3>Personal Website portfolio</h3>
-                    <p>My personal website to show my experiences and achievments</p>
-                    <a href="https://mmesomadev.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work" data-aos="zoom-in" data-aos-delay="200">
-                <img src="images/vennn.png">
-                <div class="layer">
-                    <h3>Vendor booking system</h3>
-                    <p>A web application that connects vendors with customers in the grooming and beauty industry</p>
-                    <a href="https://github.com/matlabb404/Avengers1.0" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work" data-aos="zoom-in" data-aos-delay="300">
-                <img src="images/lllllmmmmm.png">
-                <div class="layer">
-                    <h3>Large Language Models for PDF processing</h3>
-                    <p>An LLM that process PDF's  with Knowledge Graphs, NLP and RAG to answer user prompts</p>
-                    <a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work" data-aos="zoom-in" data-aos-delay="400">
-                <img src="images/verification.png">
-                <div class="layer">
-                    <h3>Image verification and recognition system</h3>
-                    <p>An image recognition and verification model made with convcutional neural networks</p>
-                    <a href="https://github.com/Nwachukwu1300/Faceregg" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work" data-aos="zoom-in" data-aos-delay="500">
-                <img src="images/nexus.png">
-                <div class="layer">
-                    <h3>Career developing webapp</h3>
-                    <p>A webapp thatg uses AI to develop users career's</p>
-                    <a href="https://github.com/Nwachukwu1300/career_nexus" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work" data-aos="zoom-in" data-aos-delay="600">
-                <img src="images/deweather.png">
-                <div class="layer">
-                    <h3>Deweathering model</h3>
-                    <p>A model that classifies and removes weather conditions from images</p>
-                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!----------------------------AWARDS & CERTIFICATES--------------------->
-<div id="awards">
-    <div class="container">
-        <h1 class="subtitle" data-aos="fade-up">Scholarships, Awards & Certificates</h1>
-        <div class="awards-list">
-            <div class="award-card" data-aos="flip-left" data-aos-delay="100">
-                <h2>Machine Leaning and Artificial Intelligence Scholarship</h2>
-                <p>Awaded by Amazon Web Services(AWS), 2023</p>
-            </div>
-            <div class="award-card" data-aos="flip-left" data-aos-delay="200">
-                <h2>Best performing intern</h2>
-                <p>Awarded by Paradigm Finance, 2021</p>
-            </div>
-            <div class="award-card" data-aos="flip-left" data-aos-delay="300">
-                <h2>Santander Scholarship for University</h2>
-                <p>Awarded by Santander Bank, 2023</p>
-            </div>
-            <div class="award-card" data-aos="flip-left" data-aos-delay="400">
-                <h2>Best Canadian Foundation Student</h2>
-                <p>Awarded by 16 Plus Schools, 2021</p>
-            </div>
-            <div class="award-card" data-aos="flip-left" data-aos-delay="500">
-                <h2>Convocutional Neural networks</h2>
-                <p>Issued by Coursera, 2024</p>
-            </div>
-            <div class="award-card" data-aos="flip-left" data-aos-delay="600">
-                <h2>Revolutions in Engineering Scholarship</h2>
-                <p>Awarded by Imperial College London, 2023</p>
-            </div>
+    <script>
+        // Role animation script
+        const roles = [
+            "software engineer",
+            "data scientist",
+            "machine learning developer",
+            "web developer",
+            "AI enthusiast",
+            "problem solver"
+        ];
+        
+        let currentIndex = 0;
+        const roleText = document.getElementById('role-text');
+        
+        function changeRole() {
+            roleText.style.opacity = 0;
             
-        </div>
-    </div>
-</div>
-
-<!----------------------------REFERENCES--------------------->
-<div id="references">
-    <div class="container">
-        <h1 class="subtitle" data-aos="fade-up">References</h1>
-        <div class="references-list">
-            <!--<img src="images/john-doe.jpg" alt="John Doe" class="reference-photo"> FOR ADDING PHOTO'S TO REFERENCES-->
-            <div class="reference-card" data-aos="fade-right">
-                <p class="quote">
-                    "Mmesoma showed exceptional growth at Imperial College, helping transform his team from initial struggles at last place to 
-                    winning the projects innovation award through dedication and adaptability." 
-                </p>
-                <h3 class="name">Dr Popo-Ola Sunday</h3>
-                <p class="position">
-                    Director, Integrated Space Science & Engineering (ISSE) - Imperial College</p>
-            </div>
-            <div class="reference-card" data-aos="fade-right">
-                <p class="quote">
-                    "Mmesoma really stood out among his peers for his work ethic and his extreme willingness to learn new things"
-                </p>
-                <h3 class="name">George Okeahialam</h3>
-                <p class="position">CEO, Paradigm Finance</p>
-            </div>
-            <div class="reference-card" data-aos="fade-right">
-                <p class="quote">
-                    "Meso always impressed me with his strong work ethic, positive attitude, and eagerness to take on new challenges."
-                </p>
-                <h3 class="name">Mrs Ada Blessing</h3>
-                <p class="position">Strategic Logistics Study Lead - Jaguar Land Rover</p>
-            </div>
-            
-        </div>
-    </div>
-</div>
-
-<!----------------------------CV--------------------->
-<div id="cv">
-    <div class="container" data-aos="fade-up">
-        <h1 class="subtitle">Curriculum Vitae</h1>
-        <div class="cv-content">
-            <p>Download my CV to view my detailed work history, education, and skills.</p>
-            <a href="MMESOMA CV MAIN v2 pdf.pdf" download class="btn btn2">Download CV</a>
-        </div>
-    </div>
-</div>
-
-<!----------------------------CONTACT--------------------->
-<div id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left" data-aos="fade-right">
-                <h1 class="subtitle">Contact Me</h1>
-                <p><i class="fa-solid fa-paper-plane"></i> <a href="mailto:mnfinance664@gmail.com" target="_blank">mnfinance664@gmail.com</a></p>
-                <p><i class="fa-solid fa-square-phone"></i> +447123456789</p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/Nwachukwu1300" target="_blank"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <a href="mmesoma-cv.pdf" download class="btn btn2">Download CV</a>
-            </div>
-            <div class="contact-right" data-aos="fade-left">
-                <form name="submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
-                </form>
-                <span id="msg"></span>
-            </div>
-        </div>
-    </div>
-</div>  
-
-<div id="footer">
-    <div class="container">
-        <p>© 2024 Mmesoma Nwachukwu. All rights reserved.</p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Nwachukwu1300" target="_blank"><i class="fa-brands fa-github"></i></a>
-        </div>
-    </div>
-</div>
-
-<script>
-    var tablinks = document.getElementsByClassName("tablinks");
-    var tabcontents = document.getElementsByClassName("tabcontents");
-    
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("activelink");
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % roles.length;
+                roleText.textContent = roles[currentIndex];
+                roleText.style.opacity = 1;
+            }, 500);
         }
-        for(tabcontent of tabcontents){
-            tabcontent.classList.remove("activetab");
+        
+        // Change role every 2 seconds
+        setInterval(changeRole, 2000);
+        
+        // Theme toggle script
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or use device preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else if (!savedTheme && !prefersDarkScheme.matches) {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
-        event.currentTarget.classList.add("activelink");
-        document.getElementById(tabname).classList.add("activetab");
-    }
-</script>
-
-<script>
-    var sidemenu = document.getElementById("sidemenu");
-    
-    function openmenu(){
-        sidemenu.style.right="0";
-    }
-    function closemenu(){
-        sidemenu.style.right="-200px";
-    }
-</script>
-
-<script>
-  const learnMoreLinks = document.querySelectorAll('.learn-more');
-  
-  learnMoreLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const contentId = this.getAttribute('data-content');
-          const content = document.getElementById(contentId);
-          
-          if (content.classList.contains('active')) {
-              content.classList.remove('active');
-              this.textContent = 'Learn more';
-          } else {
-              content.classList.add('active');
-              this.textContent = 'Show less';
-          }
-      });
-  });
-</script>
-
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
-  });
-
-  // Navbar scroll effect
-  window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.classList.add('nav-scrolled');
-    } else {
-      nav.classList.remove('nav-scrolled');
-    }
-  });
-  
-  // Loading animation
-  document.addEventListener('DOMContentLoaded', function() {
-    document.body.classList.add('loaded');
-  });
-  
-  // Smooth scrolling for navigation links
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 70,
-          behavior: 'smooth'
+        
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.classList.remove('light-mode');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.add('light-mode');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
         });
-      }
-    });
-  });
-</script>
-
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbytEP9xpjj82rOQCixwpTtec-DLMr1O9e4dWPwwawuwoOHKsU8yh664_WtUzDhyE1y4/exec'  // Replace this with your new web app URL
-  const form = document.forms['submit-to-google-sheet']
-  const msg = document.getElementById("msg")
-
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-        msg.innerHTML = "Message sent successfully!"
-        setTimeout(function(){
-          msg.innerHTML = ""
-        }, 5000)
-        form.reset()
-      })
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
-
-
+    </script>
 </body>
 </html>
