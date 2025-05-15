@@ -162,12 +162,12 @@ nav {
 
 /* Section styles */
 section {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
 }
 
 section h2 {
     font-size: 1.8rem;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     position: relative;
 }
 
@@ -188,7 +188,7 @@ section h2 {
 
 .timeline-item {
     position: relative;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     padding-left: var(--spacing-xl);
 }
 
@@ -378,7 +378,7 @@ footer {
 
 /* About page styles */
 #about-hero {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     text-align: center;
 }
 
@@ -388,11 +388,11 @@ footer {
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto var(--spacing-lg);
+    margin: 0 auto var(--spacing-md);
     border: 2px solid var(--accent);
 }
 
@@ -404,17 +404,17 @@ footer {
 
 .bio-full {
     max-width: 700px;
-    margin: var(--spacing-lg) auto;
+    margin: var(--spacing-md) auto;
     color: var(--secondary-text);
 }
 
 .bio-full p {
     font-size: var(--font-size-base);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .bio-full .btn {
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-md);
 }
 
 /* Skills section */
@@ -456,14 +456,14 @@ footer {
 
 /* Extended timeline sections */
 #experience-full, #education-full {
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-md);
 }
 
 /* Awards grid */
 .awards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
 }
 
 .award-item {
