@@ -13,6 +13,7 @@
     <meta property="og:url" content="https://mmesomadev.com">
     <title>Mmesoma Nwachukwu</title>
     <link rel="canonical" href="https://mmesomadev.com/">
+    <meta http-equiv="refresh" content="0;url=https://mmesomadev.com" id="redirect-meta">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/logo no background.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/dfc1a1308c.js" crossorigin="anonymous"></script>
@@ -105,6 +106,19 @@
                 document.body.classList.add('light-mode');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
                 localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Clean URL if it contains index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.href.includes('index.html')) {
+                const cleanUrl = window.location.href.replace('/index.html', '/');
+                window.history.replaceState({}, document.title, cleanUrl);
+                // Remove the meta refresh to prevent potential redirect loops
+                const metaRefresh = document.getElementById('redirect-meta');
+                if (metaRefresh) {
+                    metaRefresh.remove();
+                }
             }
         });
     </script>
