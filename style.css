@@ -284,6 +284,13 @@ section h2 {
     margin-bottom: var(--spacing-md);
 }
 
+.project-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
 .project-link {
     display: inline-block;
     color: var(--accent);
