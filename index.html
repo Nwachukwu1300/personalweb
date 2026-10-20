@@ -1,112 +1,556 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mmesoma Nwachukwu - Software Engineer, Data Scientist and Machine Learning Developer. View my portfolio, projects and expertise.">
-    <meta name="keywords" content="software engineer, data scientist, machine learning, portfolio, web development, AI">
-    <meta name="author" content="Mmesoma Nwachukwu">
-    <meta property="og:title" content="Mmesoma's Personal Portfolio">
-    <meta property="og:description" content="Award-winning Software Engineer, Data Scientist and Machine Learning Developer">
-    <meta property="og:image" content="images/logo no background.png">
-    <meta property="og:url" content="https://mmesomadev.com">
-    <title>Mmesoma Nwachukwu</title>
-    <link rel="canonical" href="https://mmesomadev.com/">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="images/logo no background.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/dfc1a1308c.js" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mmesoma Nwachukwu · I untangle hard problems</title>
+<meta name="description" content="Mmesoma Nwachukwu, software engineer and problem solver. I untangle hard problems into things that work, across consulting, startups, academia and enterprises.">
+<meta name="author" content="Mmesoma Nwachukwu">
+<meta property="og:title" content="Mmesoma Nwachukwu · I untangle hard problems">
+<meta property="og:description" content="I untangle hard problems into things that work.">
+<meta property="og:url" content="https://mmesomadev.com">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/logo no background.png">
+<link rel="canonical" href="https://mmesomadev.com/">
+<link rel="icon" href="images/logo no background.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* The page scrolls vertically, and that scroll walks a camera along a snake of sideways rows: right, then left, then right. */
+:root{
+  --paper:#f4f4f2;--ink:#1f1f20;--soft:#5a5e66;--hot:#d9502b;--rule:#dcdcd8;--edge:#c8c8c3;
+  --hot-2:#e8866a;--hot-3:#f3c4b5;--hot-4:#fbe9e3;
+  --sans:"Manrope",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--mono:"DM Mono",ui-monospace,monospace;
+  --top:72px;color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overscroll-behavior-x:none}
+html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a:focus-visible,button:focus-visible{outline:2px solid var(--hot);outline-offset:3px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--ink);text-decoration:underline;text-decoration-color:var(--hot);text-decoration-thickness:.07em;text-underline-offset:.14em;text-decoration-skip-ink:none}
+.fade{opacity:0;transform:translateY(10px);transition:opacity .8s ease,transform .8s ease}
+.show .fade,.show.fade{opacity:1;transform:none}
+
+/* The snake: a fixed window onto rows stacked one screen apart. */
+.view{position:fixed;inset:0;overflow:hidden;touch-action:pan-y pinch-zoom}
+.track{position:absolute;top:0;left:0;width:0;height:0;will-change:transform}
+.lane{position:absolute;top:0;left:0;height:100vh;display:flex;width:max-content;min-width:100vw;z-index:1}
+.lane > *{flex:none;height:100%;position:relative;z-index:1}
+svg#thread{position:absolute;top:0;left:0;z-index:3;pointer-events:none;overflow:visible;opacity:0;transition:opacity 1s ease}
+svg#thread.on{opacity:1}
+#thread-line{fill:none;stroke:var(--hot);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#thread-pen{fill:#fff;stroke:var(--hot);stroke-width:2.5}
+#thread-halo{fill:var(--hot);opacity:.16;transform-box:fill-box;transform-origin:center;animation:halo 1.8s ease-in-out infinite}
+#thread.done #thread-pen,#thread.done #thread-halo{opacity:0;animation:none;transition:opacity .4s}
+@keyframes halo{50%{transform:scale(1.6);opacity:.05}}
+
+/* Top bar and jump buttons */
+.top{position:fixed;top:0;left:0;right:0;z-index:8;pointer-events:none}
+.bar{padding-top:calc(env(safe-area-inset-top,0px) + 20px);padding-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:auto;background:linear-gradient(var(--paper) 60%,rgba(244,244,242,0))}
+.mark{font-weight:800;font-size:18px;letter-spacing:-.03em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mark i{color:var(--hot);font-style:normal}
+.bar nav{display:flex;gap:20px;align-items:center;font-size:14px}
+.bar nav a{color:var(--soft);text-decoration:none;white-space:nowrap}
+.bar nav a:hover{color:var(--ink)}
+.bar nav a.talk{color:var(--ink);font-weight:700;border:1px solid var(--ink);border-radius:8px;padding:8px 14px;transition:background .2s,color .2s}
+.bar nav a.talk:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:760px){.bar nav .wide{display:none}.bar nav{gap:14px}.mark .last{display:none}}
+.jump{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));z-index:7;display:flex;gap:8px;opacity:0;pointer-events:none;transition:opacity .4s}
+.jump.show{opacity:1;pointer-events:auto}
+.jump button{width:46px;height:46px;border-radius:8px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:opacity .25s,transform .25s,background .2s,color .2s}
+.jump button:hover{background:var(--ink);color:var(--paper)}
+.jump button[hidden]{display:grid;opacity:0;transform:scale(.7);pointer-events:none}
+.jump svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.jump #down{border-color:var(--hot);color:var(--hot)}.jump #down:hover{background:var(--hot);color:#fff}
+@media(max-width:760px){.jump{bottom:max(12px,env(safe-area-inset-bottom,0px));gap:6px}.jump button{width:40px;height:40px}}
+
+/* Hero: a knot that straightens as you scroll */
+.hero{width:100vw;display:flex;flex-direction:column;padding-top:calc(var(--top) + 4vh);padding-bottom:max(22px,env(safe-area-inset-bottom,0px));overflow:hidden;cursor:pointer}
+#knot{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+#knot path{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hero-copy{position:relative;z-index:2;display:grid;gap:14px;max-width:1240px}
+.hero h1{font-weight:800;font-size:clamp(34px,5.4vw,78px);letter-spacing:-.045em;line-height:1.02;max-width:14em;text-wrap:balance}
+.zone{position:relative;flex:1;min-height:140px;margin:2vh 0}
+.words{position:absolute;inset:0;pointer-events:none}
+.w{position:absolute;white-space:nowrap;left:calc(var(--x)*100%);top:calc(var(--y)*100%);transform:translate(calc(var(--x)*-100%),calc(var(--y)*-100%));animation:wIn .7s ease both}
+.w:nth-child(2){animation-delay:.08s}.w:nth-child(3){animation-delay:.16s}.w:nth-child(4){animation-delay:.24s}.w:nth-child(5){animation-delay:.32s}.w:nth-child(6){animation-delay:.4s}.w:nth-child(7){animation-delay:.48s}.w:nth-child(8){animation-delay:.56s}.w:nth-child(9){animation-delay:.64s}.w:nth-child(10){animation-delay:.72s}
+.w.a{font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.9vw,26px);color:var(--ink)}
+.w.b{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-size:clamp(10px,.95vw,13px);color:var(--soft)}
+.w.c{font-weight:800;letter-spacing:-.03em;font-size:clamp(15px,1.7vw,24px);color:var(--ink)}
+.w.d{font-weight:700;font-size:clamp(14px,1.4vw,19px);color:var(--hot)}
+.w.e{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.5vw,21px);color:var(--hot-2)}
+@keyframes wIn{from{opacity:0;filter:blur(4px)}}
+@media(max-width:760px){.w.m0{display:none}}
+.hero-foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.hero-line{font-size:clamp(15px,1.4vw,18px);color:var(--soft);line-height:1.55;max-width:34em}
+.hero-line b{color:var(--ink);font-weight:700}
+.proof{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.proof span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--hot-4);border-radius:6px;padding:6px 9px}
+.cue{display:flex;gap:10px;align-items:center}
+.cue button,.cue a{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--edge);border-radius:8px;padding:10px 15px;cursor:pointer;white-space:nowrap;text-decoration:none;transition:color .2s,border-color .2s}
+.cue button{font-weight:500;color:var(--soft)}
+.cue button:hover,.cue a:hover{color:var(--ink);border-color:var(--ink)}
+.cue a span{display:inline-block;color:var(--hot);animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+@media(max-width:760px){.hero{padding-top:calc(var(--top) + 1vh)}.proof{display:none}.hero-line{font-size:14px}.cue{width:100%}.cue a{flex:1;text-align:center}.zone{margin:1vh 0}}
+
+/* Sections: a title panel pinned on one side while the cards slide past it. */
+.grid{position:relative;flex:none;height:100%}
+.stage{position:absolute;left:0;top:0;height:100%;width:42vw;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:var(--top) 5vw 16vh 6vw;background:linear-gradient(90deg,var(--paper) 84%,rgba(244,244,242,0))}
+.stage h2{font-weight:800;font-size:clamp(34px,4.6vw,68px);letter-spacing:-.045em;line-height:1.02;max-width:9em;text-wrap:balance}
+.stage .lede{color:var(--soft);font-size:16px;line-height:1.55;max-width:24em}
+.stage .count{font-family:var(--mono);font-size:13px;color:var(--hot);letter-spacing:.1em}
+.rows{display:flex;height:100%;padding-left:46vw;padding-right:12vw}
+.row{flex:none;width:36vw;height:100%;padding:calc(var(--top) + 3vh) 3vw 17vh 0;display:flex;flex-direction:column;justify-content:center;gap:12px;opacity:.5;transition:opacity .6s ease}
+.row.act{opacity:1}
+.row.under{opacity:0;transition-duration:.25s}
+.row > b{font-family:var(--mono);font-size:12px;color:var(--hot);font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.row h3{font-weight:800;font-size:clamp(26px,2.9vw,42px);letter-spacing:-.04em;line-height:1.02;color:var(--soft);transition:color .5s}
+.row.act h3{color:var(--ink)}
+.row .role{font-size:15px;color:var(--soft);margin-top:-4px}
+.row .big{font-size:clamp(20px,1.9vw,27px);line-height:1.3;letter-spacing:-.015em;max-width:20em;color:var(--ink)}
+.row small{font-size:15px;color:var(--soft);line-height:1.5;max-width:28em}
+/* Problem first, in grey. What I did and what changed switch to full colour when the card is active. */
+.part{font-size:15.5px;line-height:1.5;max-width:30em;color:#a3a5a3;transition:color .6s ease}
+.part i{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;color:inherit}
+.part strong{font-weight:800}
+.part.prob{color:var(--soft)}
+.row.act .did{color:var(--ink)}
+.row.act .did i{color:var(--soft)}
+.part.res{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.row.act .res{color:var(--ink);transition-delay:.2s}
+.row.act .res i,.row.act .res strong{color:var(--hot)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:2px}
+.links-row a{font-family:var(--mono);font-size:12.5px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hot);padding-bottom:2px;white-space:nowrap}
+.links-row a:hover{color:var(--hot)}
+.awards{list-style:none;display:grid;gap:12px;max-width:30em}
+.awards li{display:grid;grid-template-columns:7.2em 1fr;gap:12px;align-items:baseline;padding-top:12px;border-top:1px solid var(--rule)}
+.awards li:first-child{border-top:0;padding-top:0}
+.awards b{font-weight:800;font-size:17px;letter-spacing:-.02em;color:#a3a5a3;transition:color .6s}
+.row.act .awards b{color:var(--hot)}
+.awards span{font-size:14.5px;line-height:1.45;color:var(--soft)}
+.awards span strong{display:block;color:var(--ink);font-weight:700}
+.row.wide{width:40vw}
+@media(max-width:760px){
+  .stage{width:100vw;height:auto;justify-content:flex-end;gap:8px;padding:calc(var(--top) + 1svh) 8vw 0 8vw;background:var(--paper)}
+  .stage h2{font-size:clamp(26px,7.6vw,34px)}
+  .stage .lede,.stage .count{display:none}
+  .rows{padding:0 8vw}
+  .row,.row.wide{width:86vw;justify-content:flex-start;gap:8px;padding:calc(var(--sh,140px) + 14px) 6vw 56px 2vw}
+  .row.wide h3{display:none}
+  .row h3{font-size:26px}
+  .row .big{font-size:19px}
+  .row small{font-size:14px}
+  .part{font-size:14px;line-height:1.42}.part.res{font-size:15px}
+  .awards{gap:6px}.awards li{padding-top:6px;grid-template-columns:6.4em 1fr}.awards b{font-size:15px}.awards span{font-size:13px}
+}
+@media(max-width:760px) and (max-height:700px){.part{font-size:13.5px}.awards span{font-size:12.5px}.row h3{font-size:23px}}
+
+/* A row that runs leftwards: mirrored, so the title sits on the right and cards arrive from the left. */
+.rev .rows{flex-direction:row-reverse;padding-left:12vw;padding-right:46vw}
+.rev .stage{left:auto;right:0;padding-left:5vw;padding-right:6vw;background:linear-gradient(270deg,var(--paper) 84%,rgba(244,244,242,0))}
+.rev .row{padding-left:3vw;padding-right:2vw}
+@media(max-width:760px){.rev .rows{padding:0 8vw}.rev .stage{padding:calc(var(--top) + 1svh) 8vw 0 8vw;background:var(--paper)}.rev .row{padding-left:2vw;padding-right:6vw}}
+
+/* Footer: the thread settles into an underline beneath the closing question. */
+footer{width:100vw;display:flex;flex-direction:column;justify-content:center;padding-top:var(--top);padding-bottom:10vh}
+footer .eyebrow{margin-bottom:18px}
+footer h3{font-weight:800;font-size:clamp(36px,6.4vw,92px);letter-spacing:-.05em;line-height:1;width:fit-content;max-width:12em;text-wrap:balance;margin-bottom:52px}
+footer h3 em{text-decoration:none}
+footer .say{color:var(--soft);font-size:clamp(15px,1.4vw,18px);line-height:1.55;max-width:34em;margin-bottom:24px}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;border:1px solid var(--edge);border-radius:8px;padding:11px 18px;font-size:15px;font-weight:700;transition:background .2s,color .2s,border-color .2s}
+.links a svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.links a.main{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.links a:hover{background:var(--hot);border-color:var(--hot);color:#fff}
+footer .totop{align-self:flex-start;display:inline-flex;gap:8px;margin-top:28px;font-size:14px;color:var(--soft);text-decoration:none;border-bottom:1px solid var(--edge);padding-bottom:2px}
+footer .totop span{color:var(--hot)}footer .totop:hover{color:var(--ink);border-color:var(--ink)}
+footer .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-top:22px}
+@media(max-width:760px){footer{padding-bottom:70px}footer h3{margin-bottom:40px}.links a{padding:10px 14px;font-size:14px}}
+
+/* Reduced motion: everything shown at once, nothing moves on its own. */
+.reduced .fade{opacity:1;transform:none;transition:none}
+.reduced .row,.reduced .row.under{opacity:1}
+.reduced .part,.reduced .row h3{transition:none}
+.reduced .did,.reduced .res,.reduced .row h3{color:var(--ink)}
+.reduced .res i,.reduced .res strong,.reduced .awards b{color:var(--hot)}
+.reduced .w,.reduced .cue a span,.reduced #thread-halo{animation:none}
+.reduced #retangle{display:none}
+.reduced .hero{cursor:default}
+</style>
 </head>
 <body>
-    <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
-        <i class="fas fa-moon"></i>
-    </div>
 
-    <div class="minimal-home">
-        <div class="container">
-            <div class="hero-minimal">
-                <div class="headline">
-                    <h1>Hi,</h1>
-                    <h2>I'm Mmesoma,</h2>
-                    <div class="role-animation">
-                        <span id="role-text" class="animated-role">Software Engineer</span>
-                    </div>
-                </div>
-                
-                <div class="nav-section">
-                    <div class="nav-links">
-                        <a href="portfolio.html">Portfolio</a>
-                        <a href="about.html">About Me</a>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/Nwachukwu1300" target="_blank" class="social-button">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank" class="social-button">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<nav class="jump" id="jump" aria-label="Sections"><button type="button" id="up" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="down" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></nav>
+<div class="top" id="top"><div class="bar wrap fade"><a class="mark" href="#hero">Mmesoma<span class="last"> Nwachukwu</span><i>.</i></a><nav><a class="wide" href="#how">How I work</a><a href="#work">Projects</a><a class="wide" href="#exp">Experience</a><a class="talk" href="#foot">Get in touch</a></nav></div></div>
 
-    <script>
-        // Role animation script
-        const roles = [
-            "Software Engineer",
-            "Data Scientist",
-            "Machine Learning Developer",
-            "Web Developer",
-            "AI Enthusiast",
-            "Problem Solver"
-        ];
-        
-        let currentIndex = 0;
-        const roleText = document.getElementById('role-text');
-        
-        function changeRole() {
-            roleText.style.opacity = 0;
-            
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % roles.length;
-                roleText.textContent = roles[currentIndex];
-                roleText.style.opacity = 1;
-            }, 500);
-        }
-        
-        // Change role every 2 seconds
-        setInterval(changeRole, 2000);
-        
-        // Theme toggle script
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference or use device preference
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        const savedTheme = localStorage.getItem('theme');
-        
-        if (savedTheme === 'light') {
-            document.body.classList.add('light-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else if (!savedTheme && !prefersDarkScheme.matches) {
-            document.body.classList.add('light-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-        
-        // Toggle theme when button is clicked
-        themeToggle.addEventListener('click', () => {
-            if (document.body.classList.contains('light-mode')) {
-                document.body.classList.remove('light-mode');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.add('light-mode');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    </script>
+<div class="view" id="view">
+<div class="track" id="track">
+<svg id="thread" aria-hidden="true"><path id="thread-line"/><circle id="thread-halo" r="13"/><circle id="thread-pen" r="6"/></svg>
+
+<div class="lane" data-dir="1">
+<header class="hero wrap" id="hero">
+  <svg id="knot" aria-hidden="true"><path id="knot-path"/></svg>
+  <div class="hero-copy fade">
+    <p class="eyebrow">Mmesoma Nwachukwu · Software engineer · Coventry, UK</p>
+    <h1>I <em>untangle</em> hard problems into things that work.</h1>
+  </div>
+  <div class="zone" id="zone">
+    <div class="words" id="words" aria-hidden="true">
+      <span class="w c" style="--x:.1;--y:.1">manual founder process</span>
+      <span class="w b" style="--x:.88;--y:.12">spreadsheet stock</span>
+      <span class="w a" style="--x:.16;--y:.9">fog on the CCTV</span>
+      <span class="w d" style="--x:.84;--y:.86">wasted retries</span>
+      <span class="w e m0" style="--x:.02;--y:.28">thousands of PDFs</span>
+      <span class="w a m0" style="--x:.98;--y:.3">which car was it?</span>
+      <span class="w b" style="--x:.4;--y:.0">60 hours of admin</span>
+      <span class="w c m0" style="--x:.66;--y:.02">one CRM at a time</span>
+      <span class="w e" style="--x:.6;--y:1">identity checks by hand</span>
+      <span class="w b m0" style="--x:.36;--y:.98">surveys nobody finishes</span>
+    </div>
+  </div>
+  <div class="hero-foot fade">
+    <div>
+      <p class="hero-line">I'm Mmesoma, a First Class Computer Science graduate. Give me a slow, manual or messy process and I'll find the knot, build the fix and prove it works. I've done it across <b>consulting</b>, <b>startups</b>, <b>academia</b> and <b>enterprises</b>.</p>
+      <div class="proof"><span>Student of the Year · 1 of 10 from 400</span><span>AWS scholar · top 2% of 50,000+</span><span>Santander scholar · 1 of 100</span></div>
+    </div>
+    <div class="cue"><button id="retangle" type="button">↻ Tangle it again</button><a href="#how">Scroll to untangle <span>→</span></a></div>
+  </div>
+</header>
+
+<section class="sec" id="how">
+  <div class="grid">
+    <div class="stage">
+      <p class="eyebrow">How I work</p>
+      <h2>Four steps. <em>One thread.</em></h2>
+      <p class="lede">The same approach whether it's a charity's stock room, a hiring process or a national road network.</p>
+      <p class="count" aria-hidden="true">01 / 04</p>
+    </div>
+    <div class="rows">
+      <div class="row"><b>01 · Find the knot</b><p class="big">I start with the people doing the work, not the technology. Where does their time go? What keeps breaking?</p><small>At Projekt Rising that meant mapping how three businesses actually ran before writing a line of code.</small></div>
+      <div class="row"><b>02 · Pull one thread</b><p class="big">I pick the change worth the most and prototype it fast, so everyone is reacting to something real.</p><small>At SalesAPE I took 3 prototypes to leadership. 2 were greenlit.</small></div>
+      <div class="row"><b>03 · Build it straight</b><p class="big">Then I build it properly, end to end: the data, the backend, and the part people actually click.</p><small>For Samaritan's Purse that meant replacing a spreadsheet with an order form, payments and a live stock dashboard.</small></div>
+      <div class="row"><b>04 · Prove it holds</b><p class="big">I don't call it done until the numbers say so: tests, evaluations and real runs.</p><small>The Ventureship hiring pipeline went through 3 rounds of production test runs before it was trusted.</small></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="lane" data-dir="-1">
+<section class="sec rev" id="work">
+  <div class="grid">
+    <div class="stage">
+      <p class="eyebrow">Projects</p>
+      <h2>Knots I've <em>untangled.</em></h2>
+      <p class="lede">Each one starts as a problem, in grey. When it reaches you, it turns into what I did and what changed.</p>
+      <p class="count" aria-hidden="true">01 / 11</p>
+    </div>
+    <div class="rows">
+      <div class="row"><b>Charity · Live</b><h3>Samaritan's Purse ordering system</h3>
+        <p class="part prob"><i>The knot</i>£10,000 of discounted shoebox gifts had to reach 50 community groups, and every order ran through a spreadsheet.</p>
+        <p class="part did"><i>What I did</i>Designed and built the whole system: an online order form, automatic payment and confirmation, and a live stock dashboard that flags low stock.</p>
+        <p class="part res"><i>What changed</i><strong>£10k</strong> of products and <strong>50</strong> groups handled in one place, built to cut admin time and order errors.</p>
+        <div class="links-row"><a href="https://packing-party-2026.netlify.app/" target="_blank" rel="noopener">Live site ↗</a></div></div>
+      <div class="row"><b>Dissertation · Forensics</b><h3>Sentinel</h3>
+        <p class="part prob"><i>The knot</i>Crash investigators need to know exactly which car was involved, and how safe it is, often from a single photo.</p>
+        <p class="part did"><i>What I did</i>Built a two-branch ResNet50 model that predicts make, model and year with calibrated confidence, matches it to Euro NCAP safety ratings, and returns a court-admissible report.</p>
+        <p class="part res"><i>What changed</i>An answer in <strong>46ms</strong> per image at <strong>81.71%</strong> hierarchical accuracy.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/sentiel1" target="_blank" rel="noopener">Code ↗</a><a href="https://drive.google.com/file/d/1m0iP5nCtqZHm_CMRhVzV6RlxQO3pS-i1/view?usp=sharing" target="_blank" rel="noopener">Demo video ↗</a><a href="https://huggingface.co/mmesomaa/sentiel1" target="_blank" rel="noopener">Model ↗</a></div></div>
+      <div class="row"><b>Payments · Simulation</b><h3>Payment Authorisation Simulator</h3>
+        <p class="part prob"><i>The knot</i>Declined card payments get retried with the same rules for every bank, so retries are wasted and good sales are lost.</p>
+        <p class="part did"><i>What I did</i>Modelled the full merchant to issuer flow, including routing, 3DS checks, retries and late chargebacks, then learned how each issuer behaves and tuned retries and routing to match.</p>
+        <p class="part res"><i>What changed</i>Approvals up from 82.5% to <strong>84.3%</strong>, wasted retries cut from 8.1% to <strong>4.2%</strong>, about <strong>£26,500</strong> net benefit in simulation.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/payment_system" target="_blank" rel="noopener">Code ↗</a></div></div>
+      <div class="row"><b>Projekt Rising · Integrations</b><h3>Toolkit Integration Engine</h3>
+        <p class="part prob"><i>The knot</i>Every new CRM or accounting tool a client used meant writing another integration by hand.</p>
+        <p class="part did"><i>What I did</i>Built an engine that reads a product's API spec, ranks the useful endpoints, and generates a working client at runtime, all driven from a CLI.</p>
+        <p class="part res"><i>What changed</i>A new CRM now takes <strong>one adapter file</strong>. <strong>146</strong> passing tests, working with HubSpot and Pipedrive.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/projektrising" target="_blank" rel="noopener">Code ↗</a></div></div>
+      <div class="row"><b>Systems · Live product</b><h3>CUDA Transformer</h3>
+        <p class="part prob"><i>The knot</i>Most projects are a config file pointed at someone else's library. I wanted to prove I understood the machinery underneath.</p>
+        <p class="part did"><i>What I did</i>Wrote a transformer from raw CUDA kernels up, with my own autograd engine and no deep learning framework in the core maths, then trained the same model on text and on movie histories.</p>
+        <p class="part res"><i>What changed</i><strong>25.7x</strong> faster attention, and it runs live as a movie recommender.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/cudatransformer" target="_blank" rel="noopener">Code ↗</a><a href="https://cudatransformer-recommender.onrender.com/" target="_blank" rel="noopener">Try it live ↗</a></div></div>
+      <div class="row"><b>National Highways · Documents</b><h3>Engineering knowledge graph</h3>
+        <p class="part prob"><i>The knot</i>Engineering knowledge was spread across thousands of technical PDFs that constantly reference each other.</p>
+        <p class="part did"><i>What I did</i>Extracted and cleaned the text, built a pipeline to spot document codes and references, and turned it into a knowledge graph with a RAG assistant on top.</p>
+        <p class="part res"><i>What changed</i>Structured answers from <strong>thousands</strong> of linked documents, supporting infrastructure asset management.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank" rel="noopener">Code ↗</a></div></div>
+      <div class="row"><b>National Highways · CCTV</b><h3>Weather classification and removal</h3>
+        <p class="part prob"><i>The knot</i>Rain, fog and snow make roadside CCTV hard to read, which weakens road monitoring.</p>
+        <p class="part did"><i>What I did</i>Trained CNN models on 10,000 CCTV images to recognise the weather in each frame, and a model to remove it from the picture.</p>
+        <p class="part res"><i>What changed</i><strong>98%</strong> classification accuracy, making road monitoring more reliable.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/weather-classification" target="_blank" rel="noopener">Code ↗</a></div></div>
+      <div class="row"><b>Founder · SaaS</b><h3>FaceRegg</h3>
+        <p class="part prob"><i>The knot</i>Checking that a face matches an ID photo is slow and error-prone when a person does it by hand.</p>
+        <p class="part did"><i>What I did</i>Founded an identity verification product and built it on a Siamese neural network, with TensorFlow and OpenCV pipelines tuned for accuracy and speed on real-world photos.</p>
+        <p class="part res"><i>What changed</i><strong>2</strong> paying clients and <strong>£5k</strong> in revenue.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/Faceregg" target="_blank" rel="noopener">Code ↗</a><a href="https://nwachukwu1300.github.io/Faceregg/" target="_blank" rel="noopener">Website ↗</a></div></div>
+      <div class="row"><b>SalesAPE.ai · MVP</b><h3>SalesAPE</h3>
+        <p class="part prob"><i>The knot</i>Small service businesses need a website, lead capture and bookings, but rarely have the time to set them up.</p>
+        <p class="part did"><i>What I did</i>Built a full-stack platform in TypeScript, React and Postgres, with background job queues, that turns an Instagram profile or website link into a working online presence.</p>
+        <p class="part res"><i>What changed</i>A live site with lead capture and bookings, <strong>in minutes</strong>.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/salesape_mvp" target="_blank" rel="noopener">Code ↗</a></div></div>
+      <div class="row"><b>Learning platform</b><h3>ExcelPoint</h3>
+        <p class="part prob"><i>The knot</i>Students' notes, slides and recordings sit in files they can't easily question or revise from.</p>
+        <p class="part did"><i>What I did</i>Built a Django and React platform where you upload your materials, chat with them, and get quizzes and flashcards, with the heavy processing running in the background on Celery and Redis.</p>
+        <p class="part res"><i>What changed</i>Search by meaning, chat and revision from <strong>your own materials</strong>, in one place.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/excelpoint" target="_blank" rel="noopener">Code ↗</a><a href="https://drive.google.com/file/d/1yBZ8Cexa4Lhrnot7D3OiEqdqtsfgFxn5/view" target="_blank" rel="noopener">Demo ↗</a></div></div>
+      <div class="row"><b>Hackathons · Competitions</b><h3>PersonaSync and a Street Fighter agent</h3>
+        <p class="part prob"><i>The knot</i>Two very different briefs: make survey data collection feel less like a chore, and train an agent to win at Street Fighter III.</p>
+        <p class="part did"><i>What I did</i>Built a voice agent that turns a survey into a real-time conversation, and a reinforcement learning agent trained across 3 difficulty levels over about 10 million steps.</p>
+        <p class="part res"><i>What changed</i>Top <strong>10</strong> of 200 teams across Europe, and top <strong>5</strong> of about 50 teams.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/personasync" target="_blank" rel="noopener">PersonaSync ↗</a><a href="https://github.com/Nwachukwu1300/street_fighter_rl_agent" target="_blank" rel="noopener">Street Fighter agent ↗</a></div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="lane" data-dir="1">
+<section class="sec" id="exp">
+  <div class="grid">
+    <div class="stage">
+      <p class="eyebrow">Experience and awards</p>
+      <h2>Where I've done it <em>for real.</em></h2>
+      <p class="lede">Nine roles, five awards and a First Class degree, from a national road network to a founder's first hire.</p>
+      <p class="count" aria-hidden="true">01 / 10</p>
+    </div>
+    <div class="rows">
+      <div class="row"><b>Aug 2026 – Sep 2026</b><h3>Ventureship</h3><p class="role">Founding Engineer Intern</p>
+        <p class="part prob"><i>The knot</i>Hiring on an AI hiring platform ran as a fully manual process the founder did by hand.</p>
+        <p class="part did"><i>What I did</i>Built an end-to-end agentic pipeline with the Anthropic SDK: multi-stage agents, self-checking schemas, deterministic decisions and bias audits at key points. Helped shape the shared data schema, reviewed weekly with the technical advisor.</p>
+        <p class="part res"><i>What changed</i>One automated pipeline run replaces the manual process, hardened over <strong>3</strong> rounds of production tests.</p></div>
+      <div class="row"><b>Jul 2026 – Aug 2026</b><h3>Samaritan's Purse</h3><p class="role">Software Engineer, volunteering</p>
+        <p class="part prob"><i>The knot</i>A £10,000 gift procurement project for 50 community groups was run from spreadsheets.</p>
+        <p class="part did"><i>What I did</i>Designed and built the ordering, payment and stock system end to end, from the order form to the live dashboard.</p>
+        <p class="part res"><i>What changed</i><strong>£10k</strong> of products, <strong>50</strong> groups, one system.</p></div>
+      <div class="row"><b>Aug 2025 – Aug 2026</b><h3>Responsible AI Governance Initiative</h3><p class="role">Head of Engineering</p>
+        <p class="part prob"><i>The knot</i>A nonprofit focused on responsible AI governance needed someone to lead its engineering.</p>
+        <p class="part did"><i>What I did</i>Led engineering and managed a cross-functional team.</p>
+        <p class="part res"><i>What changed</i><strong>12 months</strong> leading the team.</p></div>
+      <div class="row"><b>Dec 2025 – Mar 2026</b><h3>Projekt Rising</h3><p class="role">AI Engineer, contractor</p>
+        <p class="part prob"><i>The knot</i>Three small businesses were losing hours every month to manual work.</p>
+        <p class="part did"><i>What I did</i>Mapped their workflows to find the automation gaps, then built and monitored production APIs connecting models to their data, tracking accuracy, latency and outcomes.</p>
+        <p class="part res"><i>What changed</i><strong>3</strong> processes automated, about <strong>60 hours</strong> of manual work saved every month.</p></div>
+      <div class="row"><b>Dec 2025 – Mar 2026</b><h3>SalesAPE.ai</h3><p class="role">Software Engineer Intern</p>
+        <p class="part prob"><i>The knot</i>Leadership needed to know which new product ideas were worth backing.</p>
+        <p class="part did"><i>What I did</i>Designed and built 3 MVP prototypes in a fast-moving hacksquad, with evaluation pipelines to measure how reliable they were.</p>
+        <p class="part res"><i>What changed</i><strong>2 of 3</strong> greenlit for further development.</p></div>
+      <div class="row"><b>Jul 2024 – Jul 2025</b><h3>National Highways</h3><p class="role">Data Science, Year in Industry</p>
+        <p class="part prob"><i>The knot</i>CCTV that failed in bad weather, knowledge buried in thousands of documents, and roadside habitats that needed mapping.</p>
+        <p class="part did"><i>What I did</i>Built a weather classification and removal model, a RAG knowledge graph over engineering documents, and a satellite segmentation model that classifies roadside habitats.</p>
+        <p class="part res"><i>What changed</i><strong>98%</strong> accuracy on 10,000 CCTV images, and Year in Industry Student of the Year, <strong>1 of 10</strong> from 400.</p></div>
+      <div class="row"><b>May 2023 – Aug 2023</b><h3>FaceRegg</h3><p class="role">Founder</p>
+        <p class="part prob"><i>The knot</i>Identity checks were slow and manual.</p>
+        <p class="part did"><i>What I did</i>Founded and built an image verification SaaS, from model training and inference pipelines to the product clients used.</p>
+        <p class="part res"><i>What changed</i><strong>2</strong> paying clients, <strong>£5k</strong> revenue.</p></div>
+      <div class="row"><b>2021 – 2023</b><h3>Imperial College London and Paradigm Finance</h3><p class="role">Research Intern · Software Engineering Intern</p>
+        <p class="part prob"><i>The knot</i>Climate resilience research, and credit risk analysis under strict financial data rules.</p>
+        <p class="part did"><i>What I did</i>At Imperial, prototyped data-driven climate resilience technology with researchers and industry mentors. At Paradigm, built credit risk tools, client portfolio reports and internal web apps.</p>
+        <p class="part res"><i>What changed</i>Named Paradigm Finance's <strong>Intern of the Year</strong>.</p></div>
+      <div class="row"><b>Sep 2022 – May 2026</b><h3>Coventry University</h3><p class="role">BSc Computer Science · First Class Honours</p>
+        <p class="part did"><i>What I studied</i>AI, Data Science, Advanced Algorithms, Software Engineering and Theory of Computation.</p>
+        <p class="part res"><i>Before that</i>Canadian Plus Foundation at 16 Plus Schools: <strong>91%</strong> overall, and Best Foundation Student, top of <strong>50</strong>.</p></div>
+      <div class="row wide"><b>Awards and scholarships</b><h3>Five awards</h3>
+        <ul class="awards">
+          <li><b>1 of 10</b><span><strong>Year in Industry Student of the Year</strong>National Highways, 2025. Chosen from 400 placement students nationwide.</span></li>
+          <li><b>Top 2%</b><span><strong>AWS Machine Learning Scholarship</strong>Amazon Web Services, 2023. From 50,000+ DeepRacer applicants.</span></li>
+          <li><b>1 of 100</b><span><strong>Santander Universities Scholarship</strong>Santander Bank, 2023. Recipients selected nationwide.</span></li>
+          <li><b>Intern of the Year</b><span><strong>Paradigm Finance</strong>2021.</span></li>
+          <li><b>Top of 50</b><span><strong>Best Foundation Student</strong>16 Plus Schools, 2021.</span></li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="lane" data-dir="1">
+<footer class="wrap" id="foot">
+  <p class="eyebrow">Get in touch</p>
+  <h3 id="closing">What are you trying to <em>untangle?</em></h3>
+  <p class="say">If you've got a slow, manual or messy problem, I'd like to hear about it.</p>
+  <div class="links">
+    <a class="main" href="mailto:mnfinance664@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email me</a>
+    <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5v6M8 7.5v.01M12 16.5v-6M12 13c0-1.7 1-2.6 2.3-2.6s2.2.8 2.2 2.6v3.5"/></svg>LinkedIn</a>
+    <a href="https://github.com/Nwachukwu1300" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.4-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a>
+    <a href="Mmesoma_CV_pdf.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download CV</a>
+  </div>
+  <p class="note">mnfinance664@gmail.com · Coventry, UK</p>
+  <a class="totop" href="#hero">Back to top <span>↑</span></a>
+</footer>
+</div>
+</div>
+</div>
+
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const track=$('track'),lanes=[...document.querySelectorAll('.lane')],grids=[...document.querySelectorAll('.grid')],rows=[...document.querySelectorAll('.row')];
+const thread=$('thread'),tline=$('thread-line'),pen=$('thread-pen'),halo=$('thread-halo');
+const hero=$('hero'),zone=$('zone'),words=$('words'),knotSvg=$('knot'),kpath=$('knot-path');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduced)document.documentElement.classList.add('reduced');
+// Our own glide between stops: the browser's smooth scroll is short and abrupt (about 250ms in Safari), so each jump eases in and out over a time that grows with the distance.
+let gl=null;
+function glide(to){to=Math.round(to);if(gl)cancelAnimationFrame(gl.raf);const from=scrollY,dist=Math.abs(to-from);
+  if(reduced||dist<2){gl=null;return scrollTo(0,to)}
+  const dur=Math.min(1100,Math.max(550,420+dist*.3)),t0=performance.now();gl={to};
+  const step=now=>{const k=Math.min(1,(now-t0)/dur),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;scrollTo(0,from+(to-from)*e);if(k<1)gl.raf=requestAnimationFrame(step);else gl=null};
+  gl.raf=requestAnimationFrame(step)}
+const stopGlide=()=>{if(gl){cancelAnimationFrame(gl.raf);gl=null}};
+let curS=0,maxS=0,camX=0,camY=0,curDir=1,segs=[],rowsInfo=[],gridInfo=[],tLen=0,drawn=0,pairs=[];
+const mobile=()=>innerWidth<760;
+const dirOf=e=>+(e.closest('.lane')?.dataset.dir||1);
+// Where the card being read sits: centre on a phone, opposite the title panel on a wide screen.
+const focusFor=d=>mobile()?innerWidth/2:innerWidth*(d>0?.69:.31);
+const wx=e=>e.getBoundingClientRect().left+camX,wy=e=>e.getBoundingClientRect().top+camY;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+grids.forEach(g=>{g._rows=[...g.querySelectorAll('.row')];g._count=g.querySelector('.count');g._last=-1});
+
+// The camera: one vertical scroll distance walked along the snake, sideways along each row, down at each turn.
+function camAt(s){for(const g of segs)if(s<g.s1||g===segs[segs.length-1]){const k=g.s1>g.s0?clamp((s-g.s0)/(g.s1-g.s0),0,1):1;return[g.x0+(g.x1-g.x0)*k,g.y0+(g.y1-g.y0)*k,g.d]}return[0,0,1]}
+function readX(){curS=clamp(scrollY,0,maxS);[camX,camY,curDir]=camAt(curS);track.style.transform=`translate3d(${-camX}px,${-camY}px,0)`;
+  // Each title panel stays put while its cards slide past, then leaves with the last one.
+  const W=innerWidth;gridInfo.forEach(({g,l,w,d})=>{const pin=d>0?clamp(camX-l,0,w-W):clamp(camX+W-(l+w),-(w-W),0);g._stage.style.transform=`translate3d(${pin}px,0,0)`})}
+function layout(){
+  const W=innerWidth,H=innerHeight;let s=0,prevEnd=0;segs=[];rowsInfo=[];
+  lanes.forEach((ln,i)=>{ln.style.height=H+'px';ln.style.top=(i*H)+'px'});
+  lanes.forEach((ln,i)=>{const d=+ln.dataset.dir,w=Math.max(W,ln.scrollWidth),start=prevEnd,L=d>0?start:start+W-w,end=d>0?L+w-W:L;
+    ln.style.left=L+'px';
+    if(i){segs.push({s0:s,s1:s+H,x0:start,y0:(i-1)*H,x1:start,y1:i*H,d:+lanes[i-1].dataset.dir});s+=H}
+    segs.push({s0:s,s1:s+Math.abs(end-start),x0:start,y0:i*H,x1:end,y1:i*H,d});rowsInfo.push({d,L,w,start,end,s0:s,y:i*H});s+=Math.abs(end-start);prevEnd=end});
+  maxS=s;document.body.style.height=(maxS+H)+'px';
+  camX=0;camY=0;track.style.transform='none';
+  gridInfo=grids.map(g=>{g._stage=g.querySelector('.stage');g._stage.style.transform='none';g.style.setProperty('--sh',g._stage.offsetHeight+'px');return{g,l:g.getBoundingClientRect().left,w:g.offsetWidth,d:dirOf(g)}});
+  knotGeom();readX();buildThread();syncJump();lastAmt=-1}
+// The scroll position at which a point on a row reaches the given spot on screen.
+const sAt=(row,x,spot)=>{const r=rowsInfo[row];return clamp(r.s0+r.d*(x-spot-r.start),r.s0,r.s0+Math.abs(r.end-r.start))};
+const rowOf=e=>lanes.indexOf(e.closest('.lane'));
+
+// The knot. Its two ends never move; in between, a few rotating loops pull the line into a tangle.
+// As you scroll through the hero the loops shrink to nothing and what's left is one straight line, which the thread carries on from.
+const N=520;let K={x0:0,x1:0,y:0,R:0},env=new Float32Array(N),offA=null,offB=null,blendT0=-1e9,kick=0,kickT=-1e9,lastAmt=-1,lastBlend=-1;
+for(let i=0;i<N;i++)env[i]=Math.pow(Math.sin(Math.PI*i/(N-1)),.3);
+function tangle(){const r=Math.random,out=new Float32Array(N*2),P=[[.5,3,2],[.36,7,3],[.24,13,4],[.14,23,6]].map(([a,f,j])=>({a,f:f+r()*j,p:r()*6.283,q:r()*6.283,sx:1.25+r()*.6}));
+  for(let i=0;i<N;i++){const t=i/(N-1);let ox=0,oy=0;for(const h of P){ox+=h.a*h.sx*Math.cos(6.283*h.f*t+h.p);oy+=h.a*Math.sin(6.283*h.f*t+h.q)}out[2*i]=ox;out[2*i+1]=oy}
+  return out}
+function knotGeom(){const z=zone.getBoundingClientRect(),h=hero.getBoundingClientRect(),m=mobile();
+  K={x0:z.left-h.left+z.width*(m?.03:.12),x1:z.left-h.left+z.width*(m?.97:.88),y:z.top-h.top+z.height/2,R:Math.min(z.height*.36,z.width*(m?.22:.11))};
+  knotSvg.setAttribute('viewBox',`0 0 ${h.width} ${h.height}`)}
+const INK=[22,24,28],HOT=[217,80,43];
+function drawKnot(amt,b){const {x0,x1,y,R}=K,cx=(x0+x1)/2,f=v=>v.toFixed(1);let d='';
+  for(let i=0;i<N;i++){const t=i/(N-1),xs=x0+(x1-x0)*t,e=env[i],ox=offA[2*i]+(offB[2*i]-offA[2*i])*b,oy=offA[2*i+1]+(offB[2*i+1]-offA[2*i+1])*b;
+    // Tangled, the middle of the line bunches toward the centre; straight, every point sits on the line between the ends.
+    d+=(i?'L':'M')+f(xs+amt*e*((cx-xs)*.86+ox*R))+','+f(y+amt*e*oy*R)}
+  kpath.setAttribute('d',d);const c=INK.map((v,j)=>Math.round(v+(HOT[j]-v)*(1-amt)));kpath.style.stroke=`rgb(${c})`;
+  words.style.opacity=clamp(amt*1.4-.4,0,1)}
+function retangle(){if(reduced)return;const b=blendNow();offA=offA.map((v,i)=>v+(offB[i]-v)*b);offB=tangle();blendT0=performance.now();kick=1;kickT=blendT0}
+const blendNow=()=>{const k=clamp((performance.now()-blendT0)/750,0,1);return 1-Math.pow(1-k,3)};
+offA=tangle();offB=offA;
+
+// One line for the whole snake: it leaves the end of the knot, loops once under every card,
+// turns at the end of each row, drops to the next, and finally runs along under the closing question.
+function buildThread(){
+  const W=innerWidth,H=innerHeight,mob=mobile(),lane=mob?H-26:H*.9,f=v=>v.toFixed(1);
+  const xs=rowsInfo.map(r=>[r.L,r.L+r.w]).flat(),minX=Math.min(...xs)-W*.2,maxX=Math.max(...xs)+W*.2,hh=rowsInfo.length*H;
+  thread.setAttribute('width',maxX-minX);thread.setAttribute('height',hh);thread.setAttribute('viewBox',`${minX} 0 ${maxX-minX} ${hh}`);
+  Object.assign(thread.style,{left:minX+'px',width:(maxX-minX)+'px',height:hh+'px'});
+  const st={x:K.x1,y:K.y};let d=`M${f(st.x)},${f(st.y)}`,p=st,n=0;const marks=[[d,0]];
+  const mark=s=>marks.push([d,s]);
+  const to=(x,y)=>{const dx=(x-p.x)*.5;d+=` C${f(p.x+dx)},${f(p.y)} ${f(x-dx)},${f(y)} ${f(x)},${f(y)}`;p={x,y}};
+  const loop=(r,k)=>{const {x,y}=p;d+=` C${f(x+1.6*r*k)},${f(y)} ${f(x+1.5*r*k)},${f(y-2*r)} ${f(x)},${f(y-2*r)} C${f(x-1.5*r*k)},${f(y-2*r)} ${f(x-.8*r*k)},${f(y+.3*r)} ${f(x+.9*r*k)},${f(y+.2*r)}`;p={x:x+.9*r*k,y:y+.2*r}};
+  const big=mob?26:46,little=mob?10:14,lead=k=>W*(k>0?(mob?.6:.66):(mob?.4:.34));
+  // Straight on from the knot to the edge of the opening screen.
+  to(W*.98,st.y+(lane-st.y)*.75);mark(sAt(0,p.x,lead(1)));
+  rowsInfo.forEach((r,i)=>{const k=r.d,ly=r.y+lane;
+    if(i){const pd=rowsInfo[i-1].d,ex=r.start+(pd>0?W-(mob?8:W*.03):(mob?8:W*.03)),R=mob?36:64,k2=-pd;
+      if(i===rowsInfo.length-1){
+        // The last drop swings in under the closing question and settles there as its underline.
+        const h=$('closing').getBoundingClientRect(),uy=h.bottom+camY+(mob?14:20),ux=(pd>0?h.left:h.right)+camX;
+        d+=` C${f(p.x+(ex-p.x)*.5)},${f(p.y)} ${f(ex)},${f(p.y)} ${f(ex)},${f(p.y+R)} L${f(ex)},${f(uy-R)} C${f(ex)},${f(uy-R*.45)} ${f(ex+k2*R*.45)},${f(uy)} ${f(ex+k2*R)},${f(uy)} L${f(ux)},${f(uy)}`;
+        p={x:ux,y:uy};mark(maxS);return}
+      d+=` C${f(p.x+(ex-p.x)*.5)},${f(p.y)} ${f(ex)},${f(p.y)} ${f(ex)},${f(p.y+R)} L${f(ex)},${f(ly-R)} C${f(ex)},${f(ly-R*.45)} ${f(ex+k2*R*.45)},${f(ly)} ${f(ex+k2*R)},${f(ly)}`;
+      p={x:ex+k2*R,y:ly};mark(r.s0)}
+    const gi=gridInfo.find(x=>lanes[i].contains(x.g));if(!gi)return;
+    const sw=gi.g._stage.offsetWidth,items=[{x:k>0?gi.l:gi.l+gi.w-sw,w:sw,big:1},...gi.g._rows.map(e=>({x:wx(e),w:e.offsetWidth}))].sort((a,b)=>k*(a.x-b.x));
+    items.forEach(it=>{const r0=it.big?big:little,at=it.big?it.x+it.w*(k>0?.45:.55):k>0?it.x-little*1.5:it.x+it.w+little*1.5;
+      to(at-k*r0*.6,ly+(n++%2?1:-1)*H*(mob?.006:.014));loop(r0,k);mark(sAt(i,p.x,lead(k)))})});
+  tline.setAttribute('d',d);tLen=tline.getTotalLength();tline.style.strokeDasharray=`${tLen} ${tLen}`;
+  // How much line to draw at each scroll position, from the length at each waypoint.
+  const tmp=document.createElementNS('http://www.w3.org/2000/svg','path');thread.appendChild(tmp);let ms=-1;
+  pairs=marks.map(([dd,s])=>{tmp.setAttribute('d',dd);ms=Math.max(ms,s);return[ms,tmp.getTotalLength()]});tmp.remove();
+  drawn=reduced?tLen:Math.min(drawn,tLen)}
+function lengthAt(s){if(!pairs.length)return 0;if(s<=pairs[0][0])return pairs[0][1];
+  for(let i=1;i<pairs.length;i++)if(s<=pairs[i][0]){const [s0,l0]=pairs[i-1],[s1,l1]=pairs[i];return l0+(l1-l0)*(s1>s0?(s-s0)/(s1-s0):1)}return tLen}
+
+let lastNow=0;
+function tick(now){readX();const dt=lastNow?Math.min(64,now-lastNow):16.7;lastNow=now;
+  const want=reduced||curS>=maxS-2?tLen:lengthAt(curS);drawn+=reduced?want-drawn:(want-drawn)*(1-Math.pow(.84,dt/16.7));
+  tline.style.strokeDashoffset=Math.max(0,tLen-drawn);const q=tline.getPointAtLength(clamp(drawn,0,tLen));
+  pen.setAttribute('cx',q.x);pen.setAttribute('cy',q.y);halo.setAttribute('cx',q.x);halo.setAttribute('cy',q.y);
+  thread.classList.toggle('done',drawn>tLen-4);
+  // The knot: fully tangled at the top, straight once the hero is half scrolled away. A tap tangles it again for a moment.
+  const p=reduced?0:clamp(curS/(innerWidth*.5),0,1),base=1-p*p*(3-2*p);
+  if(now-kickT>1500)kick=Math.max(0,kick-.012);
+  const amt=Math.max(base,kick),b=blendNow();
+  if(Math.abs(amt-lastAmt)>.0005||b!==lastBlend){drawKnot(amt,b);lastAmt=amt;lastBlend=b}
+  if(!reduced){rows.forEach(r=>{const bx=r.getBoundingClientRect(),st=r.closest('.grid')._stage.getBoundingClientRect(),d=dirOf(r),c=bx.left+bx.width/2,vis=bx.top<innerHeight&&bx.bottom>0;
+      r.classList.toggle('act',vis&&Math.abs(c-focusFor(d))<bx.width*.5);
+      r.classList.toggle('under',vis&&!mobile()&&(d>0?bx.left<st.right-60:bx.right>st.left+60))});
+    grids.forEach(g=>{const i=g._rows.findIndex(r=>r.classList.contains('act'));if(i>=0&&i!==g._last){g._last=i;const z=v=>String(v).padStart(2,'0');g._count.textContent=`${z(i+1)} / ${z(g._rows.length)}`}})}
+  requestAnimationFrame(tick)}
+
+// Wheel, trackpad, swipes and arrow keys each step exactly one stop along the snake.
+let wHist=[],wLast=0,wStep=0;
+addEventListener('wheel',e=>{if(e.ctrlKey)return;e.preventDefault();
+  const side=Math.abs(e.deltaX)>Math.abs(e.deltaY),v=side?e.deltaX*curDir:e.deltaY,a=Math.abs(v),now=performance.now();
+  // A trackpad keeps coasting after a swipe with each event a little weaker; a new swipe shows up as a pause or a jump in strength.
+  const avg=x=>x.reduce((p,q)=>p+q,0)/x.length,fresh=now-wLast>180;if(fresh)wHist=[];wLast=now;
+  const before=wHist.slice(-6);wHist.push(a);if(wHist.length>20)wHist.shift();
+  const rising=fresh||before.length<2||a>avg(before)*1.6+2;
+  if(a<2||!rising||now-wStep<380)return;wStep=now;go(Math.sign(v))},{passive:false});
+let tx0=0,ty0=0,tdx=0,axis=null;
+addEventListener('touchstart',e=>{const t=e.touches[0];tx0=t.clientX;ty0=t.clientY;tdx=0;axis=null},{passive:true});
+addEventListener('touchmove',e=>{if(e.touches.length>1)return;const t=e.touches[0],dx=t.clientX-tx0,dy=t.clientY-ty0;
+  if(!axis&&Math.hypot(dx,dy)>8)axis=Math.abs(dx)>Math.abs(dy)*1.2?'x':'y';if(axis!=='x')return;e.preventDefault();tdx=dx},{passive:false});
+addEventListener('touchend',()=>{if(axis==='x'&&Math.abs(tdx)>40)go(-Math.sign(tdx)*curDir);axis=null});
+addEventListener('keydown',e=>{if(/INPUT|TEXTAREA/.test(e.target.tagName))return;
+  const k={ArrowRight:curDir,ArrowLeft:-curDir,ArrowDown:1,ArrowUp:-1,PageDown:1,PageUp:-1,' ':e.shiftKey?-1:1}[e.key];if(k){e.preventDefault();go(k)}});
+const sOf=e=>{const i=rowOf(e),r=rowsInfo[i];return sAt(i,r.d>0?wx(e):wx(e)+e.offsetWidth,r.d>0?0:innerWidth)};
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href').slice(1));if(!t)return;e.preventDefault();
+  glide(t.id==='hero'?0:t.id==='foot'?maxS:sOf(t))}));
+
+// Back and forward buttons that step through the snake one card at a time.
+const jump=$('jump'),up=$('up'),down=$('down');
+const stops=()=>{const xs=[0,maxS,...rowsInfo.map(r=>r.s0),...rowsInfo.map(r=>r.s0+Math.abs(r.end-r.start))];
+  gridInfo.forEach(({g})=>xs.push(sOf(g)));
+  rows.forEach(e=>{const i=rowOf(e);xs.push(sAt(i,wx(e)+e.offsetWidth/2,focusFor(rowsInfo[i].d)))});
+  // Stops closer together than a short swipe count as one.
+  return xs.map(x=>Math.round(clamp(x,0,maxS))).sort((a,b)=>a-b).filter((x,i,a)=>!i||x-a[i-1]>Math.max(60,innerWidth*.12)||(x===maxS&&a[i-1]!==maxS))};
+const go=dir=>{const at=gl?gl.to:curS,t=stops(),n=dir>0?t.find(v=>v>at+24):t.filter(v=>v<at-24).pop();if(n!=null)glide(n)};
+function syncJump(){up.hidden=curS<24;down.hidden=curS>maxS-24}
+up.onclick=()=>go(-1);down.onclick=()=>go(1);
+addEventListener('scroll',()=>{readX();syncJump();jump.classList.add('show')},{passive:true});
+setTimeout(()=>jump.classList.add('show'),2500);
+// Phones: a vertical swipe moves with the finger, then settles on the next or previous stop, never between two.
+let ty=null,ts=0;
+addEventListener('touchstart',e=>{stopGlide();ty=e.touches.length>1?null:e.touches[0].clientY;ts=scrollY},{passive:true});
+addEventListener('touchmove',e=>{if(ty==null)return;if(e.touches.length>1||axis==='x'){ty=null;scrollTo(0,ts);return}e.preventDefault();scrollTo(0,ts+(ty-e.touches[0].clientY))},{passive:false});
+addEventListener('touchend',e=>{if(ty==null)return;const dy=ty-e.changedTouches[0].clientY;ty=null;
+  if(Math.abs(dy)<12){if(dy)scrollTo(0,ts);return}
+  const t=stops(),n=dy>0?t.find(v=>v>ts+24):t.filter(v=>v<ts-24).pop();glide(n??ts)});
+
+hero.addEventListener('click',e=>{if(e.target.closest('a'))return;retangle()});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(layout,150)});
+if(reduced)rows.forEach(r=>r.classList.add('act'));
+layout();requestAnimationFrame(tick);
+const show=()=>{hero.classList.add('show');$('top').classList.add('show');thread.classList.add('on')};
+document.fonts.ready.then(()=>{layout();show()});
+})();
+</script>
 </body>
 </html>
