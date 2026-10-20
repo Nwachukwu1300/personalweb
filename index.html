@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mmesoma Nwachukwu · I untangle hard problems</title>
-<meta name="description" content="Mmesoma Nwachukwu, software engineer and problem solver. I untangle hard problems into things that work, across consulting, startups, academia and enterprises.">
+<meta name="description" content="Mmesoma Nwachukwu, software engineer and problem solver working across AI engineering, agentic systems and software engineering. I untangle hard problems into things that work, across consulting, startups, academia and enterprises.">
 <meta name="author" content="Mmesoma Nwachukwu">
 <meta property="og:title" content="Mmesoma Nwachukwu · I untangle hard problems">
 <meta property="og:description" content="I untangle hard problems into things that work.">
@@ -61,6 +61,7 @@ svg#thread.on{opacity:1}
 @media(max-width:760px){.bar nav .wide{display:none}.bar nav{gap:14px}.mark .last{display:none}}
 .jump{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));z-index:7;display:flex;gap:8px;opacity:0;pointer-events:none;transition:opacity .4s}
 .jump.show{opacity:1;pointer-events:auto}
+.jump.show.home{opacity:0;pointer-events:none}
 .jump button{width:46px;height:46px;border-radius:8px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:opacity .25s,transform .25s,background .2s,color .2s}
 .jump button:hover{background:var(--ink);color:var(--paper)}
 .jump button[hidden]{display:grid;opacity:0;transform:scale(.7);pointer-events:none}
@@ -73,6 +74,10 @@ svg#thread.on{opacity:1}
 #knot{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 #knot path{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hero-copy{position:relative;z-index:2;display:grid;gap:14px;max-width:1240px}
+.focus{font-family:var(--mono);font-size:clamp(11px,.9vw,13px);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.focus i{font-style:normal;color:var(--hot);margin:0 .7em}
+.focus span{white-space:nowrap}
+@media(max-width:760px){.focus{font-size:10px;letter-spacing:.05em}.focus i{margin:0 .4em}}
 .hero h1{font-weight:800;font-size:clamp(34px,5.4vw,78px);letter-spacing:-.045em;line-height:1.02;max-width:14em;text-wrap:balance}
 .zone{position:relative;flex:1;min-height:140px;margin:2vh 0}
 .words{position:absolute;inset:0;pointer-events:none}
@@ -135,12 +140,19 @@ svg#thread.on{opacity:1}
 .awards span{font-size:14.5px;line-height:1.45;color:var(--soft)}
 .awards span strong{display:block;color:var(--ink);font-weight:700}
 .row.wide{width:40vw}
+/* Smaller cards for the rest of the work, after the featured projects. */
+.row.compact{width:27vw;gap:9px}
+.row.compact h3{font-size:clamp(21px,1.9vw,28px)}
+.row.compact .part{font-size:14px;line-height:1.45}
+.row.compact .part.res{font-size:15px}
+.row.compact > b{font-size:11px}
 @media(max-width:760px){
   .stage{width:100vw;height:auto;justify-content:flex-end;gap:8px;padding:calc(var(--top) + 1svh) 8vw 0 8vw;background:var(--paper)}
   .stage h2{font-size:clamp(26px,7.6vw,34px)}
   .stage .lede,.stage .count{display:none}
   .rows{padding:0 8vw}
   .row,.row.wide{width:86vw;justify-content:flex-start;gap:8px;padding:calc(var(--sh,140px) + 14px) 6vw 56px 2vw}
+  .row.compact{width:86vw}.row.compact h3{font-size:21px}.row.compact .part{font-size:13px}.row.compact .part.res{font-size:14px}
   .row.wide h3{display:none}
   .row h3{font-size:26px}
   .row .big{font-size:19px}
@@ -148,7 +160,8 @@ svg#thread.on{opacity:1}
   .part{font-size:14px;line-height:1.42}.part.res{font-size:15px}
   .awards{gap:6px}.awards li{padding-top:6px;grid-template-columns:6.4em 1fr}.awards b{font-size:15px}.awards span{font-size:13px}
 }
-@media(max-width:760px) and (max-height:700px){.part{font-size:13.5px}.awards span{font-size:12.5px}.row h3{font-size:23px}}
+@media(max-width:760px) and (max-height:700px){.part{font-size:13.5px}.awards span{font-size:12.5px}.stage h2{font-size:24px}.row h3{font-size:22px}.row .big{font-size:17px}.awards{gap:4px}.awards li{padding-top:4px}}
+@media(max-width:760px) and (max-height:600px){.row,.row.wide{gap:6px}.part,.row.compact .part{font-size:12.5px;line-height:1.38}.part.res,.row.compact .part.res{font-size:13px}.part i{margin-bottom:1px}.row h3,.row.compact h3{font-size:20px}.awards span{font-size:11px;line-height:1.3}.awards b{font-size:13px}.awards li{padding-top:3px}.zone{min-height:96px}.hero h1{font-size:30px}.w.b{display:none}}
 
 /* A row that runs leftwards: mirrored, so the title sits on the right and cards arrive from the left. */
 .rev .rows{flex-direction:row-reverse;padding-left:12vw;padding-right:46vw}
@@ -198,6 +211,7 @@ footer .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-tr
   <div class="hero-copy fade">
     <p class="eyebrow">Mmesoma Nwachukwu · Software engineer · Coventry, UK</p>
     <h1>I <em>untangle</em> hard problems into things that work.</h1>
+    <p class="focus"><span>AI engineering</span><i>·</i><span>Agentic systems</span><i>·</i><span>Software engineering</span></p>
   </div>
   <div class="zone" id="zone">
     <div class="words" id="words" aria-hidden="true">
@@ -247,9 +261,23 @@ footer .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-tr
       <p class="eyebrow">Projects</p>
       <h2>Knots I've <em>untangled.</em></h2>
       <p class="lede">Each one starts as a problem, in grey. When it reaches you, it turns into what I did and what changed.</p>
-      <p class="count" aria-hidden="true">01 / 11</p>
+      <p class="count" aria-hidden="true">01 / 12</p>
     </div>
     <div class="rows">
+      <div class="row"><b>Ventureship · Agentic AI</b><h3>Agentic hiring pipeline</h3>
+        <p class="part prob"><i>The knot</i>An AI hiring platform still ran hiring as a fully manual process, done by the founder.</p>
+        <p class="part did"><i>What I did</i>Built an end-to-end pipeline with the Anthropic SDK: multi-stage agents with self-checking schemas, deterministic decision logic, and bias audits at key decision points.</p>
+        <p class="part res"><i>What changed</i>One automated pipeline run replaces the manual process, hardened over <strong>3</strong> rounds of production test runs.</p></div>
+      <div class="row"><b>National Highways · RAG</b><h3>Engineering knowledge graph</h3>
+        <p class="part prob"><i>The knot</i>Engineering knowledge was spread across thousands of technical PDFs that constantly reference each other.</p>
+        <p class="part did"><i>What I did</i>Extracted and cleaned the text, built a pipeline to spot document codes and references, and turned it into a knowledge graph with a RAG assistant on top.</p>
+        <p class="part res"><i>What changed</i>Structured answers from <strong>thousands</strong> of linked documents, supporting infrastructure asset management.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank" rel="noopener">Code ↗</a></div></div>
+      <div class="row"><b>Systems · Live product</b><h3>CUDA Transformer</h3>
+        <p class="part prob"><i>The knot</i>Most projects are a config file pointed at someone else's library. I wanted to prove I understood the machinery underneath.</p>
+        <p class="part did"><i>What I did</i>Wrote a transformer from raw CUDA kernels up, with my own autograd engine and no deep learning framework in the core maths, then trained the same model on text and on movie histories.</p>
+        <p class="part res"><i>What changed</i><strong>25.7x</strong> faster attention, and it runs live as a movie recommender.</p>
+        <div class="links-row"><a href="https://github.com/Nwachukwu1300/cudatransformer" target="_blank" rel="noopener">Code ↗</a><a href="https://cudatransformer-recommender.onrender.com/" target="_blank" rel="noopener">Try it live ↗</a></div></div>
       <div class="row"><b>Charity · Live</b><h3>Samaritan's Purse ordering system</h3>
         <p class="part prob"><i>The knot</i>£10,000 of discounted shoebox gifts had to reach 50 community groups, and every order ran through a spreadsheet.</p>
         <p class="part did"><i>What I did</i>Designed and built the whole system: an online order form, automatic payment and confirmation, and a live stock dashboard that flags low stock.</p>
@@ -260,47 +288,37 @@ footer .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-tr
         <p class="part did"><i>What I did</i>Built a two-branch ResNet50 model that predicts make, model and year with calibrated confidence, matches it to Euro NCAP safety ratings, and returns a court-admissible report.</p>
         <p class="part res"><i>What changed</i>An answer in <strong>46ms</strong> per image at <strong>81.71%</strong> hierarchical accuracy.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/sentiel1" target="_blank" rel="noopener">Code ↗</a><a href="https://drive.google.com/file/d/1m0iP5nCtqZHm_CMRhVzV6RlxQO3pS-i1/view?usp=sharing" target="_blank" rel="noopener">Demo video ↗</a><a href="https://huggingface.co/mmesomaa/sentiel1" target="_blank" rel="noopener">Model ↗</a></div></div>
-      <div class="row"><b>Payments · Simulation</b><h3>Payment Authorisation Simulator</h3>
+      <div class="row compact"><b>More work · Payments</b><h3>Payment Authorisation Simulator</h3>
         <p class="part prob"><i>The knot</i>Declined card payments get retried with the same rules for every bank, so retries are wasted and good sales are lost.</p>
         <p class="part did"><i>What I did</i>Modelled the full merchant to issuer flow, including routing, 3DS checks, retries and late chargebacks, then learned how each issuer behaves and tuned retries and routing to match.</p>
         <p class="part res"><i>What changed</i>Approvals up from 82.5% to <strong>84.3%</strong>, wasted retries cut from 8.1% to <strong>4.2%</strong>, about <strong>£26,500</strong> net benefit in simulation.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/payment_system" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row"><b>Projekt Rising · Integrations</b><h3>Toolkit Integration Engine</h3>
+      <div class="row compact"><b>Projekt Rising · Integrations</b><h3>Toolkit Integration Engine</h3>
         <p class="part prob"><i>The knot</i>Every new CRM or accounting tool a client used meant writing another integration by hand.</p>
         <p class="part did"><i>What I did</i>Built an engine that reads a product's API spec, ranks the useful endpoints, and generates a working client at runtime, all driven from a CLI.</p>
         <p class="part res"><i>What changed</i>A new CRM now takes <strong>one adapter file</strong>. <strong>146</strong> passing tests, working with HubSpot and Pipedrive.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/projektrising" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row"><b>Systems · Live product</b><h3>CUDA Transformer</h3>
-        <p class="part prob"><i>The knot</i>Most projects are a config file pointed at someone else's library. I wanted to prove I understood the machinery underneath.</p>
-        <p class="part did"><i>What I did</i>Wrote a transformer from raw CUDA kernels up, with my own autograd engine and no deep learning framework in the core maths, then trained the same model on text and on movie histories.</p>
-        <p class="part res"><i>What changed</i><strong>25.7x</strong> faster attention, and it runs live as a movie recommender.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/cudatransformer" target="_blank" rel="noopener">Code ↗</a><a href="https://cudatransformer-recommender.onrender.com/" target="_blank" rel="noopener">Try it live ↗</a></div></div>
-      <div class="row"><b>National Highways · Documents</b><h3>Engineering knowledge graph</h3>
-        <p class="part prob"><i>The knot</i>Engineering knowledge was spread across thousands of technical PDFs that constantly reference each other.</p>
-        <p class="part did"><i>What I did</i>Extracted and cleaned the text, built a pipeline to spot document codes and references, and turned it into a knowledge graph with a RAG assistant on top.</p>
-        <p class="part res"><i>What changed</i>Structured answers from <strong>thousands</strong> of linked documents, supporting infrastructure asset management.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row"><b>National Highways · CCTV</b><h3>Weather classification and removal</h3>
+      <div class="row compact"><b>National Highways · CCTV</b><h3>Weather classification and removal</h3>
         <p class="part prob"><i>The knot</i>Rain, fog and snow make roadside CCTV hard to read, which weakens road monitoring.</p>
         <p class="part did"><i>What I did</i>Trained CNN models on 10,000 CCTV images to recognise the weather in each frame, and a model to remove it from the picture.</p>
         <p class="part res"><i>What changed</i><strong>98%</strong> classification accuracy, making road monitoring more reliable.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/weather-classification" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row"><b>Founder · SaaS</b><h3>FaceRegg</h3>
+      <div class="row compact"><b>Founder · SaaS</b><h3>FaceRegg</h3>
         <p class="part prob"><i>The knot</i>Checking that a face matches an ID photo is slow and error-prone when a person does it by hand.</p>
         <p class="part did"><i>What I did</i>Founded an identity verification product and built it on a Siamese neural network, with TensorFlow and OpenCV pipelines tuned for accuracy and speed on real-world photos.</p>
         <p class="part res"><i>What changed</i><strong>2</strong> paying clients and <strong>£5k</strong> in revenue.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/Faceregg" target="_blank" rel="noopener">Code ↗</a><a href="https://nwachukwu1300.github.io/Faceregg/" target="_blank" rel="noopener">Website ↗</a></div></div>
-      <div class="row"><b>SalesAPE.ai · MVP</b><h3>SalesAPE</h3>
+      <div class="row compact"><b>SalesAPE.ai · MVP</b><h3>SalesAPE</h3>
         <p class="part prob"><i>The knot</i>Small service businesses need a website, lead capture and bookings, but rarely have the time to set them up.</p>
         <p class="part did"><i>What I did</i>Built a full-stack platform in TypeScript, React and Postgres, with background job queues, that turns an Instagram profile or website link into a working online presence.</p>
         <p class="part res"><i>What changed</i>A live site with lead capture and bookings, <strong>in minutes</strong>.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/salesape_mvp" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row"><b>Learning platform</b><h3>ExcelPoint</h3>
+      <div class="row compact"><b>Learning platform</b><h3>ExcelPoint</h3>
         <p class="part prob"><i>The knot</i>Students' notes, slides and recordings sit in files they can't easily question or revise from.</p>
         <p class="part did"><i>What I did</i>Built a Django and React platform where you upload your materials, chat with them, and get quizzes and flashcards, with the heavy processing running in the background on Celery and Redis.</p>
         <p class="part res"><i>What changed</i>Search by meaning, chat and revision from <strong>your own materials</strong>, in one place.</p>
         <div class="links-row"><a href="https://github.com/Nwachukwu1300/excelpoint" target="_blank" rel="noopener">Code ↗</a><a href="https://drive.google.com/file/d/1yBZ8Cexa4Lhrnot7D3OiEqdqtsfgFxn5/view" target="_blank" rel="noopener">Demo ↗</a></div></div>
-      <div class="row"><b>Hackathons · Competitions</b><h3>PersonaSync and a Street Fighter agent</h3>
+      <div class="row compact"><b>Hackathons · Competitions</b><h3>PersonaSync and a Street Fighter agent</h3>
         <p class="part prob"><i>The knot</i>Two very different briefs: make survey data collection feel less like a chore, and train an agent to win at Street Fighter III.</p>
         <p class="part did"><i>What I did</i>Built a voice agent that turns a survey into a real-time conversation, and a reinforcement learning agent trained across 3 difficulty levels over about 10 million steps.</p>
         <p class="part res"><i>What changed</i>Top <strong>10</strong> of 200 teams across Europe, and top <strong>5</strong> of about 50 teams.</p>
@@ -532,7 +550,7 @@ const stops=()=>{const xs=[0,maxS,...rowsInfo.map(r=>r.s0),...rowsInfo.map(r=>r.
   // Stops closer together than a short swipe count as one.
   return xs.map(x=>Math.round(clamp(x,0,maxS))).sort((a,b)=>a-b).filter((x,i,a)=>!i||x-a[i-1]>Math.max(60,innerWidth*.12)||(x===maxS&&a[i-1]!==maxS))};
 const go=dir=>{const at=gl?gl.to:curS,t=stops(),n=dir>0?t.find(v=>v>at+24):t.filter(v=>v<at-24).pop();if(n!=null)glide(n)};
-function syncJump(){up.hidden=curS<24;down.hidden=curS>maxS-24}
+function syncJump(){up.hidden=curS<24;down.hidden=curS>maxS-24;jump.classList.toggle('home',curS<24)}
 up.onclick=()=>go(-1);down.onclick=()=>go(1);
 addEventListener('scroll',()=>{readX();syncJump();jump.classList.add('show')},{passive:true});
 setTimeout(()=>jump.classList.add('show'),2500);
