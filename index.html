@@ -3,572 +3,578 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Soma · I untangle hard problems</title>
-<meta name="description" content="Soma, software engineer and problem solver working across AI engineering, agentic systems and software engineering. I untangle hard problems into things that work, across consulting, startups, academia and enterprises.">
+<title>Soma · I build things that solve problems</title>
+<meta name="description" content="Soma is a software engineer in the UK with a First Class Computer Science degree, building AI and software systems end to end: agentic pipelines, computer vision, RAG and CUDA.">
 <meta name="author" content="Soma">
-<meta property="og:title" content="Soma · I untangle hard problems">
-<meta property="og:description" content="I untangle hard problems into things that work.">
-<meta property="og:url" content="https://mmesomadev.com">
-<meta property="og:type" content="website">
-<meta property="og:image" content="images/logo no background.png">
 <link rel="canonical" href="https://mmesomadev.com/">
-<link rel="icon" href="images/logo no background.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mmesomadev.com/">
+<meta property="og:title" content="Soma · I build things that solve problems">
+<meta property="og:description" content="First Class Computer Science graduate building AI and software systems end to end.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#06070b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f8cf6'/%3E%3Ccircle cx='16' cy='21' r='5' fill='%2306070b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* The page scrolls vertically, and that scroll walks a camera along a snake of sideways rows: right, then left, then right. */
-:root{
-  --paper:#f4f4f2;--ink:#1f1f20;--soft:#5a5e66;--hot:#d9502b;--rule:#dcdcd8;--edge:#c8c8c3;
-  --hot-2:#e8866a;--hot-3:#f3c4b5;--hot-4:#fbe9e3;
-  --sans:"Manrope",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--mono:"DM Mono",ui-monospace,monospace;
-  --top:72px;color-scheme:light;
-}
+/* "Two voices": every key line exists in plain words and in code. A blue sweep, driven by scroll,
+   translates between them, and the human | machine switch flips which voice the page settles on. */
+:root{--bg:#06070b;--ink:#f1f4fb;--ink-2:#c4cbdb;--soft:#8790a6;--dim:#2c3240;--blue:#4f8cf6;--blue-2:#a9c6ff;--rule:rgba(169,198,255,.16);--card:rgba(14,18,29,.8);
+  --human:"Bricolage Grotesque",system-ui,sans-serif;--machine:"JetBrains Mono",ui-monospace,monospace;color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{overscroll-behavior-x:none}
-html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a:focus-visible,button:focus-visible{outline:2px solid var(--hot);outline-offset:3px}
-.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
-em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--ink);text-decoration:underline;text-decoration-color:var(--hot);text-decoration-thickness:.07em;text-underline-offset:.14em;text-decoration-skip-ink:none}
-.fade{opacity:0;transform:translateY(10px);transition:opacity .8s ease,transform .8s ease}
-.show .fade,.show.fade{opacity:1;transform:none}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--human);-webkit-font-smoothing:antialiased;overflow-x:hidden;isolation:isolate}
+body:has(dialog[open]){overflow:hidden}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;filter:blur(12px);animation:aur 22s ease-in-out infinite alternate;
+  background:radial-gradient(28% 30% at 85% 20%,rgba(79,140,246,.1),transparent 70%),radial-gradient(26% 30% at 12% 82%,rgba(79,140,246,.06),transparent 70%)}
+@keyframes aur{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(4%,-3%) rotate(8deg)}100%{transform:translate(-3%,4%) rotate(-6deg)}}
+a{color:inherit}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px;position:relative}
+.eyebrow{font-family:var(--machine);font-size:12px;color:var(--soft);letter-spacing:.04em}
+.eyebrow b{color:var(--blue);font-weight:500}
+mark{background:none;color:var(--blue-2)}
 
-/* The snake: a fixed window onto rows stacked one screen apart. */
-.view{position:fixed;inset:0;overflow:hidden;touch-action:pan-y pinch-zoom}
-.track{position:absolute;top:0;left:0;width:0;height:0;will-change:transform}
-.lane{position:absolute;top:0;left:0;height:100vh;display:flex;width:max-content;min-width:100vw;z-index:1}
-.lane > *{flex:none;height:100%;position:relative;z-index:1}
-svg#thread{position:absolute;top:0;left:0;z-index:3;pointer-events:none;overflow:visible;opacity:0;transition:opacity 1s ease}
-svg#thread.on{opacity:1}
-#thread-line{fill:none;stroke:var(--hot);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-#thread-pen{fill:#fff;stroke:var(--hot);stroke-width:2.5}
-#thread-halo{fill:var(--hot);opacity:.16;transform-box:fill-box;transform-origin:center;animation:halo 1.8s ease-in-out infinite}
-#thread.done #thread-pen,#thread.done #thread-halo{opacity:0;animation:none;transition:opacity .4s}
-@keyframes halo{50%{transform:scale(1.6);opacity:.05}}
+header{position:fixed;inset:0 0 auto 0;z-index:10;background:linear-gradient(var(--bg) 55%,transparent)}
+header .wrap{display:flex;align-items:center;gap:24px;padding-top:18px;padding-bottom:18px}
+.mark{font-weight:800;font-size:22px;letter-spacing:-.03em;text-decoration:none}
+.mark i{font-style:normal;background:var(--blue);color:var(--bg);padding:0 .14em;margin-left:.04em}
+.nav{margin-left:auto;display:flex;gap:22px;font-size:15px}
+.nav a{text-decoration:none;color:var(--ink-2)}.nav a:hover{color:var(--ink)}
+.voice{display:flex;align-items:center;gap:10px}
+.hint{font-family:var(--machine);font-size:11px;color:var(--soft)}
+.switch{display:flex;border:1px solid var(--rule);padding:3px;cursor:pointer;background:rgba(6,7,11,.6);color:var(--ink);font-family:var(--machine);font-size:12px}
+.switch span{padding:7px 11px;transition:background .25s,color .25s}
+.switch[aria-checked="false"] .h,.switch[aria-checked="true"] .m{background:var(--blue);color:var(--bg)}
 
-/* Top bar and jump buttons */
-.top{position:fixed;top:0;left:0;right:0;z-index:8;pointer-events:none}
-.bar{padding-top:calc(env(safe-area-inset-top,0px) + 20px);padding-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;pointer-events:auto;background:linear-gradient(var(--paper) 60%,rgba(244,244,242,0))}
-.mark{font-weight:800;font-size:18px;letter-spacing:-.03em;color:var(--ink);text-decoration:none;white-space:nowrap}
-.mark i{color:var(--hot);font-style:normal}
-.bar nav{display:flex;gap:20px;align-items:center;font-size:14px}
-.bar nav a{color:var(--soft);text-decoration:none;white-space:nowrap}
-.bar nav a:hover{color:var(--ink)}
-.bar nav a.talk{color:var(--ink);font-weight:700;border:1px solid var(--ink);border-radius:8px;padding:8px 14px;transition:background .2s,color .2s}
-.bar nav a.talk:hover{background:var(--ink);color:var(--paper)}
-@media(max-width:760px){.bar nav .wide{display:none}.bar nav{gap:14px}}
-.jump{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(20px,env(safe-area-inset-bottom,0px));z-index:7;display:flex;gap:8px;opacity:0;pointer-events:none;transition:opacity .4s}
-.jump.show{opacity:1;pointer-events:auto}
-.jump.show.home{opacity:0;pointer-events:none}
-.jump button{width:46px;height:46px;border-radius:8px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:opacity .25s,transform .25s,background .2s,color .2s}
-.jump button:hover{background:var(--ink);color:var(--paper)}
-.jump button[hidden]{display:grid;opacity:0;transform:scale(.7);pointer-events:none}
-.jump svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.jump #down{border-color:var(--hot);color:var(--hot)}.jump #down:hover{background:var(--hot);color:#fff}
-@media(max-width:760px){.jump{bottom:max(12px,env(safe-area-inset-bottom,0px));gap:6px}.jump button{width:40px;height:40px}}
+/* The two voices, stacked; --cut decides where the blue sweep sits */
+.dual{--cut:0%;--bw:0em;--bo:0;position:relative;display:grid;width:fit-content;max-width:100%}
+.dual>span{grid-area:1/1;align-self:start}
+.dual .fr{clip-path:inset(-.2em -.2em -.2em var(--cut))}
+.dual .to{clip-path:inset(-.2em calc(100% - var(--cut)) -.2em -.2em)}
+.dual .bar{position:absolute;top:-.06em;bottom:-.06em;left:var(--cut);width:var(--bw);transform:translateX(-50%);background:var(--blue);opacity:var(--bo);pointer-events:none;box-shadow:0 0 14px 1px rgba(79,140,246,.6)}
+.dual.done .fr,.dual.zero .to{visibility:hidden}
+.dual .mono{font-family:var(--machine);font-weight:400;letter-spacing:0;font-size:max(12px,var(--msize,.42em));line-height:1.5;color:var(--soft)}
 
-/* Hero: a knot that straightens as you scroll */
-.hero{width:100vw;display:flex;flex-direction:column;padding-top:calc(var(--top) + 4vh);padding-bottom:max(22px,env(safe-area-inset-bottom,0px));overflow:hidden;cursor:pointer}
-#knot{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-#knot path{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.hero-copy{position:relative;z-index:2;display:grid;gap:14px;max-width:1240px}
-.focus{font-family:var(--mono);font-size:clamp(11px,.9vw,13px);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-.focus i{font-style:normal;color:var(--hot);margin:0 .7em}
-.focus span{white-space:nowrap}
-@media(max-width:760px){.focus{font-size:10px;letter-spacing:.05em}.focus i{margin:0 .4em}}
-.hero h1{font-weight:800;font-size:clamp(34px,5.4vw,78px);letter-spacing:-.045em;line-height:1.02;max-width:14em;text-wrap:balance}
-.zone{position:relative;flex:1;min-height:140px;margin:2vh 0}
-.words{position:absolute;inset:0;pointer-events:none}
-.w{position:absolute;white-space:nowrap;left:calc(var(--x)*100%);top:calc(var(--y)*100%);transform:translate(calc(var(--x)*-100%),calc(var(--y)*-100%));animation:wIn .7s ease both}
-.w:nth-child(2){animation-delay:.08s}.w:nth-child(3){animation-delay:.16s}.w:nth-child(4){animation-delay:.24s}.w:nth-child(5){animation-delay:.32s}.w:nth-child(6){animation-delay:.4s}.w:nth-child(7){animation-delay:.48s}.w:nth-child(8){animation-delay:.56s}.w:nth-child(9){animation-delay:.64s}.w:nth-child(10){animation-delay:.72s}
-.w.a{font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.9vw,26px);color:var(--ink)}
-.w.b{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-size:clamp(10px,.95vw,13px);color:var(--soft)}
-.w.c{font-weight:800;letter-spacing:-.03em;font-size:clamp(15px,1.7vw,24px);color:var(--ink)}
-.w.d{font-weight:700;font-size:clamp(14px,1.4vw,19px);color:var(--hot)}
-.w.e{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.5vw,21px);color:var(--hot-2)}
-@keyframes wIn{from{opacity:0;filter:blur(4px)}}
-@media(max-width:760px){.w.m0{display:none}}
-.hero-foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.hero-line{font-size:clamp(15px,1.4vw,18px);color:var(--soft);line-height:1.55;max-width:34em}
-.hero-line b{color:var(--ink);font-weight:700}
-.proof{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.proof span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--hot-4);border-radius:6px;padding:6px 9px}
-.cue{display:flex;gap:10px;align-items:center}
-.cue button,.cue a{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--edge);border-radius:8px;padding:10px 15px;cursor:pointer;white-space:nowrap;text-decoration:none;transition:color .2s,border-color .2s}
-.cue button{font-weight:500;color:var(--soft)}
-.cue button:hover,.cue a:hover{color:var(--ink);border-color:var(--ink)}
-.cue a span{display:inline-block;color:var(--hot);animation:nudge 1.6s ease-in-out infinite}
-@keyframes nudge{50%{transform:translateX(4px)}}
-@media(max-width:760px){.hero{padding-top:calc(var(--top) + 1vh)}.proof{display:none}.hero-line{font-size:14px}.cue{width:100%}.cue a{flex:1;text-align:center}.zone{margin:1vh 0}}
+/* Hero: pinned while the portrait translates from code into a photo */
+.hero{height:170vh;position:relative}
+.pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;isolation:isolate}
+.aur{position:absolute;inset:-25%;z-index:-1;pointer-events:none;filter:blur(10px);animation:aur 16s ease-in-out infinite alternate;
+  background:radial-gradient(30% 32% at 72% 48%,rgba(79,140,246,.16),transparent 70%),radial-gradient(26% 30% at 18% 78%,rgba(79,140,246,.07),transparent 70%)}
+.stream{position:absolute;inset:0;overflow:hidden;font-family:var(--machine);font-size:12px;line-height:1.7;color:var(--dim);white-space:pre;pointer-events:none;
+  -webkit-mask-image:linear-gradient(transparent,#000 15%,#000 75%,transparent);mask-image:linear-gradient(transparent,#000 15%,#000 75%,transparent)}
+.stream .a{color:#22396a}.stream .d{color:#1a2440}
+.hgrid{display:grid;grid-template-columns:1fr min(30vw,340px);gap:40px;align-items:center}
+h1{font-weight:800;font-size:clamp(34px,5.6vw,76px);line-height:1;letter-spacing:-.045em}
+h1 .dual{--msize:.36em;margin-bottom:.04em}
+h1 .dual .mono{padding-top:.5em}
+.sub{margin-top:24px;font-size:clamp(17px,1.9vw,21px);line-height:1.45;color:var(--ink-2);max-width:27em}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btns a{font-family:var(--machine);font-size:13px;text-decoration:none;border:1px solid var(--rule);padding:12px 16px;background:rgba(6,7,11,.5)}
+.btns a:hover{border-color:var(--blue)}
+.btns a.main{background:var(--blue);border-color:var(--blue);color:var(--bg);font-weight:500}
+.cue{position:absolute;left:max(16px,calc((100vw - 1120px)/2 + 16px));bottom:26px;font-family:var(--machine);font-size:12px;color:var(--soft)}
+.avatar{width:100%;aspect-ratio:1}
+.avatar canvas{width:100%;height:100%;display:block;border-radius:22px;animation:bob 6s ease-in-out infinite;box-shadow:0 30px 80px -24px rgba(79,140,246,.4),0 0 0 1px rgba(127,176,255,.3)}
+@keyframes bob{50%{transform:translateY(-6px)}}
 
-/* Sections: a title panel pinned on one side while the cards slide past it. */
-.grid{position:relative;flex:none;height:100%}
-.stage{position:absolute;left:0;top:0;height:100%;width:42vw;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:var(--top) 5vw 16vh 6vw;background:linear-gradient(90deg,var(--paper) 84%,rgba(244,244,242,0))}
-.stage h2{font-weight:800;font-size:clamp(34px,4.6vw,68px);letter-spacing:-.045em;line-height:1.02;max-width:9em;text-wrap:balance}
-.stage .lede{color:var(--soft);font-size:16px;line-height:1.55;max-width:24em}
-.stage .count{font-family:var(--mono);font-size:13px;color:var(--hot);letter-spacing:.1em}
-.rows{display:flex;height:100%;padding-left:46vw;padding-right:12vw}
-.row{flex:none;width:36vw;height:100%;padding:calc(var(--top) + 3vh) 3vw 17vh 0;display:flex;flex-direction:column;justify-content:center;gap:12px;opacity:.5;transition:opacity .6s ease}
-.row.act{opacity:1}
-.row.under{opacity:0;transition-duration:.25s}
-.row > b{font-family:var(--mono);font-size:12px;color:var(--hot);font-weight:500;letter-spacing:.12em;text-transform:uppercase}
-.row h3{font-weight:800;font-size:clamp(26px,2.9vw,42px);letter-spacing:-.04em;line-height:1.02;color:var(--soft);transition:color .5s}
-.row.act h3{color:var(--ink)}
-.row .role{font-size:15px;color:var(--soft);margin-top:-4px}
-.row .big{font-size:clamp(20px,1.9vw,27px);line-height:1.3;letter-spacing:-.015em;max-width:20em;color:var(--ink)}
-.row small{font-size:15px;color:var(--soft);line-height:1.5;max-width:28em}
-/* Problem first, in grey. What I did and what changed switch to full colour when the card is active. */
-.part{font-size:15.5px;line-height:1.5;max-width:30em;color:#a3a5a3;transition:color .6s ease}
-.part i{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;color:inherit}
-.part strong{font-weight:800}
-.part.prob{color:var(--soft)}
-.row.act .did{color:var(--ink)}
-.row.act .did i{color:var(--soft)}
-.part.res{font-size:17px;font-weight:700;letter-spacing:-.01em}
-.row.act .res{color:var(--ink);transition-delay:.2s}
-.row.act .res i,.row.act .res strong{color:var(--hot)}
-.links-row{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:2px}
-.links-row a{font-family:var(--mono);font-size:12.5px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hot);padding-bottom:2px;white-space:nowrap}
-.links-row a:hover{color:var(--hot)}
-.awards{list-style:none;display:grid;gap:12px;max-width:30em}
-.awards li{display:grid;grid-template-columns:7.2em 1fr;gap:12px;align-items:baseline;padding-top:12px;border-top:1px solid var(--rule)}
-.awards li:first-child{border-top:0;padding-top:0}
-.awards b{font-weight:800;font-size:17px;letter-spacing:-.02em;color:#a3a5a3;transition:color .6s}
-.row.act .awards b{color:var(--hot)}
-.awards span{font-size:14.5px;line-height:1.45;color:var(--soft)}
-.awards span strong{display:block;color:var(--ink);font-weight:700}
-.row.wide{width:40vw}
-/* Smaller cards for the rest of the work, after the featured projects. */
-.row.compact{width:27vw;gap:9px}
-.row.compact h3{font-size:clamp(21px,1.9vw,28px)}
-.row.compact .part{font-size:14px;line-height:1.45}
-.row.compact .part.res{font-size:15px}
-.row.compact > b{font-size:11px}
-@media(max-width:760px){
-  .stage{width:100vw;height:auto;justify-content:flex-end;gap:8px;padding:calc(var(--top) + 1svh) 8vw 0 8vw;background:var(--paper)}
-  .stage h2{font-size:clamp(26px,7.6vw,34px)}
-  .stage .lede,.stage .count{display:none}
-  .rows{padding:0 8vw}
-  .row,.row.wide{width:86vw;justify-content:flex-start;gap:8px;padding:calc(var(--sh,140px) + 14px) 6vw 56px 2vw}
-  .row.compact{width:86vw}.row.compact h3{font-size:21px}.row.compact .part{font-size:13px}.row.compact .part.res{font-size:14px}
-  .row.wide h3{display:none}
-  .row h3{font-size:26px}
-  .row .big{font-size:19px}
-  .row small{font-size:14px}
-  .part{font-size:14px;line-height:1.42}.part.res{font-size:15px}
-  .awards{gap:6px}.awards li{padding-top:6px;grid-template-columns:6.4em 1fr}.awards b{font-size:15px}.awards span{font-size:13px}
+section{padding:clamp(80px,12vw,140px) 0;scroll-margin-top:40px}
+h2{font-weight:800;font-size:clamp(30px,5vw,62px);line-height:1.02;letter-spacing:-.04em;margin-top:14px}
+h2 .dual{--msize:.4em}
+
+/* How I work */
+.steps{list-style:none;margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.steps li{border-top:1px solid var(--rule);padding-top:22px}
+.steps .n{font-family:var(--machine);font-size:12px;color:var(--blue)}
+.steps h3{font-weight:700;font-size:clamp(21px,2.2vw,26px);letter-spacing:-.02em;margin:10px 0}
+.steps p{font-size:17px;line-height:1.45;color:var(--ink-2)}
+.steps p .dual{--msize:.8em}
+
+/* Projects: vertical scroll drives a 3D carousel sideways */
+#work{padding-bottom:0}
+.reel{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip;perspective:1400px}
+.track{position:absolute;top:53%;left:0;display:flex;gap:min(5vw,56px);transform-style:preserve-3d;will-change:transform}
+/* Cards sit slightly behind the track's plane in 3D, so the track would swallow their clicks */
+html:not(.swipe) .track{pointer-events:none}
+html:not(.swipe) .card{pointer-events:auto}
+.card{flex:0 0 var(--cw,440px);height:min(66vh,510px);padding:28px;display:flex;flex-direction:column;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--rule);border-radius:22px;position:relative;transform-style:preserve-3d;will-change:transform,opacity;box-shadow:0 40px 90px -40px rgba(20,40,120,.6)}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,var(--blue),transparent 40%,transparent 60%,var(--blue));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:var(--lit,0);transition:opacity .2s;pointer-events:none}
+.num{font-family:var(--machine);font-size:12px;color:var(--soft);display:flex;justify-content:space-between;gap:12px}
+.who{font-family:var(--machine);font-size:13px;color:var(--blue-2);margin-top:16px}
+.card h3{font-weight:700;font-size:clamp(24px,2.6vw,32px);line-height:1.08;letter-spacing:-.03em;margin-top:10px}
+.card h3 .dual{--msize:.5em}
+.tags{display:none;flex-wrap:wrap;gap:6px;margin-top:14px;list-style:none}
+.tags li{font-family:var(--machine);font-size:12px;color:var(--blue-2);border:1px solid var(--rule);padding:3px 8px}
+.voice-m .card .tags{display:flex}
+.foot{margin-top:auto;padding-top:14px}
+.big{font-weight:800;font-size:clamp(46px,5.4vw,70px);letter-spacing:-.05em;line-height:1;background:linear-gradient(120deg,var(--blue),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.res{margin-top:8px;font-size:16px;line-height:1.4;color:var(--ink-2)}
+.how,.zbtn{margin-top:16px;font-family:var(--machine);font-size:13px;background:none;color:var(--ink);border:1px solid var(--rule);padding:10px 14px;cursor:pointer}
+.how:hover,.zbtn:hover{border-color:var(--blue)}
+.card.end{justify-content:center;text-decoration:none;font-weight:800;font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;line-height:1.1}
+.card.end span{font-family:var(--machine);font-weight:400;font-size:13px;color:var(--soft);letter-spacing:0;margin-top:12px}
+.prog{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);display:flex;gap:6px}
+.prog i{width:22px;height:3px;border-radius:2px;background:var(--rule);transition:background .2s,width .2s}
+.prog i.on{background:var(--blue);width:44px}
+.detail{display:none}
+/* Phones and reduced motion: a plain swipe row */
+.swipe .reel{height:auto!important}
+.swipe .stage{position:relative;height:auto;overflow:visible;perspective:none;padding:36px 0 40px}
+.swipe .track{position:relative;top:auto;transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 10px;gap:14px;scrollbar-width:none}
+.swipe .track::-webkit-scrollbar{display:none}
+.swipe .card{flex:0 0 min(84vw,420px);height:auto;min-height:430px;transform:none!important;opacity:1!important;scroll-snap-align:center;backdrop-filter:none;-webkit-backdrop-filter:none}
+.swipe .card.end{min-height:430px}
+.swipe .prog{position:static;transform:none;justify-content:center;margin-top:18px}
+
+/* Zoom: levels 2 and 3 */
+#zoom{margin:auto;padding:0;width:min(880px,calc(100vw - 32px));max-width:none;max-height:calc(100svh - 48px);overflow:auto;overscroll-behavior:contain;background:#0b0e17;color:var(--ink);
+  border:1px solid var(--rule);border-radius:22px;box-shadow:0 40px 120px -30px rgba(79,140,246,.45)}
+#zoom::backdrop{background:rgba(6,7,11,.74);backdrop-filter:blur(6px)}
+.zin{padding:26px 28px 32px}
+.zin .zbtn{margin-top:0}
+.kick{font-family:var(--machine);font-size:12px;color:var(--blue-2);margin-top:22px}
+#zoom h3{font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.04em;line-height:1.04;margin-top:8px}
+.l2{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+.l2 b{display:block;font-family:var(--machine);font-weight:500;font-size:12px;color:var(--blue);margin-bottom:6px}
+.l2 p{font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+#zoom .deeper{margin-top:26px}
+.l3{display:none;margin-top:26px;border-top:1px solid var(--rule);padding-top:22px}
+#zoom.deep .l3{display:block;animation:dive .5s cubic-bezier(.2,.8,.2,1)}
+#zoom.deep .l2{opacity:.78;transition:opacity .4s}
+@keyframes dive{from{opacity:0;transform:scale(.94) translateY(14px)}}
+.l3 .tags{display:flex}
+.flow{display:block;margin-top:20px;max-width:100%;height:auto}
+.flow rect{fill:rgba(79,140,246,.08);stroke:#4f8cf6}
+.flow text{fill:#f1f4fb;font-family:var(--machine);font-size:12px}
+.flow path{stroke:#a9c6ff;stroke-width:1.2;fill:none}
+.note{font-family:var(--machine);font-size:12px;color:var(--soft);margin-top:14px;line-height:1.5}
+.l3 .btns{margin-top:20px}
+
+/* Experience */
+.exp{list-style:none;margin-top:36px}
+.exp li,.facts>div{display:grid;grid-template-columns:11em 1fr;gap:4px 24px;padding:20px 0;border-top:1px solid var(--rule)}
+.exp .r,.facts .r{font-family:var(--machine);font-size:12px;color:var(--soft);padding-top:.45em}
+.exp b{font-weight:700;font-size:clamp(19px,2.2vw,24px);letter-spacing:-.02em}
+.exp b span{color:var(--soft);font-weight:400}
+.exp p,.facts p{color:var(--ink-2);font-size:16px;line-height:1.45;margin-top:4px}
+.m-only{display:none;font-family:var(--machine);font-size:12px;color:var(--blue-2);margin-top:6px}
+.voice-m .m-only{display:block}
+.facts{margin-top:0}
+.facts>div:last-child{border-bottom:1px solid var(--rule)}
+.facts strong{font-weight:700;font-size:18px}
+.awards{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 24px}
+.awards b{display:block;font-weight:600;font-size:16px;line-height:1.3}
+.awards span{font-family:var(--machine);font-size:12px;color:var(--soft)}
+
+/* Contact */
+.close{min-height:72vh;display:flex;align-items:center}
+.close>.wrap{width:100%}
+.close h2{font-size:clamp(40px,8vw,104px)}
+.close h2 .dual{--msize:.32em}
+.lede{margin-top:18px;font-size:clamp(17px,1.9vw,20px);line-height:1.5;color:var(--ink-2)}
+footer{padding:26px 0 40px;border-top:1px solid var(--rule);font-family:var(--machine);font-size:12px;color:var(--soft)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+
+@media (max-width:760px){
+  .hint,.nav{display:none}
+  .voice{margin-left:auto}
+  .hgrid{grid-template-columns:1fr;gap:0}
+  .avatar{width:min(46vw,190px);margin:0 0 20px;order:-1}
+  .steps,.awards{grid-template-columns:1fr}
+  .exp li,.facts>div{grid-template-columns:1fr}
+  .card{padding:22px}
+  #zoom{width:100vw;height:100svh;max-height:100svh;margin:0;border:0;border-radius:0}
+  .zin{padding:18px 16px 40px}
+  .l2{grid-template-columns:1fr;gap:16px}
 }
-@media(max-width:760px) and (max-height:700px){.part{font-size:13.5px}.awards span{font-size:12.5px}.stage h2{font-size:24px}.row h3{font-size:22px}.row .big{font-size:17px}.awards{gap:4px}.awards li{padding-top:4px}}
-@media(max-width:760px) and (max-height:600px){.row,.row.wide{gap:6px}.part,.row.compact .part{font-size:12.5px;line-height:1.38}.part.res,.row.compact .part.res{font-size:13px}.part i{margin-bottom:1px}.row h3,.row.compact h3{font-size:20px}.awards span{font-size:11px;line-height:1.3}.awards b{font-size:13px}.awards li{padding-top:3px}.zone{min-height:96px}.hero h1{font-size:30px}.w.b{display:none}}
-
-/* A row that runs leftwards: mirrored, so the title sits on the right and cards arrive from the left. */
-.rev .rows{flex-direction:row-reverse;padding-left:12vw;padding-right:46vw}
-.rev .stage{left:auto;right:0;padding-left:5vw;padding-right:6vw;background:linear-gradient(270deg,var(--paper) 84%,rgba(244,244,242,0))}
-.rev .row{padding-left:3vw;padding-right:2vw}
-@media(max-width:760px){.rev .rows{padding:0 8vw}.rev .stage{padding:calc(var(--top) + 1svh) 8vw 0 8vw;background:var(--paper)}.rev .row{padding-left:2vw;padding-right:6vw}}
-
-/* Footer: the thread settles into an underline beneath the closing question. */
-footer{width:100vw;display:flex;flex-direction:column;justify-content:center;padding-top:var(--top);padding-bottom:10vh}
-footer .eyebrow{margin-bottom:18px}
-footer h3{font-weight:800;font-size:clamp(36px,6.4vw,92px);letter-spacing:-.05em;line-height:1;width:fit-content;max-width:12em;text-wrap:balance;margin-bottom:52px}
-footer h3 em{text-decoration:none}
-footer .say{color:var(--soft);font-size:clamp(15px,1.4vw,18px);line-height:1.55;max-width:34em;margin-bottom:24px}
-.links{display:flex;gap:10px;flex-wrap:wrap}
-.links a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;border:1px solid var(--edge);border-radius:8px;padding:11px 18px;font-size:15px;font-weight:700;transition:background .2s,color .2s,border-color .2s}
-.links a svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.links a.main{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.links a:hover{background:var(--hot);border-color:var(--hot);color:#fff}
-footer .totop{align-self:flex-start;display:inline-flex;gap:8px;margin-top:28px;font-size:14px;color:var(--soft);text-decoration:none;border-bottom:1px solid var(--edge);padding-bottom:2px}
-footer .totop span{color:var(--hot)}footer .totop:hover{color:var(--ink);border-color:var(--ink)}
-footer .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-top:22px}
-@media(max-width:760px){footer{padding-bottom:70px}footer h3{margin-bottom:40px}.links a{padding:10px 14px;font-size:14px}}
-
-/* Reduced motion: everything shown at once, nothing moves on its own. */
-.reduced .fade{opacity:1;transform:none;transition:none}
-.reduced .row,.reduced .row.under{opacity:1}
-.reduced .part,.reduced .row h3{transition:none}
-.reduced .did,.reduced .res,.reduced .row h3{color:var(--ink)}
-.reduced .res i,.reduced .res strong,.reduced .awards b{color:var(--hot)}
-.reduced .w,.reduced .cue a span,.reduced #thread-halo{animation:none}
-.reduced #retangle{display:none}
-.reduced .hero{cursor:default}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero{height:auto}.pin{position:relative;height:auto;min-height:100svh;padding:110px 0 70px}
+  .avatar canvas,.aur,body::before{animation:none}.stream{display:none}
+  #zoom.deep .l3{animation:none}
+}
 </style>
 </head>
 <body>
+<header><div class="wrap">
+  <a class="mark" href="#top" aria-label="soma, back to top">soma<i>.</i></a>
+  <nav class="nav" aria-label="Sections"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+  <div class="voice"><span class="hint">technical? switch voice →</span>
+    <button class="switch" id="voice" type="button" role="switch" aria-checked="false" aria-label="Machine voice"><span class="h">human</span><span class="m">machine</span></button></div>
+</div></header>
 
-<nav class="jump" id="jump" aria-label="Sections"><button type="button" id="up" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="down" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></nav>
-<div class="top" id="top"><div class="bar wrap fade"><a class="mark" href="#hero">Soma<i>.</i></a><nav><a class="wide" href="#how">How I work</a><a href="#work">Projects</a><a class="wide" href="#exp">Experience</a><a class="talk" href="#foot">Get in touch</a></nav></div></div>
+<main id="top">
+  <div class="hero" id="hero"><div class="pin">
+    <div class="aur" aria-hidden="true"></div>
+    <div class="stream" aria-hidden="true" id="stream"></div>
+    <div class="wrap hgrid">
+      <div class="copy">
+        <h1>
+          <span class="dual" data-intro="0" data-m="while (<mark>problem</mark>) {" data-h="I build things"></span>
+          <span class="dual" data-intro=".35" data-m="build(<mark>solution</mark>); }" data-h="that solve problems."></span>
+        </h1>
+        <p class="sub">First Class Computer Science graduate. I build AI and software systems end to end.</p>
+        <div class="btns"><a class="main" href="#work">View my work</a><a href="Mmesoma_CV_pdf.pdf" download>Download CV</a></div>
+      </div>
+      <figure class="avatar"><canvas id="av" width="660" height="660" role="img" aria-label="Portrait of Soma, drawn in code characters that turn into a photo"></canvas></figure>
+    </div>
+    <span class="cue" id="cue" aria-hidden="true">scroll ↓</span>
+  </div></div>
 
-<div class="view" id="view">
-<div class="track" id="track">
-<svg id="thread" aria-hidden="true"><path id="thread-line"/><circle id="thread-halo" r="13"/><circle id="thread-pen" r="6"/></svg>
+  <section id="how"><div class="wrap">
+    <p class="eyebrow"><b>approach</b> · three steps, every time</p>
+    <h2><span class="dual" data-m="understand() → build() → prove()" data-h="How I work."></span></h2>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Understand the problem.</h3>
+        <p><span class="dual" data-m="observe(users) → define(problem) // before any code" data-h="Talk to the people who have it first, like the founder running hiring by hand."></span></p></li>
+      <li><span class="n">02</span><h3>Build it properly.</h3>
+        <p><span class="dual" data-m="data → backend → interface // one owner" data-h="End to end: the data, the backend and the interface, like a charity's orders, payments and stock in one system."></span></p></li>
+      <li><span class="n">03</span><h3>Prove it works.</h3>
+        <p><span class="dual" data-m="assert(works) // tests · evals · real runs" data-h="Tests, evaluations and real users, like 3 rounds of production test runs on a hiring pipeline."></span></p></li>
+    </ol>
+  </div></section>
 
-<div class="lane" data-dir="1">
-<header class="hero wrap" id="hero">
-  <svg id="knot" aria-hidden="true"><path id="knot-path"/></svg>
-  <div class="hero-copy fade">
-    <p class="eyebrow">Soma · Software engineer · United Kingdom</p>
-    <h1>I <em>untangle</em> hard problems into things that work.</h1>
-    <p class="focus"><span>AI engineering</span><i>·</i><span>Agentic systems</span><i>·</i><span>Software engineering</span></p>
-  </div>
-  <div class="zone" id="zone">
-    <div class="words" id="words" aria-hidden="true">
-      <span class="w c" style="--x:.1;--y:.1">manual founder process</span>
-      <span class="w b" style="--x:.88;--y:.12">spreadsheet stock</span>
-      <span class="w a" style="--x:.16;--y:.9">fog on the CCTV</span>
-      <span class="w d" style="--x:.84;--y:.86">wasted retries</span>
-      <span class="w e m0" style="--x:.02;--y:.28">thousands of PDFs</span>
-      <span class="w a m0" style="--x:.98;--y:.3">which car was it?</span>
-      <span class="w b" style="--x:.4;--y:.0">60 hours of admin</span>
-      <span class="w c m0" style="--x:.66;--y:.02">one CRM at a time</span>
-      <span class="w e" style="--x:.6;--y:1">identity checks by hand</span>
-      <span class="w b m0" style="--x:.36;--y:.98">surveys nobody finishes</span>
-    </div>
-  </div>
-  <div class="hero-foot fade">
-    <div>
-      <p class="hero-line">I'm Soma, a First Class Computer Science graduate. Give me a slow, manual or messy process and I'll find the knot, build the fix and prove it works. I've done it across <b>consulting</b>, <b>startups</b>, <b>academia</b> and <b>enterprises</b>.</p>
-      <div class="proof"><span>Student of the Year · 1 of 10 from 400</span><span>AWS scholar · top 2% of 50,000+</span><span>Santander scholar · 1 of 100</span></div>
-    </div>
-    <div class="cue"><button id="retangle" type="button">↻ Tangle it again</button><a href="#how">Scroll to untangle <span>→</span></a></div>
-  </div>
-</header>
+  <section id="work"><div class="wrap">
+    <p class="eyebrow"><b>work</b> · six projects</p>
+    <h2><span class="dual" data-m="SELECT * FROM projects LIMIT 6;" data-h="Selected work."></span></h2>
+  </div></section>
+  <div class="reel" id="reel"><div class="stage" id="stage">
+    <div class="track" id="track">
 
-<section class="sec" id="how">
-  <div class="grid">
-    <div class="stage">
-      <p class="eyebrow">How I work</p>
-      <h2>Four steps. <em>One thread.</em></h2>
-      <p class="lede">The same approach whether it's a charity's stock room, a hiring process or a national road network.</p>
-      <p class="count" aria-hidden="true">01 / 04</p>
-    </div>
-    <div class="rows">
-      <div class="row"><b>01 · Find the knot</b><p class="big">I start with the people doing the work, not the technology. Where does their time go? What keeps breaking?</p><small>At Projekt Rising that meant mapping how three businesses actually ran before writing a line of code.</small></div>
-      <div class="row"><b>02 · Pull one thread</b><p class="big">I pick the change worth the most and prototype it fast, so everyone is reacting to something real.</p><small>At SalesAPE I took 3 prototypes to leadership. 2 were greenlit.</small></div>
-      <div class="row"><b>03 · Build it straight</b><p class="big">Then I build it properly, end to end: the data, the backend, and the part people actually click.</p><small>For Samaritan's Purse that meant replacing a spreadsheet with an order form, payments and a live stock dashboard.</small></div>
-      <div class="row"><b>04 · Prove it holds</b><p class="big">I don't call it done until the numbers say so: tests, evaluations and real runs.</p><small>The Ventureship hiring pipeline went through 3 rounds of production test runs before it was trusted.</small></div>
-    </div>
-  </div>
-</section>
-</div>
+      <article class="card">
+        <div class="num"><span>01 / 06</span><span>for Ventureship</span></div>
+        <p class="who">Agentic hiring pipeline</p>
+        <h3><span class="dual" data-m="multi-stage agents · Anthropic SDK · self-checking schemas · bias audits" data-h="A founder was running hiring entirely by hand."></span></h3>
+        <ul class="tags"><li>Anthropic SDK</li><li>multi-stage agents</li><li>self-checking schemas</li><li>deterministic rules</li><li>bias audits</li></ul>
+        <div class="foot"><p class="res">One automated pipeline run now replaces the manual process.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: agentic hiring pipeline">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">01 · Ventureship · founding engineer intern</p><h3>Agentic hiring pipeline</h3>
+          <div class="l2"><div><b>Problem</b><p>An AI hiring platform still ran hiring as a fully manual process, done by the founder.</p></div>
+            <div><b>What I did</b><p>Built an end-to-end pipeline with the Anthropic SDK: multi-stage agents with self-checking schemas, deterministic decision logic and bias audits at key decision points.</p></div>
+            <div><b>What changed</b><p>One automated pipeline run replaces the manual process, with bugs fixed across 3 rounds of production test runs.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="Hiring/data|Multi-stage/agents|Schema/self-checks|Deterministic/decisions|Bias/audits"></div>
+            <p class="note">I also helped shape the platform's shared data schema and its write interface with the application layer, reviewed weekly with the technical advisor. The code is private.</p></div>
+        </div>
+      </article>
 
-<div class="lane" data-dir="-1">
-<section class="sec rev" id="work">
-  <div class="grid">
-    <div class="stage">
-      <p class="eyebrow">Projects</p>
-      <h2>Knots I've <em>untangled.</em></h2>
-      <p class="lede">Each one starts as a problem, in grey. When it reaches you, it turns into what I did and what changed.</p>
-      <p class="count" aria-hidden="true">01 / 12</p>
-    </div>
-    <div class="rows">
-      <div class="row"><b>Ventureship · Agentic AI</b><h3>Agentic hiring pipeline</h3>
-        <p class="part prob"><i>The knot</i>An AI hiring platform still ran hiring as a fully manual process, done by the founder.</p>
-        <p class="part did"><i>What I did</i>Built an end-to-end pipeline with the Anthropic SDK: multi-stage agents with self-checking schemas, deterministic decision logic, and bias audits at key decision points.</p>
-        <p class="part res"><i>What changed</i>One automated pipeline run replaces the manual process, hardened over <strong>3</strong> rounds of production test runs.</p></div>
-      <div class="row"><b>National Highways · RAG</b><h3>Engineering knowledge graph</h3>
-        <p class="part prob"><i>The knot</i>Engineering knowledge was spread across thousands of technical PDFs that constantly reference each other.</p>
-        <p class="part did"><i>What I did</i>Extracted and cleaned the text, built a pipeline to spot document codes and references, and turned it into a knowledge graph with a RAG assistant on top.</p>
-        <p class="part res"><i>What changed</i>Structured answers from <strong>thousands</strong> of linked documents, supporting infrastructure asset management.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row"><b>Systems · Live product</b><h3>CUDA Transformer</h3>
-        <p class="part prob"><i>The knot</i>Most projects are a config file pointed at someone else's library. I wanted to prove I understood the machinery underneath.</p>
-        <p class="part did"><i>What I did</i>Wrote a transformer from raw CUDA kernels up, with my own autograd engine and no deep learning framework in the core maths, then trained the same model on text and on movie histories.</p>
-        <p class="part res"><i>What changed</i><strong>25.7x</strong> faster attention, and it runs live as a movie recommender.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/cudatransformer" target="_blank" rel="noopener">Code ↗</a><a href="https://cudatransformer-recommender.onrender.com/" target="_blank" rel="noopener">Try it live ↗</a></div></div>
-      <div class="row"><b>Charity · Live</b><h3>Samaritan's Purse ordering system</h3>
-        <p class="part prob"><i>The knot</i>£10,000 of discounted shoebox gifts had to reach 50 community groups, and every order ran through a spreadsheet.</p>
-        <p class="part did"><i>What I did</i>Designed and built the whole system: an online order form, automatic payment and confirmation, and a live stock dashboard that flags low stock.</p>
-        <p class="part res"><i>What changed</i><strong>£10k</strong> of products and <strong>50</strong> groups handled in one place, built to cut admin time and order errors.</p>
-        <div class="links-row"><a href="https://packing-party-2026.netlify.app/" target="_blank" rel="noopener">Live site ↗</a></div></div>
-      <div class="row"><b>Dissertation · Forensics</b><h3>Sentinel</h3>
-        <p class="part prob"><i>The knot</i>Crash investigators need to know exactly which car was involved, and how safe it is, often from a single photo.</p>
-        <p class="part did"><i>What I did</i>Built a two-branch ResNet50 model that predicts make, model and year with calibrated confidence, matches it to Euro NCAP safety ratings, and returns a court-admissible report.</p>
-        <p class="part res"><i>What changed</i>An answer in <strong>46ms</strong> per image at <strong>81.71%</strong> hierarchical accuracy.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/sentiel1" target="_blank" rel="noopener">Code ↗</a><a href="https://drive.google.com/file/d/1m0iP5nCtqZHm_CMRhVzV6RlxQO3pS-i1/view?usp=sharing" target="_blank" rel="noopener">Demo video ↗</a><a href="https://huggingface.co/mmesomaa/sentiel1" target="_blank" rel="noopener">Model ↗</a></div></div>
-      <div class="row compact"><b>More work · Payments</b><h3>Payment Authorisation Simulator</h3>
-        <p class="part prob"><i>The knot</i>Declined card payments get retried with the same rules for every bank, so retries are wasted and good sales are lost.</p>
-        <p class="part did"><i>What I did</i>Modelled the full merchant to issuer flow, including routing, 3DS checks, retries and late chargebacks, then learned how each issuer behaves and tuned retries and routing to match.</p>
-        <p class="part res"><i>What changed</i>Approvals up from 82.5% to <strong>84.3%</strong>, wasted retries cut from 8.1% to <strong>4.2%</strong>, about <strong>£26,500</strong> net benefit in simulation.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/payment_system" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row compact"><b>Projekt Rising · Integrations</b><h3>Toolkit Integration Engine</h3>
-        <p class="part prob"><i>The knot</i>Every new CRM or accounting tool a client used meant writing another integration by hand.</p>
-        <p class="part did"><i>What I did</i>Built an engine that reads a product's API spec, ranks the useful endpoints, and generates a working client at runtime, all driven from a CLI.</p>
-        <p class="part res"><i>What changed</i>A new CRM now takes <strong>one adapter file</strong>. <strong>146</strong> passing tests, working with HubSpot and Pipedrive.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/projektrising" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row compact"><b>National Highways · CCTV</b><h3>Weather classification and removal</h3>
-        <p class="part prob"><i>The knot</i>Rain, fog and snow make roadside CCTV hard to read, which weakens road monitoring.</p>
-        <p class="part did"><i>What I did</i>Trained CNN models on 10,000 CCTV images to recognise the weather in each frame, and a model to remove it from the picture.</p>
-        <p class="part res"><i>What changed</i><strong>98%</strong> classification accuracy, making road monitoring more reliable.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/weather-classification" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row compact"><b>Founder · SaaS</b><h3>FaceRegg</h3>
-        <p class="part prob"><i>The knot</i>Checking that a face matches an ID photo is slow and error-prone when a person does it by hand.</p>
-        <p class="part did"><i>What I did</i>Founded an identity verification product and built it on a Siamese neural network, with TensorFlow and OpenCV pipelines tuned for accuracy and speed on real-world photos.</p>
-        <p class="part res"><i>What changed</i><strong>2</strong> paying clients and <strong>£5k</strong> in revenue.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/Faceregg" target="_blank" rel="noopener">Code ↗</a><a href="https://nwachukwu1300.github.io/Faceregg/" target="_blank" rel="noopener">Website ↗</a></div></div>
-      <div class="row compact"><b>SalesAPE.ai · MVP</b><h3>SalesAPE</h3>
-        <p class="part prob"><i>The knot</i>Small service businesses need a website, lead capture and bookings, but rarely have the time to set them up.</p>
-        <p class="part did"><i>What I did</i>Built a full-stack platform in TypeScript, React and Postgres, with background job queues, that turns an Instagram profile or website link into a working online presence.</p>
-        <p class="part res"><i>What changed</i>A live site with lead capture and bookings, <strong>in minutes</strong>.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/salesape_mvp" target="_blank" rel="noopener">Code ↗</a></div></div>
-      <div class="row compact"><b>Learning platform</b><h3>ExcelPoint</h3>
-        <p class="part prob"><i>The knot</i>Students' notes, slides and recordings sit in files they can't easily question or revise from.</p>
-        <p class="part did"><i>What I did</i>Built a Django and React platform where you upload your materials, chat with them, and get quizzes and flashcards, with the heavy processing running in the background on Celery and Redis.</p>
-        <p class="part res"><i>What changed</i>Search by meaning, chat and revision from <strong>your own materials</strong>, in one place.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/excelpoint" target="_blank" rel="noopener">Code ↗</a><a href="https://drive.google.com/file/d/1yBZ8Cexa4Lhrnot7D3OiEqdqtsfgFxn5/view" target="_blank" rel="noopener">Demo ↗</a></div></div>
-      <div class="row compact"><b>Hackathons · Competitions</b><h3>PersonaSync and a Street Fighter agent</h3>
-        <p class="part prob"><i>The knot</i>Two very different briefs: make survey data collection feel less like a chore, and train an agent to win at Street Fighter III.</p>
-        <p class="part did"><i>What I did</i>Built a voice agent that turns a survey into a real-time conversation, and a reinforcement learning agent trained across 3 difficulty levels over about 10 million steps.</p>
-        <p class="part res"><i>What changed</i>Top <strong>10</strong> of 200 teams across Europe, and top <strong>5</strong> of about 50 teams.</p>
-        <div class="links-row"><a href="https://github.com/Nwachukwu1300/personasync" target="_blank" rel="noopener">PersonaSync ↗</a><a href="https://github.com/Nwachukwu1300/street_fighter_rl_agent" target="_blank" rel="noopener">Street Fighter agent ↗</a></div></div>
-    </div>
-  </div>
-</section>
-</div>
+      <article class="card">
+        <div class="num"><span>02 / 06</span><span>for National Highways</span></div>
+        <p class="who">Engineering knowledge graph (RAG)</p>
+        <h3><span class="dual" data-m="pdfplumber → spaCy NER → relation extraction → knowledge graph → RAG" data-h="Thousands of engineering manuals, all pointing at each other."></span></h3>
+        <ul class="tags"><li>Python</li><li>pdfplumber</li><li>spaCy</li><li>NetworkX</li><li>RDF triples</li><li>RAG</li></ul>
+        <div class="foot"><p class="big">1,000s</p><p class="res">of engineering manuals turned into one knowledge graph you can ask questions.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: engineering knowledge graph">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">02 · National Highways · a project I led</p><h3>Engineering knowledge graph (RAG)</h3>
+          <div class="l2"><div><b>Problem</b><p>Engineering knowledge was spread across thousands of technical manuals that reference, replace and build on each other, so one answer could sit across many documents.</p></div>
+            <div><b>What I did</b><p>Led the project. Built a pipeline that extracts and cleans text from the PDFs, a custom spaCy model that spots document codes, and relationship extraction that labels whether one manual references or supersedes another. Then a RAG assistant on top.</p></div>
+            <div><b>What changed</b><p>Thousands of linked manuals became one knowledge graph engineers can query, supporting infrastructure asset management.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="Thousands/of manuals|Text/extraction|spaCy NER:/doc codes|Graph: refs,/supersedes|RAG/assistant"></div>
+            <p class="note">An internal National Highways tool, so GitHub shows the approach rather than the full build.</p>
+            <div class="btns"><a class="main" href="https://github.com/Nwachukwu1300/pdf_llm" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="num"><span>03 / 06</span><span>personal build</span></div>
+        <p class="who">CUDA Transformer from scratch</p>
+        <h3><span class="dual" data-m="hand-written CUDA kernels → own autograd → one decoder, two domains" data-h="Frameworks hide the maths. I wanted to build it myself."></span></h3>
+        <ul class="tags"><li>CUDA</li><li>C++</li><li>Python</li><li>own autograd</li><li>JAX/Flax</li><li>MovieLens 1M</li></ul>
+        <div class="foot"><p class="big" data-count="25.7" data-unit="x">25.7x</p><p class="res">faster attention on a GPU than my own CPU version.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: CUDA Transformer">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">03 · personal build · systems</p><h3>CUDA Transformer from scratch</h3>
+          <div class="l2"><div><b>Problem</b><p>Most ML work is a config file pointed at someone else's library. I wanted to prove I understood the machinery underneath.</p></div>
+            <div><b>What I did</b><p>Wrote CUDA kernels by hand (tiled matmul, warp-shuffle softmax, tiled attention) and my own autograd engine, then trained one decoder on text and on MovieLens 1M without changing it.</p></div>
+            <div><b>What changed</b><p>Tiled attention runs 25.7x faster on a Tesla T4 than my CPU version at sequence length 1024, it scores 98% on MNIST, and it runs live as a movie recommender.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="CUDA/kernels|Autograd/engine|Decoder/transformer|Train: text/+ MovieLens|Live/recommender"></div>
+            <p class="note">25.7x compares the tiled CUDA kernel on a Tesla T4 with the dense CPU attention from the same repo, at sequence length 1024. Every number is in BENCHMARKS.md.</p>
+            <div class="btns"><a class="main" href="https://github.com/Nwachukwu1300/cudatransformer" target="_blank" rel="noopener">GitHub ↗</a><a href="https://cudatransformer-recommender.onrender.com/" target="_blank" rel="noopener">Live recommender ↗</a></div></div>
+        </div>
+      </article>
 
-<div class="lane" data-dir="1">
-<section class="sec" id="exp">
-  <div class="grid">
-    <div class="stage">
-      <p class="eyebrow">Experience and awards</p>
-      <h2>Where I've done it <em>for real.</em></h2>
-      <p class="lede">Nine roles, five awards and a First Class degree, from a national road network to a founder's first hire.</p>
-      <p class="count" aria-hidden="true">01 / 10</p>
-    </div>
-    <div class="rows">
-      <div class="row"><b>Aug 2026 – Sep 2026</b><h3>Ventureship</h3><p class="role">Founding Engineer Intern</p>
-        <p class="part prob"><i>The knot</i>Hiring on an AI hiring platform ran as a fully manual process the founder did by hand.</p>
-        <p class="part did"><i>What I did</i>Built an end-to-end agentic pipeline with the Anthropic SDK: multi-stage agents, self-checking schemas, deterministic decisions and bias audits at key points. Helped shape the shared data schema, reviewed weekly with the technical advisor.</p>
-        <p class="part res"><i>What changed</i>One automated pipeline run replaces the manual process, hardened over <strong>3</strong> rounds of production tests.</p></div>
-      <div class="row"><b>Jul 2026 – Aug 2026</b><h3>Samaritan's Purse</h3><p class="role">Software Engineer, volunteering</p>
-        <p class="part prob"><i>The knot</i>A £10,000 gift procurement project for 50 community groups was run from spreadsheets.</p>
-        <p class="part did"><i>What I did</i>Designed and built the ordering, payment and stock system end to end, from the order form to the live dashboard.</p>
-        <p class="part res"><i>What changed</i><strong>£10k</strong> of products, <strong>50</strong> groups, one system.</p></div>
-      <div class="row"><b>Aug 2025 – Aug 2026</b><h3>Responsible AI Governance Initiative</h3><p class="role">Head of Engineering</p>
-        <p class="part prob"><i>The knot</i>A nonprofit focused on responsible AI governance needed someone to lead its engineering.</p>
-        <p class="part did"><i>What I did</i>Led engineering and managed a cross-functional team.</p>
-        <p class="part res"><i>What changed</i><strong>12 months</strong> leading the team.</p></div>
-      <div class="row"><b>Dec 2025 – Mar 2026</b><h3>Projekt Rising</h3><p class="role">AI Engineer, contractor</p>
-        <p class="part prob"><i>The knot</i>Three small businesses were losing hours every month to manual work.</p>
-        <p class="part did"><i>What I did</i>Mapped their workflows to find the automation gaps, then built and monitored production APIs connecting models to their data, tracking accuracy, latency and outcomes.</p>
-        <p class="part res"><i>What changed</i><strong>3</strong> processes automated, about <strong>60 hours</strong> of manual work saved every month.</p></div>
-      <div class="row"><b>Dec 2025 – Mar 2026</b><h3>SalesAPE.ai</h3><p class="role">Software Engineer Intern</p>
-        <p class="part prob"><i>The knot</i>Leadership needed to know which new product ideas were worth backing.</p>
-        <p class="part did"><i>What I did</i>Designed and built 3 MVP prototypes in a fast-moving hacksquad, with evaluation pipelines to measure how reliable they were.</p>
-        <p class="part res"><i>What changed</i><strong>2 of 3</strong> greenlit for further development.</p></div>
-      <div class="row"><b>Jul 2024 – Jul 2025</b><h3>National Highways</h3><p class="role">Data Science, Year in Industry</p>
-        <p class="part prob"><i>The knot</i>CCTV that failed in bad weather, knowledge buried in thousands of documents, and roadside habitats that needed mapping.</p>
-        <p class="part did"><i>What I did</i>Built a weather classification and removal model, a RAG knowledge graph over engineering documents, and a satellite segmentation model that classifies roadside habitats.</p>
-        <p class="part res"><i>What changed</i><strong>98%</strong> accuracy on 10,000 CCTV images, and Year in Industry Student of the Year, <strong>1 of 10</strong> from 400.</p></div>
-      <div class="row"><b>May 2023 – Aug 2023</b><h3>FaceRegg</h3><p class="role">Founder</p>
-        <p class="part prob"><i>The knot</i>Identity checks were slow and manual.</p>
-        <p class="part did"><i>What I did</i>Founded and built an image verification SaaS, from model training and inference pipelines to the product clients used.</p>
-        <p class="part res"><i>What changed</i><strong>2</strong> paying clients, <strong>£5k</strong> revenue.</p></div>
-      <div class="row"><b>2021 – 2023</b><h3>Imperial College London and Paradigm Finance</h3><p class="role">Research Intern · Software Engineering Intern</p>
-        <p class="part prob"><i>The knot</i>Climate resilience research, and credit risk analysis under strict financial data rules.</p>
-        <p class="part did"><i>What I did</i>At Imperial, prototyped data-driven climate resilience technology with researchers and industry mentors. At Paradigm, built credit risk tools, client portfolio reports and internal web apps.</p>
-        <p class="part res"><i>What changed</i>Named Paradigm Finance's <strong>Intern of the Year</strong>.</p></div>
-      <div class="row"><b>Sep 2022 – May 2026</b><h3>Coventry University</h3><p class="role">BSc Computer Science · First Class Honours</p>
-        <p class="part did"><i>What I studied</i>AI, Data Science, Advanced Algorithms, Software Engineering and Theory of Computation.</p>
-        <p class="part res"><i>Before that</i>Canadian Plus Foundation at 16 Plus Schools: <strong>91%</strong> overall, and Best Foundation Student, top of <strong>50</strong>.</p></div>
-      <div class="row wide"><b>Awards and scholarships</b><h3>Five awards</h3>
-        <ul class="awards">
-          <li><b>1 of 10</b><span><strong>Year in Industry Student of the Year</strong>National Highways, 2025. Chosen from 400 placement students nationwide.</span></li>
-          <li><b>Top 2%</b><span><strong>AWS Machine Learning Scholarship</strong>Amazon Web Services, 2023. From 50,000+ DeepRacer applicants.</span></li>
-          <li><b>1 of 100</b><span><strong>Santander Universities Scholarship</strong>Santander Bank, 2023. Recipients selected nationwide.</span></li>
-          <li><b>Intern of the Year</b><span><strong>Paradigm Finance</strong>2021.</span></li>
-          <li><b>Top of 50</b><span><strong>Best Foundation Student</strong>16 Plus Schools, 2021.</span></li>
-        </ul></div>
-    </div>
-  </div>
-</section>
-</div>
+      <article class="card">
+        <div class="num"><span>04 / 06</span><span>for National Highways</span></div>
+        <p class="who">Weather removal for CCTV</p>
+        <h3><span class="dual" data-m="ResNet-50 + ViT weather models · 10k CCTV frames · removal model" data-h="Rain, fog and snow made roadside cameras hard to read."></span></h3>
+        <ul class="tags"><li>Python</li><li>TensorFlow</li><li>ResNet-50</li><li>ViT</li></ul>
+        <div class="foot"><p class="big" data-count="98" data-unit="%">98%</p><p class="res">weather classification accuracy on 10,000 CCTV images.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: weather removal for CCTV">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">04 · National Highways · data science year in industry</p><h3>Weather removal for CCTV</h3>
+          <div class="l2"><div><b>Problem</b><p>Rain, fog and snow made roadside CCTV hard to read, which weakened road monitoring.</p></div>
+            <div><b>What I did</b><p>Trained CNN models on 10,000 CCTV images to recognise the weather in each frame, and a model to remove it from the picture.</p></div>
+            <div><b>What changed</b><p>98% weather classification accuracy, making road monitoring more reliable.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="CCTV/frame|Weather/classifier|Weather/removal|Clearer/frame"></div>
+            <div class="btns"><a class="main" href="https://github.com/Nwachukwu1300/weather-classification" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+        </div>
+      </article>
 
-<div class="lane" data-dir="1">
-<footer class="wrap" id="foot">
-  <p class="eyebrow">Get in touch</p>
-  <h3 id="closing">What are you trying to <em>untangle?</em></h3>
-  <p class="say">If you've got a slow, manual or messy problem, I'd like to hear about it.</p>
-  <div class="links">
-    <a class="main" href="mailto:mnfinance664@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email me</a>
-    <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5v6M8 7.5v.01M12 16.5v-6M12 13c0-1.7 1-2.6 2.3-2.6s2.2.8 2.2 2.6v3.5"/></svg>LinkedIn</a>
-    <a href="https://github.com/Nwachukwu1300" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.4-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a>
-    <a href="Mmesoma_CV_pdf.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download CV</a>
-  </div>
-  <p class="note">mnfinance664@gmail.com · United Kingdom</p>
-  <a class="totop" href="#hero">Back to top <span>↑</span></a>
-</footer>
-</div>
-</div>
-</div>
+      <article class="card">
+        <div class="num"><span>05 / 06</span><span>for crash investigators</span></div>
+        <p class="who">Sentinel vehicle identification</p>
+        <h3><span class="dual" data-m="two-branch ResNet50 · make / model / year · calibrated · Euro NCAP" data-h="Investigators need to know which car it was, from one photo."></span></h3>
+        <ul class="tags"><li>PyTorch</li><li>ResNet50</li><li>calibration</li><li>Flask</li><li>Stanford Cars</li><li>Euro NCAP</li></ul>
+        <div class="foot"><p class="big" data-count="46" data-unit=" ms">46 ms</p><p class="res">model inference per image.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: Sentinel">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">05 · dissertation · forensics</p><h3>Sentinel vehicle identification</h3>
+          <div class="l2"><div><b>Problem</b><p>Crash investigators need to know exactly which car was involved, and how safe it is, often from a single photo.</p></div>
+            <div><b>What I did</b><p>Built a two-branch ResNet50 that predicts make, model and year with calibrated confidence, trained on Stanford Cars (8,144 images, 196 classes), and matched to Euro NCAP safety ratings.</p></div>
+            <div><b>What changed</b><p>46 ms model inference per image. Make 96.4%, model 91.0%, year 89.1%, and 81.7% with all three right.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="Photo|Two-branch/ResNet50|Make, model,/year|Calibrated/confidence|Euro NCAP/report"></div>
+            <div class="btns"><a class="main" href="https://github.com/Nwachukwu1300/sentiel1" target="_blank" rel="noopener">GitHub ↗</a><a href="https://huggingface.co/mmesomaa/sentiel1" target="_blank" rel="noopener">Model ↗</a><a href="https://drive.google.com/file/d/1m0iP5nCtqZHm_CMRhVzV6RlxQO3pS-i1/view?usp=sharing" target="_blank" rel="noopener">Demo video ↗</a></div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="num"><span>06 / 06</span><span>for Samaritan's Purse</span></div>
+        <p class="who">Ordering and stock system</p>
+        <h3><span class="dual" data-m="order form → payments → stock → live dashboard" data-h="£10,000 of gifts for 50 groups, all ordered through a spreadsheet."></span></h3>
+        <ul class="tags"><li>order form</li><li>payments</li><li>stock dashboard</li><li>low-stock alerts</li><li>Netlify</li></ul>
+        <div class="foot"><p class="big" data-count="10" data-pre="£" data-unit="k">£10k</p><p class="res">of gifts for 50 groups, ordered, paid and tracked in one system.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: ordering and stock system">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">06 · Samaritan's Purse · software engineer, volunteering</p><h3>Ordering and stock system</h3>
+          <div class="l2"><div><b>Problem</b><p>£10,000 of discounted shoebox gifts had to reach 50 community groups, and every order went through a spreadsheet.</p></div>
+            <div><b>What I did</b><p>Designed and built the whole system solo: an online order form, automatic payment and confirmation, and a live stock dashboard with low-stock alerts.</p></div>
+            <div><b>What changed</b><p>£10k of products and 50 groups handled in one place, replacing the spreadsheet to cut admin time and order errors.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="Online/order form|Payment +/confirmation|Stock/updates|Live/dashboard|Low-stock/alerts"></div>
+            <div class="btns"><a class="main" href="https://packing-party-2026.netlify.app/" target="_blank" rel="noopener">Live site ↗</a></div></div>
+        </div>
+      </article>
+
+      <a class="card end" href="https://github.com/Nwachukwu1300" target="_blank" rel="noopener">More projects on GitHub →<span>github.com/Nwachukwu1300</span></a>
+    </div>
+    <div class="prog" id="prog" aria-hidden="true"></div>
+  </div></div>
+
+  <section id="experience"><div class="wrap">
+    <p class="eyebrow"><b>experience</b></p>
+    <h2><span class="dual" data-m="git log --author=soma --oneline" data-h="The short version."></span></h2>
+    <ul class="exp">
+      <li><span class="r">aug – sep 2026</span><div><b>Founding Engineer Intern <span>· Ventureship</span></b>
+        <p>Replaced a founder-run hiring process with one automated agentic pipeline.</p><p class="m-only">anthropic sdk · multi-stage agents · bias audits</p></div></li>
+      <li><span class="r">aug 2025 – aug 2026</span><div><b>Head of Engineering <span>· Responsible AI Governance Initiative</span></b>
+        <p>Led engineering and a cross-functional team for 12 months.</p><p class="m-only">team lead · cross-functional · 12 months</p></div></li>
+      <li><span class="r">dec 2025 – mar 2026</span><div><b>Software Engineer Intern <span>· SalesAPE.ai</span></b>
+        <p>Built 3 AI prototypes for leadership, and 2 were greenlit for further development.</p><p class="m-only">3 MVPs → 2 greenlit · evaluation pipelines</p></div></li>
+      <li><span class="r">jul 2024 – jul 2025</span><div><b>Data Science, Year in Industry <span>· National Highways</span></b>
+        <p>Weather models on 10,000 CCTV images and a RAG knowledge graph over engineering documents.</p><p class="m-only">cnn · vit · rag knowledge graph · satellite segmentation</p></div></li>
+      <li><span class="r">may – aug 2023</span><div><b>Founder <span>· FaceRegg</span></b>
+        <p>Built an image verification SaaS with 2 paying clients and £5k revenue.</p><p class="m-only">tensorflow · opencv · cnn image matching</p></div></li>
+    </ul>
+    <div class="facts">
+      <div><span class="r">education</span><div><strong>BSc Computer Science, First Class Honours</strong><p>Coventry University · 2026</p></div></div>
+      <div><span class="r">awards</span><ul class="awards">
+        <li><b>Year in Industry Student of the Year</b><span>1 of 10 from 400</span></li>
+        <li><b>AWS Machine Learning Scholarship</b><span>top 2% of 50,000+</span></li>
+        <li><b>Santander Universities Scholarship</b><span>1 of 100 nationwide</span></li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="close" id="contact"><div class="wrap">
+    <p class="eyebrow"><b>contact</b></p>
+    <h2><span class="dual" data-m="await build(<mark>together</mark>);" data-h="Let's build something."></span></h2>
+    <p class="lede">Email is the quickest way to reach me.</p>
+    <div class="btns"><a class="main" href="mailto:mnfinance664@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/Nwachukwu1300" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="Mmesoma_CV_pdf.pdf" download>Download CV</a></div>
+  </div></section>
+</main>
+<footer><div class="wrap"><span>Soma · United Kingdom</span><a href="mailto:mnfinance664@gmail.com">mnfinance664@gmail.com</a><a href="#top">back to top ↑</a></div></footer>
+
+<dialog id="zoom" aria-labelledby="zt"><div class="zin">
+  <button class="zbtn back" type="button">← back</button>
+  <div id="zbody"></div>
+</div></dialog>
 
 <script>
-(()=>{
-const $=id=>document.getElementById(id);
-const track=$('track'),lanes=[...document.querySelectorAll('.lane')],grids=[...document.querySelectorAll('.grid')],rows=[...document.querySelectorAll('.row')];
-const thread=$('thread'),tline=$('thread-line'),pen=$('thread-pen'),halo=$('thread-halo');
-const hero=$('hero'),zone=$('zone'),words=$('words'),knotSvg=$('knot'),kpath=$('knot-path');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(reduced)document.documentElement.classList.add('reduced');
-// Our own glide between stops: the browser's smooth scroll is short and abrupt (about 250ms in Safari), so each jump eases in and out over a time that grows with the distance.
-let gl=null;
-function glide(to){to=Math.round(to);if(gl)cancelAnimationFrame(gl.raf);const from=scrollY,dist=Math.abs(to-from);
-  if(reduced||dist<2){gl=null;return scrollTo(0,to)}
-  const dur=Math.min(1100,Math.max(550,420+dist*.3)),t0=performance.now();gl={to};
-  const step=now=>{const k=Math.min(1,(now-t0)/dur),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;scrollTo(0,from+(to-from)*e);if(k<1)gl.raf=requestAnimationFrame(step);else gl=null};
-  gl.raf=requestAnimationFrame(step)}
-const stopGlide=()=>{if(gl){cancelAnimationFrame(gl.raf);gl=null}};
-let curS=0,maxS=0,camX=0,camY=0,curDir=1,segs=[],rowsInfo=[],gridInfo=[],tLen=0,drawn=0,pairs=[];
-const mobile=()=>innerWidth<760;
-const dirOf=e=>+(e.closest('.lane')?.dataset.dir||1);
-// Where the card being read sits: centre on a phone, opposite the title panel on a wide screen.
-const focusFor=d=>mobile()?innerWidth/2:innerWidth*(d>0?.69:.31);
-const wx=e=>e.getBoundingClientRect().left+camX,wy=e=>e.getBoundingClientRect().top+camY;
-const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-grids.forEach(g=>{g._rows=[...g.querySelectorAll('.row')];g._count=g.querySelector('.count');g._last=-1});
+const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches,phoneMq=matchMedia('(max-width:760px)');
+const clamp=v=>Math.max(0,Math.min(1,v)),seg=(p,a,b)=>clamp((p-a)/(b-a)),ease=x=>x*x*(3-2*x),strip=s=>s.replace(/<[^>]+>/g,'');
 
-// The camera: one vertical scroll distance walked along the snake, sideways along each row, down at each turn.
-function camAt(s){for(const g of segs)if(s<g.s1||g===segs[segs.length-1]){const k=g.s1>g.s0?clamp((s-g.s0)/(g.s1-g.s0),0,1):1;return[g.x0+(g.x1-g.x0)*k,g.y0+(g.y1-g.y0)*k,g.d]}return[0,0,1]}
-function readX(){curS=clamp(scrollY,0,maxS);[camX,camY,curDir]=camAt(curS);track.style.transform=`translate3d(${-camX}px,${-camY}px,0)`;
-  // Each title panel stays put while its cards slide past, then leaves with the last one.
-  const W=innerWidth;gridInfo.forEach(({g,l,w,d})=>{const pin=d>0?clamp(camX-l,0,w-W):clamp(camX+W-(l+w),-(w-W),0);g._stage.style.transform=`translate3d(${pin}px,0,0)`})}
+// Background: a faint stream of code, blue only
+const words=['const','await','return','if','for','fn','map','self','yield','import','def','=>','try','null','true','queue','retry','schema','tensor','batch','kernel','graph'];
+const lines=[];for(let i=0;i<120;i++){const t=Math.random(),s=Array.from({length:3+Math.floor(Math.random()*7)},()=>words[Math.floor(Math.random()*words.length)]).join(' ');
+  lines.push(`<span class="${t<.3?'a':t<.5?'d':''}">${t<.3?'+':t<.5?'-':' '} ${String(120+i*7).padStart(4)}  ${'  '.repeat(Math.floor(Math.random()*4))}${s}</span>`)}
+const stream=document.getElementById('stream');stream.innerHTML=lines.join('\n');
+
+// Two voices
+let voice='h';
+const duals=[...document.querySelectorAll('.dual')];
+function build(){duals.forEach(el=>{const h=el.dataset.h,m=el.dataset.m,from=voice==='h'?m:h,to=voice==='h'?h:m;
+  el.innerHTML=`<span class="sr">${strip(h)}</span><span class="fr${voice==='h'?' mono':''}" aria-hidden="true">${from}</span><span class="to${voice==='h'?'':' mono'}" aria-hidden="true">${to}</span><i class="bar" aria-hidden="true"></i>`;
+  el.setAttribute('aria-label',strip(h))})}
+function setCut(el,p){el.style.setProperty('--cut',(p*100).toFixed(2)+'%');el.style.setProperty('--bw',(0.12+Math.sin(Math.PI*p)*0.55).toFixed(3)+'em');el.style.setProperty('--bo',p>0.001&&p<0.999?1:0);el.classList.toggle('done',p>=.999);el.classList.toggle('zero',p<=.001)}
+build();
+
+/* Avatar: the photo becomes a grid of characters (machine) and a blue duotone portrait (human).
+   The sweep position comes from the hero scroll; idle, the characters shimmer and scatter near the pointer. */
+const av=document.getElementById('av'),ax=av.getContext('2d');
+const N=46,AS=av.width,cell=AS/N,ramp=' .:-=+*#%@';
+let lum=null,duo=null,avCut=0,ptr={x:-1,y:-1};
+const img=new Image();
+img.onload=()=>{
+  const s=232,c=document.createElement('canvas');c.width=c.height=s;const cx=c.getContext('2d');cx.drawImage(img,0,0,s,s);
+  const d=cx.getImageData(0,0,s,s).data,L=new Float32Array(s*s);
+  for(let i=0;i<s*s;i++)L[i]=.299*d[i*4]+.587*d[i*4+1]+.114*d[i*4+2];
+  // histogram equalisation, so a dark portrait on a dark background still reads as characters
+  const hist=new Float32Array(256);for(const v of L)hist[Math.min(255,v|0)]++;const cdf=new Float32Array(256);let acc=0;for(let i=0;i<256;i++){acc+=hist[i];cdf[i]=acc/(s*s)}
+  const floor=cdf[12];const norm=v=>Math.pow(clamp((cdf[Math.min(255,v|0)]-floor)/(1-floor)),1.15);
+  const out=cx.createImageData(s,s);
+  for(let i=0;i<s*s;i++){const t=norm(L[i]);out.data[i*4]=6+t*(169-6);out.data[i*4+1]=7+t*(198-7);out.data[i*4+2]=11+t*(255-11);out.data[i*4+3]=255}
+  cx.putImageData(out,0,0);duo=c;
+  // edges (eyes, mouth, collar, zip) carry the likeness; brightness fills the rest
+  const E=new Float32Array(s*s);let em=0;
+  for(let y=1;y<s-1;y++)for(let x=1;x<s-1;x++){const i=y*s+x;const gx=L[i+1]-L[i-1]+(L[i-s+1]-L[i-s-1]+L[i+s+1]-L[i+s-1])*.5,gy=L[i+s]-L[i-s]+(L[i+s-1]-L[i-s-1]+L[i+s+1]-L[i-s+1])*.5;E[i]=Math.hypot(gx,gy);if(E[i]>em)em=E[i]}
+  lum=new Float32Array(N*N);const k=s/N;
+  for(let r=0;r<N;r++)for(let q=0;q<N;q++){let a=0,e=0,n=0;for(let y=Math.floor(r*k);y<Math.floor((r+1)*k);y++)for(let x=Math.floor(q*k);x<Math.floor((q+1)*k);x++){a+=L[y*s+x];e+=E[y*s+x];n++}
+    const base=norm(a/n);lum[r*N+q]=base<.04?0:clamp(base*.45+Math.pow(e/n/em*4,.8)*.85)}
+  drawAvatar(performance.now());
+};
+img.src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/6xaJSlACEQAAAAEAABZ/anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFllqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjIwNzUyYTM5LWU2OGYtNDZiZC1iZDZlLWJmYzc5MjIwN2RkMQAAAAOUanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuWp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoQojw1VWKVT4yB6A4rICCegAAAG1jYm9yo2lkYzpmb3JtYXRqaW1hZ2UvanBlZ2ppbnN0YW5jZUlEeCx4bXA6aWlkOjQwOTIwZGE1LWNiZjgtNGEyNy05MjJlLTE1OTEzYzljMzRiZGxyZWxhdGlvbnNoaXBocGFyZW50T2YAAAHianVtYgAAAEFqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmFjdGlvbnMudjIAAAAAGGMyc2hW61aqcfXOuz42ndjAqaESAAABmWNib3KiZ2FjdGlvbnOComZhY3Rpb25rYzJwYS5vcGVuZWRqcGFyYW1ldGVyc6FraW5ncmVkaWVudHOBomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCALmgBDBod0OrBok7vJztjbi1cb0k0zC3UfPi/7rhgpC6RmYWN0aW9ueB1jb20uYW50aHJvcGljLmNsYXVkZS5wcm92aWRlZGpwYXJhbWV0ZXJzoXgfY29tLmFudGhyb3BpYy5vcmlnaW4tY29uZmlkZW5jZWd1bmtub3dua2Rlc2NyaXB0aW9ueGZDbGF1ZGUgcHJvdmlkZWQgdGhpcyBmaWxlIGF0IHRoZSByZXF1ZXN0IG9mIGEgdXNlciBhbmQgbWF5IGhhdmUgY3JlYXRlZCBvciBtb2RpZmllZCB0aGUgZmlsZSBjb250ZW50cy5tc29mdHdhcmVBZ2VudKFkbmFtZWZDbGF1ZGVyYWxsQWN0aW9uc0luY2x1ZGVk9QAAAMhqdW1iAAAAQGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaGFzaC5kYXRhAAAAABhjMnNoqjdAqCJik4fzOF66UYC9RAAAAIBjYm9ypWNhbGdmc2hhMjU2Y3BhZE4AAAAAAAAAAAAAAAAAAGRoYXNoWCAb2TFamo9+T97S/IxzAoUy2DVhd7Euib29DwnvWsuDmWRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBRmbGVuZ3RoGRaLAAACPmp1bWIAAAAnanVtZGMyY2wAEQAQgAAAqgA4m3EDYzJwYS5jbGFpbS52MgAAAAIPY2JvcqVjYWxnZnNoYTI1NmlzaWduYXR1cmV4TXNlbGYjanVtYmY9L2MycGEvdXJuOmMycGE6MjA3NTJhMzktZTY4Zi00NmJkLWJkNmUtYmZjNzkyMjA3ZGQxL2MycGEuc2lnbmF0dXJlamluc3RhbmNlSUR4LHhtcDppaWQ6ZDA3N2E1ZDktMTA4Mi00NGYwLTliNjEtMGVkODI5NDY4MzgxcmNyZWF0ZWRfYXNzZXJ0aW9uc4OiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIAuaAEMGh3Q6sGiTu8nO2NuLVxvSTTMLdR8+L/uuGCkLomN1cmx4KnNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuYWN0aW9ucy52MmRoYXNoWCAqSCW6EqCXH9E8FT25q2+StsfHCINk4qa0sH70PZx0i6JjdXJseClzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmhhc2guZGF0YWRoYXNoWCA/LcrZH24Lhavk2yuVlpeFQ1Qjlq33RO0vHKeNjO/SDHRjbGFpbV9nZW5lcmF0b3JfaW5mb6NkbmFtZW9BbnRocm9waWMgRmlsZXNndmVyc2lvbmUxLjAuMGtzcGVjVmVyc2lvbmUyLjQuMAAAEDhqdW1iAAAAKGp1bWRjMmNzABEAEIAAAKoAOJtxA2MycGEuc2lnbmF0dXJlAAAAEAhjYm9y0oRZAhKiASYYIVkCCjCCAgYwggGNoAMCAQICFEDloAruwjnQvriD+gZCBT1nVRMAMAoGCCqGSM49BAMDMEkxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMS4wLAYDVQQDEyVBbnRocm9waWMgQ29udGVudCBDcmVkZW50aWFscyBSb290IENBMB4XDTI2MDgwNzE4NDM1NloXDTI4MDgwNjE5NDM1NlowRDEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxKTAnBgNVBAMTIEFudGhyb3BpYyBDbGF1ZGUgQ29udGVudCBTaWduaW5nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEmHoKa8tQGAUU1TS9QqU5W0Tp2N3XsvlK7BfQt6YWKwEzd2R3/dzKPEUDdCjlLjp9fT+KFjRVnuZ9v0oXvTe3k6NYMFYwDgYDVR0PAQH/BAQDAgeAMBUGA1UdJQQOMAwGCisGAQQBg+heAgEwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBTOUeIEgU5kWyP448TPmj6cwddcwjAKBggqhkjOPQQDAwNnADBkAjAxcx0UngF60stVjs5G4T2eiptsBk5mf9oCtfJPAUBl8qs/PEXa8+gk1/X5QJ2DVcYCMHBfXN31YapiSqYvlIWrDVDJKOvXMl+kkz37Wt0PBI8sw486Mq6JeOhT+lRR4b1HCaFjcGFkWQ2eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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';
+av.addEventListener('pointermove',e=>{const r=av.getBoundingClientRect();ptr={x:(e.clientX-r.left)/r.width*N,y:(e.clientY-r.top)/r.height*N}});
+av.addEventListener('pointerleave',()=>ptr={x:-1,y:-1});
+function drawAvatar(t){
+  if(!lum)return;
+  ax.fillStyle='#06070b';ax.fillRect(0,0,AS,AS);
+  const cutX=avCut*AS,fromIsAscii=voice==='h';
+  ax.save();ax.beginPath();fromIsAscii?ax.rect(0,0,cutX,AS):ax.rect(cutX,0,AS-cutX,AS);ax.clip();ax.imageSmoothingEnabled=true;ax.drawImage(duo,0,0,AS,AS);ax.restore();
+  ax.save();ax.beginPath();fromIsAscii?ax.rect(cutX,0,AS-cutX,AS):ax.rect(0,0,cutX,AS);ax.clip();
+  ax.font=`500 ${cell*1.05}px "JetBrains Mono",monospace`;ax.textAlign='center';ax.textBaseline='middle';
+  for(let r=0;r<N;r++)for(let q=0;q<N;q++){
+    const v=lum[r*N+q];if(v<.04)continue;
+    const dist=Math.hypot(q-ptr.x,r-ptr.y),near=reduced?0:dist<7?(1-dist/7):0;
+    const flick=reduced?0:(Math.sin(t*.002+q*.7+r*1.3)*.5+.5)*.12;
+    let ch=ramp[Math.min(ramp.length-1,Math.floor((v+flick)*(ramp.length-1)))];
+    if(near>0&&Math.random()<near)ch='01<>{}/;'[Math.floor(Math.random()*8)];
+    const ox=near*(Math.random()-.5)*cell*1.6,oy=near*(Math.random()-.5)*cell*1.6;
+    ax.fillStyle=near>.2?'#4f8cf6':`rgba(169,198,255,${.4+v*.6})`;
+    ax.fillText(ch,q*cell+cell/2+ox,r*cell+cell/2+oy);
+  }
+  ax.restore();
+  if(avCut>.001&&avCut<.999){const w=(6+Math.sin(Math.PI*avCut)*22);ax.fillStyle='#4f8cf6';ax.fillRect(cutX-w/2,0,w,AS)}
+}
+// Only animate the portrait while it is on screen and the tab is visible
+let avOn=false,avRaf=0,last=0;
+function avLoop(t){avRaf=0;if(!avOn||document.hidden)return;if(t-last>80){drawAvatar(t);last=t}avRaf=requestAnimationFrame(avLoop)}
+const wake=()=>{if(!reduced&&avOn&&!document.hidden&&!avRaf)avRaf=requestAnimationFrame(avLoop)};
+new IntersectionObserver(([e])=>{avOn=e.isIntersecting;wake()}).observe(av);
+document.addEventListener('visibilitychange',wake);
+
+// The headline translates once on load, then is left alone
+const intro=duals.filter(e=>e.dataset.intro!==undefined);
+function playIntro(){const t0=performance.now()+(reduced?0:350);
+  (function f(now){let done=true;intro.forEach(e=>{const p=reduced?1:clamp((now-t0)/700-(+e.dataset.intro)*1.6);setCut(e,ease(p));if(p<1)done=false});if(!done)requestAnimationFrame(f)})(performance.now())}
+
+// Carousel
+const hero=document.getElementById('hero'),cue=document.getElementById('cue');
+const reel=document.getElementById('reel'),track=document.getElementById('track'),slides=[...track.children],cards=slides.filter(c=>c.tagName==='ARTICLE');
+const prog=document.getElementById('prog');slides.forEach(()=>prog.appendChild(document.createElement('i')));const pips=[...prog.children];
+cards.forEach(c=>{const b=c.querySelector('.big');if(b){b.setAttribute('aria-hidden','true');b.insertAdjacentHTML('afterend',`<span class="sr">${b.textContent}</span>`)}});
+let swipe=false;
 function layout(){
-  const W=innerWidth,H=innerHeight;let s=0,prevEnd=0;segs=[];rowsInfo=[];
-  lanes.forEach((ln,i)=>{ln.style.height=H+'px';ln.style.top=(i*H)+'px'});
-  lanes.forEach((ln,i)=>{const d=+ln.dataset.dir,w=Math.max(W,ln.scrollWidth),start=prevEnd,L=d>0?start:start+W-w,end=d>0?L+w-W:L;
-    ln.style.left=L+'px';
-    if(i){segs.push({s0:s,s1:s+H,x0:start,y0:(i-1)*H,x1:start,y1:i*H,d:+lanes[i-1].dataset.dir});s+=H}
-    segs.push({s0:s,s1:s+Math.abs(end-start),x0:start,y0:i*H,x1:end,y1:i*H,d});rowsInfo.push({d,L,w,start,end,s0:s,y:i*H});s+=Math.abs(end-start);prevEnd=end});
-  maxS=s;document.body.style.height=(maxS+H)+'px';
-  camX=0;camY=0;track.style.transform='none';
-  gridInfo=grids.map(g=>{g._stage=g.querySelector('.stage');g._stage.style.transform='none';g.style.setProperty('--sh',g._stage.offsetHeight+'px');return{g,l:g.getBoundingClientRect().left,w:g.offsetWidth,d:dirOf(g)}});
-  knotGeom();readX();buildThread();syncJump();lastAmt=-1}
-// The scroll position at which a point on a row reaches the given spot on screen.
-const sAt=(row,x,spot)=>{const r=rowsInfo[row];return clamp(r.s0+r.d*(x-spot-r.start),r.s0,r.s0+Math.abs(r.end-r.start))};
-const rowOf=e=>lanes.indexOf(e.closest('.lane'));
+  swipe=reduced||phoneMq.matches;document.documentElement.classList.toggle('swipe',swipe);
+  if(swipe){track.style.paddingLeft=track.style.paddingRight='';track.style.transform='';reel.style.height='';return}
+  const cw=Math.min(440,innerWidth*.78);track.style.setProperty('--cw',cw+'px');
+  track.style.paddingLeft=track.style.paddingRight=((innerWidth-cw)/2)+'px';
+  reel.style.height=(slides.length*65+40)+'vh';
+}
+function countTo(c,p){const b=c.querySelector('.big');if(!b||!b.dataset.count)return;const v=+b.dataset.count,dec=(b.dataset.count.split('.')[1]||'').length;b.textContent=(b.dataset.pre||'')+(v*ease(p)).toFixed(dec)+b.dataset.unit}
 
-// The knot. Its two ends never move; in between, a few rotating loops pull the line into a tangle.
-// As you scroll through the hero the loops shrink to nothing and what's left is one straight line, which the thread carries on from.
-const N=520;let K={x0:0,x1:0,y:0,R:0},env=new Float32Array(N),offA=null,offB=null,blendT0=-1e9,kick=0,kickT=-1e9,lastAmt=-1,lastBlend=-1;
-for(let i=0;i<N;i++)env[i]=Math.pow(Math.sin(Math.PI*i/(N-1)),.3);
-function tangle(){const r=Math.random,out=new Float32Array(N*2),P=[[.5,3,2],[.36,7,3],[.24,13,4],[.14,23,6]].map(([a,f,j])=>({a,f:f+r()*j,p:r()*6.283,q:r()*6.283,sx:1.25+r()*.6}));
-  for(let i=0;i<N;i++){const t=i/(N-1);let ox=0,oy=0;for(const h of P){ox+=h.a*h.sx*Math.cos(6.283*h.f*t+h.p);oy+=h.a*Math.sin(6.283*h.f*t+h.q)}out[2*i]=ox;out[2*i+1]=oy}
-  return out}
-function knotGeom(){const z=zone.getBoundingClientRect(),h=hero.getBoundingClientRect(),m=mobile();
-  K={x0:z.left-h.left+z.width*(m?.03:.12),x1:z.left-h.left+z.width*(m?.97:.88),y:z.top-h.top+z.height/2,R:Math.min(z.height*.36,z.width*(m?.22:.11))};
-  knotSvg.setAttribute('viewBox',`0 0 ${h.width} ${h.height}`)}
-const INK=[22,24,28],HOT=[217,80,43];
-function drawKnot(amt,b){const {x0,x1,y,R}=K,cx=(x0+x1)/2,f=v=>v.toFixed(1);let d='';
-  for(let i=0;i<N;i++){const t=i/(N-1),xs=x0+(x1-x0)*t,e=env[i],ox=offA[2*i]+(offB[2*i]-offA[2*i])*b,oy=offA[2*i+1]+(offB[2*i+1]-offA[2*i+1])*b;
-    // Tangled, the middle of the line bunches toward the centre; straight, every point sits on the line between the ends.
-    d+=(i?'L':'M')+f(xs+amt*e*((cx-xs)*.86+ox*R))+','+f(y+amt*e*oy*R)}
-  kpath.setAttribute('d',d);const c=INK.map((v,j)=>Math.round(v+(HOT[j]-v)*(1-amt)));kpath.style.stroke=`rgb(${c})`;
-  words.style.opacity=clamp(amt*1.4-.4,0,1)}
-function retangle(){if(reduced)return;const b=blendNow();offA=offA.map((v,i)=>v+(offB[i]-v)*b);offB=tangle();blendT0=performance.now();kick=1;kickT=blendT0}
-const blendNow=()=>{const k=clamp((performance.now()-blendT0)/750,0,1);return 1-Math.pow(1-k,3)};
-offA=tangle();offB=offA;
+function frame(){
+  const vh=innerHeight,vw=innerWidth;
+  const hr=hero.getBoundingClientRect(),h=reduced?1:clamp(-hr.top/(hr.height-vh));
+  avCut=reduced?1:seg(h,.06,.7);
+  stream.style.opacity=((phoneMq.matches?.16:.4)*(1-seg(h,.3,.9))).toFixed(3);stream.style.transform=`translateY(${(-h*500).toFixed(1)}px)`;
+  cue.style.opacity=1-seg(h,0,.1);
+  const atEnd=vh+scrollY>=document.documentElement.scrollHeight-4;
+  duals.forEach(el=>{if(el.dataset.intro!==undefined||el.closest('.card'))return;const b=el.getBoundingClientRect();setCut(el,reduced||atEnd?1:clamp((vh*.88-b.top)/(vh*.42)))});
+  let best=0,bd=1e9;
+  if(swipe){
+    slides.forEach((c,i)=>{const b=c.getBoundingClientRect(),d=Math.abs(b.left+b.width/2-vw/2);if(d<bd){bd=d;best=i}});
+    cards.forEach(c=>{c.querySelectorAll('.dual').forEach(e=>setCut(e,1));countTo(c,1)});
+  }else{
+    const rr=reel.getBoundingClientRect(),t=clamp(-rr.top/(rr.height-vh)),shift=t*(track.scrollWidth-vw);
+    track.style.transform=`translate3d(${(-shift).toFixed(1)}px,-50%,0)`;
+    slides.forEach((c,i)=>{
+      const d=(c.offsetLeft-shift+c.offsetWidth/2-vw/2)/(c.offsetWidth+40),ad=Math.abs(d);if(ad<bd){bd=ad;best=i}
+      c.style.transform=`translateZ(${(-ad*260).toFixed(1)}px) rotateY(${(-d*24).toFixed(2)}deg) translateY(${(ad*30).toFixed(1)}px)`;
+      c.style.opacity=(1-Math.min(ad,1.6)*.45).toFixed(3);c.style.setProperty('--lit',clamp(1-ad*2.5).toFixed(2));
+      const p=clamp(1.3-ad*1.9);c.querySelectorAll('.dual').forEach(e=>setCut(e,p));countTo(c,p);
+    });
+  }
+  pips.forEach((e,i)=>e.classList.toggle('on',i===best));
+}
+let raf=0;const req=()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;frame();if(!reduced&&avOn&&lum&&!avRaf)drawAvatar(performance.now())})};
+addEventListener('scroll',req,{passive:true});track.addEventListener('scroll',req,{passive:true});
+addEventListener('resize',()=>{layout();req()});phoneMq.addEventListener('change',()=>{layout();req()});
+// Keyboard users: tabbing to a card scrolls the page so that card is centred
+const centre=(c,behavior)=>{const t=clamp((c.offsetLeft+c.offsetWidth/2-innerWidth/2)/(track.scrollWidth-innerWidth));scrollTo({top:reel.offsetTop+t*(reel.offsetHeight-innerHeight),behavior})};
+track.addEventListener('focusin',e=>{const c=!swipe&&e.target.closest('.card');if(c)centre(c,'instant')});
 
-// One line for the whole snake: it leaves the end of the knot, loops once under every card,
-// turns at the end of each row, drops to the next, and finally runs along under the closing question.
-function buildThread(){
-  const W=innerWidth,H=innerHeight,mob=mobile(),lane=mob?H-26:H*.9,f=v=>v.toFixed(1);
-  const xs=rowsInfo.map(r=>[r.L,r.L+r.w]).flat(),minX=Math.min(...xs)-W*.2,maxX=Math.max(...xs)+W*.2,hh=rowsInfo.length*H;
-  thread.setAttribute('width',maxX-minX);thread.setAttribute('height',hh);thread.setAttribute('viewBox',`${minX} 0 ${maxX-minX} ${hh}`);
-  Object.assign(thread.style,{left:minX+'px',width:(maxX-minX)+'px',height:hh+'px'});
-  const st={x:K.x1,y:K.y};let d=`M${f(st.x)},${f(st.y)}`,p=st,n=0;const marks=[[d,0]];
-  const mark=s=>marks.push([d,s]);
-  const to=(x,y)=>{const dx=(x-p.x)*.5;d+=` C${f(p.x+dx)},${f(p.y)} ${f(x-dx)},${f(y)} ${f(x)},${f(y)}`;p={x,y}};
-  const loop=(r,k)=>{const {x,y}=p;d+=` C${f(x+1.6*r*k)},${f(y)} ${f(x+1.5*r*k)},${f(y-2*r)} ${f(x)},${f(y-2*r)} C${f(x-1.5*r*k)},${f(y-2*r)} ${f(x-.8*r*k)},${f(y+.3*r)} ${f(x+.9*r*k)},${f(y+.2*r)}`;p={x:x+.9*r*k,y:y+.2*r}};
-  const big=mob?26:46,little=mob?10:14,lead=k=>W*(k>0?(mob?.6:.66):(mob?.4:.34));
-  // Straight on from the knot to the edge of the opening screen.
-  to(W*.98,st.y+(lane-st.y)*.75);mark(sAt(0,p.x,lead(1)));
-  rowsInfo.forEach((r,i)=>{const k=r.d,ly=r.y+lane;
-    if(i){const pd=rowsInfo[i-1].d,ex=r.start+(pd>0?W-(mob?8:W*.03):(mob?8:W*.03)),R=mob?36:64,k2=-pd;
-      if(i===rowsInfo.length-1){
-        // The last drop swings in under the closing question and settles there as its underline.
-        const h=$('closing').getBoundingClientRect(),uy=h.bottom+camY+(mob?14:20),ux=(pd>0?h.left:h.right)+camX;
-        d+=` C${f(p.x+(ex-p.x)*.5)},${f(p.y)} ${f(ex)},${f(p.y)} ${f(ex)},${f(p.y+R)} L${f(ex)},${f(uy-R)} C${f(ex)},${f(uy-R*.45)} ${f(ex+k2*R*.45)},${f(uy)} ${f(ex+k2*R)},${f(uy)} L${f(ux)},${f(uy)}`;
-        p={x:ux,y:uy};mark(maxS);return}
-      d+=` C${f(p.x+(ex-p.x)*.5)},${f(p.y)} ${f(ex)},${f(p.y)} ${f(ex)},${f(p.y+R)} L${f(ex)},${f(ly-R)} C${f(ex)},${f(ly-R*.45)} ${f(ex+k2*R*.45)},${f(ly)} ${f(ex+k2*R)},${f(ly)}`;
-      p={x:ex+k2*R,y:ly};mark(r.s0)}
-    const gi=gridInfo.find(x=>lanes[i].contains(x.g));if(!gi)return;
-    const sw=gi.g._stage.offsetWidth,items=[{x:k>0?gi.l:gi.l+gi.w-sw,w:sw,big:1},...gi.g._rows.map(e=>({x:wx(e),w:e.offsetWidth}))].sort((a,b)=>k*(a.x-b.x));
-    items.forEach(it=>{const r0=it.big?big:little,at=it.big?it.x+it.w*(k>0?.45:.55):k>0?it.x-little*1.5:it.x+it.w+little*1.5;
-      to(at-k*r0*.6,ly+(n++%2?1:-1)*H*(mob?.006:.014));loop(r0,k);mark(sAt(i,p.x,lead(k)))})});
-  tline.setAttribute('d',d);tLen=tline.getTotalLength();tline.style.strokeDasharray=`${tLen} ${tLen}`;
-  // How much line to draw at each scroll position, from the length at each waypoint.
-  const tmp=document.createElementNS('http://www.w3.org/2000/svg','path');thread.appendChild(tmp);let ms=-1;
-  pairs=marks.map(([dd,s])=>{tmp.setAttribute('d',dd);ms=Math.max(ms,s);return[ms,tmp.getTotalLength()]});tmp.remove();
-  drawn=reduced?tLen:Math.min(drawn,tLen)}
-function lengthAt(s){if(!pairs.length)return 0;if(s<=pairs[0][0])return pairs[0][1];
-  for(let i=1;i<pairs.length;i++)if(s<=pairs[i][0]){const [s0,l0]=pairs[i-1],[s1,l1]=pairs[i];return l0+(l1-l0)*(s1>s0?(s-s0)/(s1-s0):1)}return tLen}
+/* Zoom: the dialog grows out of the card (FLIP), level 3 dives further in. Escape or back returns to the card. */
+const zoom=document.getElementById('zoom'),zbody=document.getElementById('zbody');
+let openCard=null,openBtn=null,closing=false;
+function diagram(spec,avail){
+  const rows=spec.split('||').map(r=>r.split('|').map(b=>b.split('/'))),v=avail<560;
+  const maxN=Math.max(...rows.map(r=>r.length)),nl=Math.max(...rows.flat().map(b=>b.length)),bh=22+nl*16,gap=28,boxes=[],arrows=[];let W,H;
+  if(!v){const bw=Math.min(150,(avail-(maxN-1)*gap)/maxN);W=maxN*bw+(maxN-1)*gap;H=rows.length*bh+(rows.length-1)*24;
+    rows.forEach((r,ri)=>r.forEach((b,i)=>{const x=i*(bw+gap),y=ri*(bh+24);boxes.push([x,y,bw,b]);if(i)arrows.push([x-gap+3,y+bh/2,x-4,y+bh/2])}))}
+  else{const cols=rows.length,bw=Math.min(240,(avail-(cols-1)*16)/cols);W=cols*bw+(cols-1)*16;H=maxN*bh+(maxN-1)*gap;
+    rows.forEach((r,ci)=>r.forEach((b,i)=>{const x=ci*(bw+16),y=i*(bh+gap);boxes.push([x,y,bw,b]);if(i)arrows.push([x+bw/2,y-gap+3,x+bw/2,y-4])}))}
+  const label='System diagram: '+rows.map(r=>r.map(b=>b.join(' ')).join(' → ')).join('; ');
+  let s=`<svg class="flow" viewBox="-1 -1 ${W+2} ${H+2}" width="${W+2}" height="${H+2}" role="img" aria-label="${label}"><defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#a9c6ff" stroke="none"/></marker></defs>`;
+  boxes.forEach(([x,y,w,b])=>{s+=`<rect x="${x}" y="${y}" width="${w}" height="${bh}" rx="8"/>`;const y0=y+bh/2-(b.length-1)*8;b.forEach((t,k)=>s+=`<text x="${x+w/2}" y="${y0+k*16}" text-anchor="middle" dominant-baseline="middle">${t}</text>`)});
+  arrows.forEach(([a,b,c,d])=>s+=`<path d="M${a} ${b}L${c} ${d}" marker-end="url(#ah)"/>`);
+  return s+'</svg>';
+}
+const fromCard=()=>{const a=openCard.getBoundingClientRect(),b=zoom.getBoundingClientRect();
+  return `translate(${(a.left+a.width/2-b.left-b.width/2).toFixed(1)}px,${(a.top+a.height/2-b.top-b.height/2).toFixed(1)}px) scale(${(a.width/b.width).toFixed(3)},${(a.height/b.height).toFixed(3)})`};
+function openZoom(card,btn){
+  if(zoom.open)return;
+  openCard=card;openBtn=btn;closing=false;zoom.classList.remove('deep');
+  zbody.innerHTML=card.querySelector('.detail').innerHTML;zbody.querySelector('h3').id='zt';
+  const l3=zbody.querySelector('.l3');l3.querySelector('.eyebrow').after(card.querySelector('.tags').cloneNode(true));
+  l3.insertAdjacentHTML('beforebegin','<button class="zbtn deeper" type="button" aria-expanded="false">under the hood ↓</button>');
+  zoom.showModal();zoom.scrollTop=0;
+  const f=l3.querySelector('[data-flow]');f.outerHTML=diagram(f.dataset.flow,zbody.clientWidth);
+  if(reduced)return;
+  zoom.animate(phoneMq.matches?[{transform:'translateY(100%)'},{transform:'none'}]:[{transform:fromCard(),opacity:.35},{transform:'none',opacity:1}],{duration:phoneMq.matches?360:480,easing:'cubic-bezier(.2,.8,.2,1)'});
+}
+function closeZoom(){
+  if(!zoom.open||closing)return;closing=true;
+  const done=()=>{zoom.close();closing=false;openBtn&&openBtn.focus({preventScroll:true})};
+  if(reduced)return done();
+  zoom.animate(phoneMq.matches?[{transform:'none'},{transform:'translateY(100%)'}]:[{transform:'none',opacity:1},{transform:fromCard(),opacity:0}],{duration:300,easing:'cubic-bezier(.4,0,.8,.4)',fill:'forwards'}).onfinish=e=>{done();e.target.cancel()};
+}
+track.addEventListener('click',e=>{const b=e.target.closest('.how');if(b)return openZoom(b.closest('.card'),b);
+  // clicking a card off to the side glides it to the centre, where its button is easy to reach
+  const c=!swipe&&e.target.closest('article.card');if(c&&+c.style.opacity<.95)centre(c,reduced?'instant':'smooth')});
+zoom.addEventListener('cancel',e=>{e.preventDefault();closeZoom()});
+zoom.addEventListener('click',e=>{
+  if(e.target===zoom||e.target.closest('.back'))return closeZoom();
+  const d=e.target.closest('.deeper');if(!d)return;
+  zoom.classList.add('deep');d.setAttribute('aria-expanded','true');d.hidden=true;
+  const l3=zbody.querySelector('.l3');l3.tabIndex=-1;l3.focus({preventScroll:true});l3.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+});
 
-let lastNow=0;
-function tick(now){readX();const dt=lastNow?Math.min(64,now-lastNow):16.7;lastNow=now;
-  const want=reduced||curS>=maxS-2?tLen:lengthAt(curS);drawn+=reduced?want-drawn:(want-drawn)*(1-Math.pow(.84,dt/16.7));
-  tline.style.strokeDashoffset=Math.max(0,tLen-drawn);const q=tline.getPointAtLength(clamp(drawn,0,tLen));
-  pen.setAttribute('cx',q.x);pen.setAttribute('cy',q.y);halo.setAttribute('cx',q.x);halo.setAttribute('cy',q.y);
-  thread.classList.toggle('done',drawn>tLen-4);
-  // The knot: fully tangled at the top, straight once the hero is half scrolled away. A tap tangles it again for a moment.
-  const p=reduced?0:clamp(curS/(innerWidth*.5),0,1),base=1-p*p*(3-2*p);
-  if(now-kickT>1500)kick=Math.max(0,kick-.012);
-  const amt=Math.max(base,kick),b=blendNow();
-  if(Math.abs(amt-lastAmt)>.0005||b!==lastBlend){drawKnot(amt,b);lastAmt=amt;lastBlend=b}
-  if(!reduced){rows.forEach(r=>{const bx=r.getBoundingClientRect(),st=r.closest('.grid')._stage.getBoundingClientRect(),d=dirOf(r),c=bx.left+bx.width/2,vis=bx.top<innerHeight&&bx.bottom>0;
-      r.classList.toggle('act',vis&&Math.abs(c-focusFor(d))<bx.width*.5);
-      r.classList.toggle('under',vis&&!mobile()&&(d>0?bx.left<st.right-60:bx.right>st.left+60))});
-    grids.forEach(g=>{const i=g._rows.findIndex(r=>r.classList.contains('act'));if(i>=0&&i!==g._last){g._last=i;const z=v=>String(v).padStart(2,'0');g._count.textContent=`${z(i+1)} / ${z(g._rows.length)}`}})}
-  requestAnimationFrame(tick)}
-
-// Wheel, trackpad, swipes and arrow keys each step exactly one stop along the snake.
-let wHist=[],wLast=0,wStep=0;
-addEventListener('wheel',e=>{if(e.ctrlKey)return;e.preventDefault();
-  const side=Math.abs(e.deltaX)>Math.abs(e.deltaY),v=side?e.deltaX*curDir:e.deltaY,a=Math.abs(v),now=performance.now();
-  // A trackpad keeps coasting after a swipe with each event a little weaker; a new swipe shows up as a pause or a jump in strength.
-  const avg=x=>x.reduce((p,q)=>p+q,0)/x.length,fresh=now-wLast>180;if(fresh)wHist=[];wLast=now;
-  const before=wHist.slice(-6);wHist.push(a);if(wHist.length>20)wHist.shift();
-  const rising=fresh||before.length<2||a>avg(before)*1.6+2;
-  if(a<2||!rising||now-wStep<380)return;wStep=now;go(Math.sign(v))},{passive:false});
-let tx0=0,ty0=0,tdx=0,axis=null;
-addEventListener('touchstart',e=>{const t=e.touches[0];tx0=t.clientX;ty0=t.clientY;tdx=0;axis=null},{passive:true});
-addEventListener('touchmove',e=>{if(e.touches.length>1)return;const t=e.touches[0],dx=t.clientX-tx0,dy=t.clientY-ty0;
-  if(!axis&&Math.hypot(dx,dy)>8)axis=Math.abs(dx)>Math.abs(dy)*1.2?'x':'y';if(axis!=='x')return;e.preventDefault();tdx=dx},{passive:false});
-addEventListener('touchend',()=>{if(axis==='x'&&Math.abs(tdx)>40)go(-Math.sign(tdx)*curDir);axis=null});
-addEventListener('keydown',e=>{if(/INPUT|TEXTAREA/.test(e.target.tagName))return;
-  const k={ArrowRight:curDir,ArrowLeft:-curDir,ArrowDown:1,ArrowUp:-1,PageDown:1,PageUp:-1,' ':e.shiftKey?-1:1}[e.key];if(k){e.preventDefault();go(k)}});
-const sOf=e=>{const i=rowOf(e),r=rowsInfo[i];return sAt(i,r.d>0?wx(e):wx(e)+e.offsetWidth,r.d>0?0:innerWidth)};
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href').slice(1));if(!t)return;e.preventDefault();
-  glide(t.id==='hero'?0:t.id==='foot'?maxS:sOf(t))}));
-
-// Back and forward buttons that step through the snake one card at a time.
-const jump=$('jump'),up=$('up'),down=$('down');
-const stops=()=>{const xs=[0,maxS,...rowsInfo.map(r=>r.s0),...rowsInfo.map(r=>r.s0+Math.abs(r.end-r.start))];
-  gridInfo.forEach(({g})=>xs.push(sOf(g)));
-  rows.forEach(e=>{const i=rowOf(e);xs.push(sAt(i,wx(e)+e.offsetWidth/2,focusFor(rowsInfo[i].d)))});
-  // Stops closer together than a short swipe count as one.
-  return xs.map(x=>Math.round(clamp(x,0,maxS))).sort((a,b)=>a-b).filter((x,i,a)=>!i||x-a[i-1]>Math.max(60,innerWidth*.12)||(x===maxS&&a[i-1]!==maxS))};
-const go=dir=>{const at=gl?gl.to:curS,t=stops(),n=dir>0?t.find(v=>v>at+24):t.filter(v=>v<at-24).pop();if(n!=null)glide(n)};
-function syncJump(){up.hidden=curS<24;down.hidden=curS>maxS-24;jump.classList.toggle('home',curS<24)}
-up.onclick=()=>go(-1);down.onclick=()=>go(1);
-addEventListener('scroll',()=>{readX();syncJump();jump.classList.add('show')},{passive:true});
-setTimeout(()=>jump.classList.add('show'),2500);
-// Phones: a vertical swipe moves with the finger, then settles on the next or previous stop, never between two.
-let ty=null,ts=0;
-addEventListener('touchstart',e=>{stopGlide();ty=e.touches.length>1?null:e.touches[0].clientY;ts=scrollY},{passive:true});
-addEventListener('touchmove',e=>{if(ty==null)return;if(e.touches.length>1||axis==='x'){ty=null;scrollTo(0,ts);return}e.preventDefault();scrollTo(0,ts+(ty-e.touches[0].clientY))},{passive:false});
-addEventListener('touchend',e=>{if(ty==null)return;const dy=ty-e.changedTouches[0].clientY;ty=null;
-  if(Math.abs(dy)<12){if(dy)scrollTo(0,ts);return}
-  const t=stops(),n=dy>0?t.find(v=>v>ts+24):t.filter(v=>v<ts-24).pop();glide(n??ts)});
-
-hero.addEventListener('click',e=>{if(e.target.closest('a'))return;retangle()});
-let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(layout,150)});
-if(reduced)rows.forEach(r=>r.classList.add('act'));
-layout();requestAnimationFrame(tick);
-const show=()=>{hero.classList.add('show');$('top').classList.add('show');thread.classList.add('on')};
-document.fonts.ready.then(()=>{layout();show()});
-})();
+const sw=document.getElementById('voice');
+sw.onclick=()=>{voice=voice==='h'?'m':'h';sw.setAttribute('aria-checked',voice==='m');document.body.classList.toggle('voice-m',voice==='m');build();playIntro();frame();drawAvatar(performance.now())};
+layout();playIntro();frame();
 </script>
 </body>
 </html>
