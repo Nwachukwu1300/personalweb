@@ -167,9 +167,12 @@ html:not(.swipe) .card{pointer-events:auto}
 .facts{margin-top:0}
 .facts>div:last-child{border-bottom:1px solid var(--rule)}
 .facts strong{font-weight:700;font-size:18px}
-.awards{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 24px}
-.awards b{display:block;font-weight:600;font-size:16px;line-height:1.3}
-.awards span{font-family:var(--machine);font-size:12px;color:var(--soft)}
+/* The gold and glory */
+.glory{list-style:none;margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.glory li{border:1px solid var(--rule);border-radius:18px;padding:26px;background:var(--card)}
+.stat{font-weight:800;font-size:clamp(40px,4.6vw,60px);letter-spacing:-.045em;line-height:1;background:linear-gradient(120deg,var(--blue),var(--blue-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.glory b{display:block;margin-top:18px;font-weight:700;font-size:19px;letter-spacing:-.02em;line-height:1.25}
+.glory span{display:block;margin-top:8px;font-family:var(--machine);font-size:12px;color:var(--soft);line-height:1.5}
 
 /* Contact */
 .close{min-height:72vh;display:flex;align-items:center}
@@ -186,7 +189,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   .voice{margin-left:auto}
   .hgrid{grid-template-columns:1fr;gap:0}
   .avatar{width:min(46vw,190px);margin:0 0 20px;order:-1}
-  .steps,.awards{grid-template-columns:1fr}
+  .steps,.glory{grid-template-columns:1fr}
   .exp li,.facts>div{grid-template-columns:1fr}
   .card{padding:22px}
   #zoom{width:100vw;height:100svh;max-height:100svh;margin:0;border:0;border-radius:0}
@@ -378,11 +381,19 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
     </ul>
     <div class="facts">
       <div><span class="r">education</span><div><strong>BSc Computer Science, First Class Honours</strong><p>Coventry University · 2026</p></div></div>
-      <div><span class="r">awards</span><ul class="awards">
-        <li><b>Year in Industry Student of the Year</b><span>1 of 10 from 400</span></li>
-        <li><b>AWS Machine Learning Scholarship</b><span>top 2% of 50,000+</span></li>
-        <li><b>Santander Universities Scholarship</b><span>1 of 100 nationwide</span></li></ul></div>
     </div>
+  </div></section>
+
+  <section id="awards"><div class="wrap">
+    <p class="eyebrow"><b>awards</b></p>
+    <h2><span class="dual" data-m="awards.sort(by=rarity)  // 5 rows" data-h="The gold and glory."></span></h2>
+    <ul class="glory">
+      <li><p class="stat">1 of 10</p><b>Year in Industry Student of the Year</b><span>from 400 placement students nationwide · National Highways, 2025</span></li>
+      <li><p class="stat">top 2%</p><b>AWS Machine Learning Scholarship</b><span>of 50,000+ DeepRacer applicants · Amazon Web Services, 2023</span></li>
+      <li><p class="stat">1 of 100</p><b>Santander Universities Scholarship</b><span>recipients selected nationwide · Santander, 2023</span></li>
+      <li><p class="stat">winner</p><b>Intern of the Year</b><span>Paradigm Finance, 2021</span></li>
+      <li><p class="stat">top of 50</p><b>Best Foundation Student</b><span>top student in a cohort of 50 · 16 Plus Schools, 2021</span></li>
+    </ul>
   </div></section>
 
   <section class="close" id="contact"><div class="wrap">
