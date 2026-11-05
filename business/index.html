@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soma · Software for growing businesses</title>
+<meta name="description" content="Soma builds websites, custom software and automations that take the busywork off small and medium businesses. Based in the UK, working with clients across the UK and remotely.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f8cf6'/%3E%3Ccircle cx='16' cy='21' r='5' fill='%2306070b'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://mmesomadev.com/business/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mmesomadev.com/business/">
+<meta property="og:title" content="Soma · Software for growing businesses">
+<meta property="og:description" content="Websites, custom software and automations that take the busywork off small and medium businesses. Based in the UK.">
+<meta property="og:image" content="https://mmesomadev.com/business/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Soma: I take the busywork off your plate. Websites, custom software and automations for small and medium businesses.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Same system as the rest of mmesomadev.com: black and blue only, Bricolage Grotesque + JetBrains Mono. */
+:root{
+  --bg:#06070b;--bg2:#090b12;--card:#0e121d;
+  --line:rgba(169,198,255,.1);--line2:rgba(169,198,255,.14);--line3:rgba(169,198,255,.22);--line4:rgba(169,198,255,.42);
+  --text:#f1f4fb;--text2:#e4e9f5;--muted:#c4cbdb;--sub:#aab2c4;--dim:#8790a6;
+  --link:#a9c6ff;--accent:#4f8cf6;--blue-bg:#0f1a3a;--blue-line:#263a73;
+  --head:"Bricolage Grotesque",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--head);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;isolation:isolate}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;filter:blur(12px);background:radial-gradient(28% 30% at 85% 20%,rgba(79,140,246,.1),transparent 70%),radial-gradient(26% 30% at 12% 82%,rgba(79,140,246,.06),transparent 70%)}
+a{color:var(--link)}a:hover{color:var(--text)}
+h1,h2,h3,p{margin:0}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+details[open] .faq-plus{transform:rotate(45deg)}
+.faq-plus{transition:transform .2s ease;flex:none;font-size:28px;color:var(--link);line-height:1}
+input:focus,textarea:focus,select:focus,button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section[id]{scroll-margin-top:80px}
+
+.wrap{max-width:1200px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:48px}
+.band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--accent)}
+.mono{font-family:var(--mono);font-size:13px;color:var(--dim)}
+.intro{display:flex;flex-direction:column;gap:14px;max-width:760px}
+h2{font-family:var(--head);font-weight:800;font-size:clamp(32px,4.8vw,60px);line-height:1.02;letter-spacing:-.04em}
+h3{font-family:var(--head);font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1.2}
+.sub{color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--min,300px),100%),1fr));gap:20px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:14px 20px;font-family:var(--mono);font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border-radius:0}
+.btn-primary{background:var(--accent);color:var(--bg);border:1px solid var(--accent)}
+.btn-primary:hover{filter:brightness(1.1);color:var(--bg)}
+.btn-ghost{color:var(--text);border:1px solid var(--line3);background:rgba(6,7,11,.5)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--text)}
+
+.card{background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:36px;display:flex;flex-direction:column;gap:18px;transition:border-color .2s ease,transform .2s ease}
+.card:hover{border-color:var(--line4);transform:translateY(-2px)}
+.card .foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line2)}
+.icon{width:52px;height:52px;border-radius:14px;background:var(--blue-bg);border:1px solid var(--blue-line);display:flex;align-items:center;justify-content:center}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{font-family:var(--mono);font-size:12px;color:var(--link);border:1px solid var(--line3);padding:3px 8px}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:linear-gradient(var(--bg) 60%,rgba(6,7,11,0))}
+nav{max-width:1200px;margin:0 auto;padding:18px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--head);font-weight:800;font-size:22px;color:var(--text);text-decoration:none;letter-spacing:-.03em}
+.logo i{font-style:normal;background:var(--accent);color:var(--bg);padding:0 .14em;margin-left:.04em}
+.nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:15px}
+.nav-link{color:var(--muted);text-decoration:none}.nav-link:hover{color:var(--text)}
+.nav-links .btn{padding:11px 16px;font-size:13px}
+@media (max-width:860px){.nav-links .hide-sm{display:none}}
+
+/* hero */
+.hero{max-width:1200px;margin:0 auto;padding:clamp(48px,8vw,104px) clamp(16px,4vw,40px) 72px;display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+.hero-copy{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.pill{display:inline-flex;align-self:flex-start;align-items:center;gap:10px;padding:7px 12px;border:1px solid var(--line3);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(42px,6.6vw,88px);line-height:.98;letter-spacing:-.045em}
+.lead{max-width:560px;font-size:clamp(18px,1.6vw,21px);color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.stats{display:flex;flex-wrap:wrap;gap:36px;padding-top:16px;border-top:1px solid var(--line2)}
+.stat{display:flex;flex-direction:column;gap:2px;max-width:200px}
+.stat b{font-family:var(--head);font-weight:800;font-size:34px;letter-spacing:-.03em}
+.stat span{font-size:14px;color:var(--dim);line-height:1.45}
+.demo{flex:1 1 400px;min-width:0;background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:20px}
+.demo-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.demo-col{display:flex;flex-direction:column;gap:10px}
+.col-head{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:15px}
+.badge{font-family:var(--mono);font-size:11px;padding:2px 7px;border:1px solid var(--line3);color:var(--dim)}
+.badge.new{color:var(--link);border-color:var(--blue-line)}
+.step{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--line2);border-radius:10px;font-size:14px;color:var(--muted);line-height:1.35}
+.step i{width:6px;height:6px;border-radius:50%;background:var(--dim);flex:none}
+.step svg{flex:none}
+.step.hot{background:var(--blue-bg);border-color:var(--blue-line);color:var(--text);font-weight:600}
+
+/* built for strip */
+.strip{max-width:1200px;margin:0 auto;padding:28px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px}
+.strip b{font-family:var(--head);font-weight:700;font-size:19px;color:var(--muted)}
+
+/* quotes */
+.quote{padding:28px;border-radius:20px;gap:12px}
+.quote::before{content:"\201C";font-family:var(--head);font-size:40px;line-height:1;color:var(--line4)}
+.quote p{font-size:19px;line-height:1.45;color:var(--text2)}
+.callout{background:var(--blue-bg);border:1px solid var(--blue-line);border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.callout p{font-size:19px;line-height:1.45;color:var(--text);font-weight:600}
+.arrow-link{color:var(--link);font-family:var(--mono);font-size:14px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+
+/* results */
+.big{font-family:var(--head);font-weight:800;font-size:clamp(48px,6vw,72px);line-height:1;letter-spacing:-.05em;background:linear-gradient(120deg,var(--accent),var(--link));-webkit-background-clip:text;background-clip:text;color:transparent}
+.result p b{color:var(--text);font-weight:700}
+.result .body{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line2);padding-top:20px}
+
+/* experience timeline */
+.timeline{display:flex;flex-direction:column;border-top:1px solid var(--line2)}
+.job{display:flex;flex-wrap:wrap;gap:8px 40px;padding:28px 0;border-bottom:1px solid var(--line2)}
+.job .when{flex:0 0 200px;font-family:var(--mono);font-size:12px;color:var(--dim);padding-top:6px}
+.job .what{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.job h3{font-size:22px}
+.job h3 span{color:var(--dim);font-weight:400}
+
+/* process */
+.process{background:#0a1124;border-top:1px solid var(--blue-line);border-bottom:1px solid var(--blue-line)}
+.process .eyebrow{color:var(--link)}
+.pstep{background:#0e1834;border:1px solid var(--blue-line);border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:14px}
+.pstep h3{font-size:22px}
+.pstep p{color:#c3cde6}
+.num{width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--bg);font-family:var(--mono);font-weight:500;display:flex;align-items:center;justify-content:center}
+
+/* about */
+.about{flex-direction:row;flex-wrap:wrap;gap:56px;align-items:flex-start}
+.photo{flex:1 1 320px;min-width:0;max-width:440px;aspect-ratio:1;border-radius:22px;overflow:hidden;box-shadow:0 0 0 1px rgba(127,176,255,.3)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-copy{flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.awards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line2)}
+.awards li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--line2)}
+.awards b{font-weight:700}
+.awards span{color:var(--dim);font-family:var(--mono);font-size:13px}
+
+/* skills */
+.skills{display:flex;flex-direction:column;gap:14px}
+.skill-row{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
+.skill-row .mono{flex:0 0 140px}
+.skill-row .tags{margin:0;flex:1 1 300px}
+
+/* faq */
+.faq{flex-direction:row;flex-wrap:wrap}
+.faq .intro{flex:1 1 300px;min-width:0}
+.faq-list{flex:999 1 560px;min-width:0;border-top:1px solid var(--line2)}
+.faq details{border-bottom:1px solid var(--line2)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;font-family:var(--head);font-weight:700;font-size:20px;min-height:44px}
+.faq details p{margin:0 0 24px;color:var(--sub);max-width:640px}
+
+/* contact */
+.contact{flex-direction:row;flex-wrap:wrap;gap:56px}
+.contact-copy{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:22px}
+form{flex:999 1 520px;min-width:0;background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:20px}
+.field{display:flex;flex-direction:column;gap:8px}
+label,legend{font-family:var(--mono);font-size:12px;color:var(--muted)}
+input,textarea,select{background:var(--bg);border:1px solid var(--line3);border-radius:0;padding:14px 16px;font:inherit;font-size:16px;color:var(--text);min-height:48px}
+textarea{resize:vertical}
+fieldset{border:0;margin:0;padding:0}
+legend{padding:0;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{background:transparent;color:var(--muted);border:1px solid var(--line3);padding:10px 14px;font-family:var(--mono);font-size:13px;min-height:44px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500}
+
+/* pricing */
+.plan{background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:40px;display:flex;flex-direction:column;gap:22px}
+.plan.featured{background:var(--blue-bg);border-color:var(--blue-line)}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.price b{font-family:var(--head);font-weight:800;font-size:48px;letter-spacing:-.04em;line-height:1.1}
+.checks{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line2);padding-top:22px;color:var(--muted)}
+.featured .checks{border-color:var(--blue-line);color:#dce4fa}
+.checks div{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:none;margin-top:3px}
+.plan .btn{margin-top:auto}
+.plan .flag{font-family:var(--mono);font-size:12px;color:var(--bg);background:var(--accent);padding:3px 8px}
+.form-msg{font-size:14px;text-align:center;margin:0;color:var(--dim)}
+
+/* footer */
+footer{background:var(--accent);color:var(--bg)}
+footer .wrap{padding-bottom:40px}
+footer a{color:var(--bg);min-height:44px;display:inline-flex;align-items:center;font-family:var(--mono);font-size:14px;text-decoration:none}
+footer a:hover{color:var(--bg);opacity:.75}
+.footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px}
+.footer-top p{color:var(--bg)}
+.footer-big{font-family:var(--head);font-weight:800;font-size:clamp(56px,10vw,144px);line-height:.92;letter-spacing:-.05em;color:var(--bg)}
+footer .btn{background:var(--bg);color:var(--text);padding:16px 24px}
+footer .btn:hover{color:var(--text);opacity:1;filter:brightness(1.4)}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid rgba(6,7,11,.3);padding-top:24px;font-family:var(--mono);font-size:13px;color:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.faq-plus{transition:none}.card:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+<nav aria-label="Main">
+  <a class="logo" href="#top">soma<i>.</i></a>
+  <div class="nav-links">
+    <a class="nav-link hide-sm" href="#services">Services</a>
+    <a class="nav-link hide-sm" href="#work">Results</a>
+    <a class="nav-link hide-sm" href="#experience">Track record</a>
+    <a class="nav-link hide-sm" href="#projects">Products</a>
+    <a class="nav-link hide-sm" href="#pricing">Pricing</a>
+    <a class="nav-link hide-sm" href="#faq">FAQ</a>
+    <a class="nav-link hide-sm" href="/hire/">Hiring?</a>
+    <a class="btn btn-primary" href="#contact">Book a free call</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<section id="top" class="hero">
+  <div class="hero-copy">
+    <div class="pill"><span class="dot"></span>Open for new projects · UK and remote</div>
+    <h1>I take the <span style="color:var(--link)">busywork</span> off your plate.</h1>
+    <p class="lead">I'm Soma. I build websites, custom software and automations for small and medium businesses. You tell me what's eating your team's time. I build the thing that fixes it.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#contact">Book a free 20 minute call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#work">See what I've built</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>600 hrs</b><span>of manual work cut every month for small business clients</span></div>
+      <div class="stat"><b>£10k</b><span>of orders moved off a spreadsheet and into one system</span></div>
+      <div class="stat"><b>1,000s</b><span>of documents made searchable for National Highways</span></div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="demo-head"><span class="eyebrow">what I actually do</span><span class="mono" style="font-size:12px">example · a new order</span></div>
+    <div class="grid" style="--min:150px;gap:16px">
+      <div class="demo-col">
+        <div class="col-head">Before<span class="badge">by hand</span></div>
+        <div class="step"><i></i>Order email arrives</div>
+        <div class="step"><i></i>Copied into a spreadsheet</div>
+        <div class="step"><i></i>Stock checked by hand</div>
+        <div class="step"><i></i>Invoice typed up</div>
+        <div class="step"><i></i>Customer chased to pay</div>
+      </div>
+      <div class="demo-col">
+        <div class="col-head">After<span class="badge new">automatic</span></div>
+        <div class="step hot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Order comes in</div>
+        <div class="step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Stock updated</div>
+        <div class="step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Invoice sent</div>
+        <div class="step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Payment confirmed</div>
+        <div class="step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>You get a low stock alert</div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--dim);border-top:1px solid var(--line2);padding-top:16px">Same work. Nobody copying and pasting.</p>
+  </div>
+</section>
+
+<section aria-label="Organisations I've built for" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="strip">
+    <span class="mono">built for</span>
+    <b>National Highways</b><b>Samaritan's Purse</b><b>Projekt Rising</b><b>Ventureship</b><b>SalesAPE.ai</b>
+  </div>
+</section>
+
+<section class="wrap" style="gap:40px">
+  <div class="intro">
+    <span class="eyebrow">sound familiar?</span>
+    <h2>The jobs that quietly eat your week.</h2>
+  </div>
+  <div class="grid" style="--min:260px;gap:16px">
+    <div class="card quote"><p>My team spends hours copying data from one tool into another.</p></div>
+    <div class="card quote"><p>Our orders, bookings or stock live in a spreadsheet that keeps breaking.</p></div>
+    <div class="card quote"><p>Customers wait hours for answers we've given a hundred times.</p></div>
+    <div class="card quote"><p>Everything we know is buried in PDFs and old emails nobody can search.</p></div>
+    <div class="card quote"><p>Our website looks dated and doesn't bring in any business.</p></div>
+    <div class="callout"><p>Nodded at any of these? That's exactly the kind of problem I fix.</p><a class="arrow-link" href="#contact">Tell me yours <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<section id="services" class="band">
+  <div class="wrap">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div class="intro" style="max-width:680px">
+        <span class="eyebrow">services · what I build</span>
+        <h2>Software built around how your business already works.</h2>
+      </div>
+      <p class="sub" style="max-width:360px">No off the shelf tool that half fits. I build exactly what you need and connect it to the tools you already use.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+        <h3>Websites and web apps</h3>
+        <p class="sub">Fast, clean websites that bring in customers, and web apps that take orders, bookings or payments online. Built to work on every phone and easy for you to update.</p>
+        <p class="mono foot">good for · getting found and getting paid online</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Custom business systems</h3>
+        <p class="sub">Ordering, booking, stock and client portals built around the way you work. Retire the spreadsheet that keeps breaking and see everything in one place.</p>
+        <p class="mono foot">good for · businesses run on spreadsheets</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Automations and integrations</h3>
+        <p class="sub">Take the repetitive work off your team. Data entry, sorting emails, chasing invoices, moving information between tools. Connected up so it all runs on its own.</p>
+        <p class="mono foot">good for · teams buried in admin</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>AI, where it actually helps</h3>
+        <p class="sub">Assistants that answer questions from your own documents, and software that reads photos, scans and forms so people don't have to. Only where it saves real time.</p>
+        <p class="mono foot">good for · the same questions and paperwork, every day</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="intro">
+    <span class="eyebrow">results · problems I've solved</span>
+    <h2>Real problems. Real numbers.</h2>
+  </div>
+  <div class="grid" style="--min:420px">
+    <article class="card result">
+      <span class="mono">small business clients · Projekt Rising</span>
+      <div><div class="big">600 hrs</div><p style="font-size:18px;color:var(--muted)">of manual work cut every month</p></div>
+      <div class="body">
+        <p class="sub"><b>The problem.</b> Staff at several small businesses spent their days copying and pasting between tools.</p>
+        <p class="sub"><b>What I built.</b> I mapped each team's workflow, found the repeat steps and built automations that run them on their own, connected to the data each business already had.</p>
+      </div>
+    </article>
+    <article class="card result">
+      <span class="mono">charity · Samaritan's Purse</span>
+      <div><div class="big">£10k</div><p style="font-size:18px;color:var(--muted)">of orders for 50 groups, no spreadsheet</p></div>
+      <div class="body">
+        <p class="sub"><b>The problem.</b> Every order for discounted gift boxes went through one fragile spreadsheet.</p>
+        <p class="sub"><b>What I built.</b> On my own, an online order form, automatic payment and confirmation, and a live stock dashboard with low stock alerts.</p>
+        <a class="arrow-link" style="color:var(--link)" href="https://packing-party-2026.netlify.app/">See it live <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      </div>
+    </article>
+    <article class="card result">
+      <span class="mono">startup · Ventureship</span>
+      <div><div class="big">12 agents</div><p style="font-size:18px;color:var(--muted)">replace a founder's whole manual process</p></div>
+      <div class="body">
+        <p class="sub"><b>The problem.</b> The founder was screening every candidate by hand.</p>
+        <p class="sub"><b>What I built.</b> AI agents that do the screening, with bias audits and evidence checks so every decision traces back to its source. Tested and fixed across three rounds of real runs.</p>
+        <a class="arrow-link" style="color:var(--link)" href="https://ventureship.co.uk/">Visit the site <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      </div>
+    </article>
+    <article class="card result">
+      <span class="mono">infrastructure · National Highways</span>
+      <div><div class="big">1,000s</div><p style="font-size:18px;color:var(--muted)">of manuals turned into one place to ask</p></div>
+      <div class="body">
+        <p class="sub"><b>The problem.</b> One answer could be spread across dozens of technical documents that reference each other.</p>
+        <p class="sub"><b>What I built.</b> A system that reads every manual, maps how they connect and lets engineers ask questions in plain English.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experience" class="band">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">track record · who I've built for</span>
+      <h2>From national infrastructure to small teams.</h2>
+    </div>
+    <div class="timeline">
+      <div class="job"><span class="when">startup</span><div class="what">
+        <h3>Ventureship <span>· hiring platform</span></h3>
+        <p class="sub">Built the engine of a hiring platform that screens candidates automatically: 12 AI agents working together, about 19,000 lines of code and 1,100+ automated tests. Includes bias checks, protection against malicious inputs, and quality checks that stop a release if results get worse.</p>
+      </div></div>
+      <div class="job"><span class="when">charity</span><div class="what">
+        <h3>Samaritan's Purse <span>· ordering and stock system</span></h3>
+        <p class="sub">A complete ordering system for a £10,000 project supplying 50 community groups. Online order form, automatic payments and confirmations, and a live stock dashboard with alerts.</p>
+      </div></div>
+      <div class="job"><span class="when">small businesses</span><div class="what">
+        <h3>Projekt Rising <span>· workflow automation</span></h3>
+        <p class="sub">Found the repetitive work across several SMEs and replaced it with automations connected to their existing tools, cutting roughly 600 hours of manual work a month. I also run and monitor the systems behind them.</p>
+      </div></div>
+      <div class="job"><span class="when">startup</span><div class="what">
+        <h3>SalesAPE.ai <span>· product prototypes</span></h3>
+        <p class="sub">Built 3 product prototypes on tight timelines. 2 of the 3 moved into full development. Set up testing to measure how reliable each one was.</p>
+      </div></div>
+      <div class="job"><span class="when">national infrastructure</span><div class="what">
+        <h3>National Highways <span>· image and document systems</span></h3>
+        <p class="sub">An image system that reads weather conditions from 10,000 CCTV images with 98% accuracy. A question-answering system over thousands of linked engineering documents. Satellite image analysis to map roadside habitats.</p>
+      </div></div>
+      <div class="job"><span class="when">my own company</span><div class="what">
+        <h3>FaceRegg <span>· identity verification software</span></h3>
+        <p class="sub">Founded and ran an image and identity verification product. Won paying clients and brought in £5k in revenue.</p>
+      </div></div>
+      <div class="job"><span class="when">financial services</span><div class="what">
+        <h3>Paradigm Finance <span>· credit risk tools</span></h3>
+        <p class="sub">Internal credit risk tools and client portfolio reports, built to financial data security standards.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="wrap">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+    <div class="intro" style="max-width:680px">
+      <span class="eyebrow">products · built end to end</span>
+      <h2>Products I've built from scratch.</h2>
+    </div>
+    <a class="arrow-link" style="color:var(--link)" href="https://github.com/Nwachukwu1300">More on GitHub <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <span class="mono">image recognition · accident investigation</span>
+      <h3>Sentinel</h3>
+      <p class="sub">Identifies a car's make, model and year from a single photo in under a twentieth of a second. It pulls the car's Euro NCAP safety data automatically and produces evidence-ready reports for accident reconstruction.</p>
+      <a class="arrow-link" style="color:var(--link)" href="https://drive.google.com/file/d/1m0iP5nCtqZHm_CMRhVzV6RlxQO3pS-i1/view">Watch the demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResNet50</span><span class="tag">Flask</span></div>
+    </article>
+    <article class="card">
+      <span class="mono">web app · learning platform</span>
+      <h3>ExcelPoint</h3>
+      <p class="sub">Upload your documents and ask them questions in plain English. It finds the right passages, answers from them and builds quizzes to check understanding. Heavy processing runs in the background so the app stays fast.</p>
+      <div class="tags"><span class="tag">Django</span><span class="tag">React</span><span class="tag">LangChain</span><span class="tag">Celery</span><span class="tag">AWS S3</span></div>
+    </article>
+    <article class="card">
+      <span class="mono">recommendations · built from the ground up</span>
+      <h3>CUDA Transformer Engine</h3>
+      <p class="sub">The engine behind a live movie recommender trained on 1 million ratings. Written from the ground up without off-the-shelf libraries, then tuned to run attention 25.7x faster.</p>
+      <a class="arrow-link" style="color:var(--link)" href="https://cudatransformer-recommender.onrender.com/">Try it live <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      <div class="tags"><span class="tag">CUDA</span><span class="tag">C++</span><span class="tag">Python</span></div>
+    </article>
+  </div>
+  <div class="skills">
+    <span class="eyebrow">toolkit</span>
+    <div class="skill-row"><span class="mono">Frontend</span><div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span></div></div>
+    <div class="skill-row"><span class="mono">Backend</span><div class="tags"><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">Django</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Celery</span></div></div>
+    <div class="skill-row"><span class="mono">Cloud / Infra</span><div class="tags"><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Databricks</span><span class="tag">Git</span></div></div>
+    <div class="skill-row"><span class="mono">AI and data</span><div class="tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">LangChain</span><span class="tag">Hugging Face</span><span class="tag">OpenCV</span><span class="tag">Scikit-learn</span></div></div>
+  </div>
+</section>
+
+<section id="process" class="process">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">how it works · four steps, every time</span>
+      <h2>From first call to working software. No surprises.</h2>
+    </div>
+    <div class="grid" style="--min:240px">
+      <div class="pstep"><span class="num">01</span><h3>Free call</h3><p>Twenty minutes. You tell me what's slowing the business down. I tell you straight if software can fix it.</p></div>
+      <div class="pstep"><span class="num">02</span><h3>Clear plan, fixed price</h3><p>A short plan in plain English. What I'll build, how long it takes and what it costs. Agreed before any work starts.</p></div>
+      <div class="pstep"><span class="num">03</span><h3>Built in weekly steps</h3><p>You see working progress every week and give feedback as we go. No big reveal at the end.</p></div>
+      <div class="pstep"><span class="num">04</span><h3>Launch and support</h3><p>I set it up, show your team how to use it and stay around to fix and improve it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="wrap">
+  <div class="intro">
+    <span class="eyebrow">pricing · two ways to work together</span>
+    <h2>Pay for results, not hours.</h2>
+  </div>
+  <div class="grid" style="--min:320px">
+    <div class="plan">
+      <div style="display:flex;flex-direction:column;gap:8px"><h3>One project</h3><p class="sub">For one problem with a clear finish line.</p></div>
+      <div class="price"><b>Fixed quote</b><span class="sub" style="font-size:15px">priced on complexity</span></div>
+      <div class="checks">
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Free call and written plan</div>
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Price agreed up front, before any work starts</div>
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Weekly progress you can see and test</div>
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Launch, team walkthrough and support after</div>
+      </div>
+      <a class="btn btn-ghost" href="#contact">Get a quote</a>
+    </div>
+    <div class="plan featured">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><h3>Monthly engineer</h3><span class="flag">most flexible</span></div>
+        <p style="color:#c3cde6">Your own engineer on call, without hiring one.</p>
+      </div>
+      <div class="price"><b>£600</b><span style="font-size:15px;color:var(--link)">per month</span></div>
+      <div class="checks">
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Send requests whenever you need them</div>
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>New automations and fixes every month</div>
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Priority support for everything I've built</div>
+        <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a9c6ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pause or cancel any month</div>
+      </div>
+      <a class="btn btn-primary" href="#contact">Book a free call</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="band">
+  <div class="wrap about">
+    <div class="photo"><img src="/assets/soma.jpg" alt="Portrait of Soma" width="440" height="440" loading="lazy"></div>
+    <div class="about-copy">
+      <span class="eyebrow">about · who you'd be working with</span>
+      <h2>Hi, I'm Soma.</h2>
+      <p style="font-size:19px;color:var(--muted)">I'm a software engineer based in the UK. I build websites, business systems, automations and AI tools, and I've built for National Highways, startups, small businesses and a charity. I've also founded and run my own software company with paying clients, so I know a tool has to earn its keep.</p>
+      <p class="sub">My clients care about one thing. Does it save time and money? That's what I build for. You deal with me directly from the first call to launch day.</p>
+      <ul class="awards" aria-label="At a glance">
+        <li><b>Business owner myself</b><span>founded and ran a software company</span></li>
+        <li><b>Trusted with public infrastructure</b><span>systems for National Highways</span></li>
+        <li><b>Built to last</b><span>tested, monitored and supported after launch</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="wrap faq">
+  <div class="intro">
+    <span class="eyebrow">faq · straight answers</span>
+    <h2>Questions owners ask me.</h2>
+    <p class="sub">Something else on your mind? Ask it on the free call.</p>
+  </div>
+  <div class="faq-list">
+    <details><summary>Do I need to understand tech?<span class="faq-plus" aria-hidden="true">+</span></summary><p>No. You explain the problem in your own words. I handle the tech and explain what I built in plain English.</p></details>
+    <details><summary>How much does it cost?<span class="faq-plus" aria-hidden="true">+</span></summary><p>One-off projects get a fixed quote after the free call, based on how complex the job is, so you know the price before any work starts. If you want ongoing help, you can keep me on monthly for £600.</p></details>
+    <details><summary>How long does it take?<span class="faq-plus" aria-hidden="true">+</span></summary><p>It depends on the job, and your written plan gives you a timeline up front. You see working progress every week, so you're never left guessing.</p></details>
+    <details><summary>Will it work with the tools I already use?<span class="faq-plus" aria-hidden="true">+</span></summary><p>Usually yes. I connect to what you already have, like your email, spreadsheets, CRM or online shop, so your team doesn't have to switch.</p></details>
+    <details><summary>Who owns what you build?<span class="faq-plus" aria-hidden="true">+</span></summary><p>You do. The code, the accounts and the data are all yours.</p></details>
+    <details><summary>Is my data safe?<span class="faq-plus" aria-hidden="true">+</span></summary><p>Yes. I've built software under financial data security standards, and I only touch the data the job needs.</p></details>
+    <details><summary>What if something breaks after launch?<span class="faq-plus" aria-hidden="true">+</span></summary><p>I fix it. Every project comes with support after launch, and you can keep me on monthly if you want ongoing help.</p></details>
+  </div>
+</section>
+
+<section id="contact" class="band" style="border-bottom:0">
+  <div class="wrap contact">
+    <div class="contact-copy">
+      <span class="eyebrow">contact · start here</span>
+      <h2>Tell me what's slowing you down.</h2>
+      <p class="sub">No jargon needed. Write it how you'd explain it to a friend. I'll come back with an honest answer on whether I can help and roughly what it would take.</p>
+      <a href="mailto:mnfinance664@gmail.com" style="font-size:19px;font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">mnfinance664@gmail.com</a>
+    </div>
+    <form id="enquiry" action="https://formsubmit.co/mnfinance664@gmail.com" method="POST" aria-label="Project enquiry">
+      <input type="hidden" name="_subject" value="New project enquiry from your website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="budget" value="Not sure yet">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="grid" style="--min:220px;gap:16px">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="grid" style="--min:220px;gap:16px">
+        <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" type="text" autocomplete="organization"></div>
+        <div class="field"><label for="f-when">When do you need it?</label><select id="f-when" name="when"><option>As soon as possible</option><option>Within a month</option><option>In the next few months</option><option>Just exploring</option></select></div>
+      </div>
+      <div class="field"><label for="f-problem">What's eating your team's time?</label><textarea id="f-problem" name="problem" rows="5" placeholder="Every week we spend hours on..." required></textarea></div>
+      <fieldset>
+        <legend>Rough budget</legend>
+        <div class="chips">
+          <button type="button" aria-pressed="false">Under £1k</button>
+          <button type="button" aria-pressed="false">£1k to £3k</button>
+          <button type="button" aria-pressed="false">£3k to £10k</button>
+          <button type="button" aria-pressed="false">£10k and up</button>
+          <button type="button" aria-pressed="true">Not sure yet</button>
+        </div>
+      </fieldset>
+      <button class="btn btn-primary" type="submit" style="font-size:17px;min-height:52px">Send it over <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      <p id="form-msg" class="form-msg" role="status">I read every message myself. No sales pitch, just an honest answer.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-size:19px">Got a problem eating your week?</p>
+        <p class="footer-big">Let's fix it.</p>
+      </div>
+      <a class="btn" href="#contact">Book a free call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Soma · United Kingdom</span>
+      <div style="display:flex;flex-wrap:wrap;gap:24px">
+        <a href="mailto:mnfinance664@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/mmesoma-nwachukwu-3a3862263/">LinkedIn</a>
+        <a href="https://github.com/Nwachukwu1300">GitHub</a>
+        <a href="/hire/">Engineering side →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const form = document.getElementById('enquiry');
+const msg = document.getElementById('form-msg');
+const chips = document.querySelectorAll('.chips button');
+chips.forEach(b => b.addEventListener('click', () => {
+  chips.forEach(c => c.setAttribute('aria-pressed', c === b));
+  form.budget.value = b.textContent;
+}));
+
+// FormSubmit emails each enquiry; without JS the form still posts and FormSubmit shows its own thank-you page.
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('[type="submit"]');
+  btn.disabled = true;
+  try {
+    const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+    const data = await res.json();
+    if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || res.status);
+    form.reset();
+    chips[chips.length - 1].click();
+    msg.style.color = '#a9c6ff';
+    msg.textContent = "Thanks, it's sent. I'll get back to you soon.";
+  } catch {
+    msg.style.color = '#f1f4fb';
+    msg.innerHTML = 'That didn\'t send. Please email me at <a href="mailto:mnfinance664@gmail.com">mnfinance664@gmail.com</a>.';
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
