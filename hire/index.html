@@ -244,14 +244,14 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   </div></section>
 
   <section id="work"><div class="wrap">
-    <p class="eyebrow"><b>work</b> · six projects</p>
-    <h2><span class="dual" data-m="SELECT * FROM projects LIMIT 6;" data-h="Selected work."></span></h2>
+    <p class="eyebrow"><b>work</b> · seven projects</p>
+    <h2><span class="dual" data-m="SELECT * FROM projects LIMIT 7;" data-h="Selected work."></span></h2>
   </div></section>
   <div class="reel" id="reel"><div class="stage" id="stage">
     <div class="track" id="track">
 
       <article class="card">
-        <div class="num"><span>01 / 06</span><span>for Ventureship</span></div>
+        <div class="num"><span>01 / 07</span><span>for Ventureship</span></div>
         <p class="who">AI agent layer for a hiring platform</p>
         <h3><span class="dual" data-m="around a dozen LLM agents + orchestrator · Python · Claude API · 1,100+ tests" data-h="A founder was running hiring entirely by hand."></span></h3>
         <ul class="tags"><li>Python</li><li>Anthropic Claude API</li><li>around a dozen agents</li><li>orchestrator</li><li>eval harness</li><li>bias audits</li><li>prompt-injection defences</li></ul>
@@ -270,7 +270,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       </article>
 
       <article class="card">
-        <div class="num"><span>02 / 06</span><span>for National Highways</span></div>
+        <div class="num"><span>02 / 07</span><span>for National Highways</span></div>
         <p class="who">Engineering knowledge graph (RAG)</p>
         <h3><span class="dual" data-m="pdfplumber → spaCy NER → relation extraction → knowledge graph → RAG" data-h="Thousands of engineering manuals, all pointing at each other."></span></h3>
         <ul class="tags"><li>Python</li><li>pdfplumber</li><li>spaCy</li><li>NetworkX</li><li>RDF triples</li><li>RAG</li></ul>
@@ -288,7 +288,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
         </div>
       </article>
       <article class="card">
-        <div class="num"><span>03 / 06</span><span>personal build</span></div>
+        <div class="num"><span>03 / 07</span><span>personal build</span></div>
         <p class="who">CUDA Transformer from scratch</p>
         <h3><span class="dual" data-m="hand-written CUDA kernels → own autograd → one decoder, two domains" data-h="Frameworks hide the maths. I wanted to build it myself."></span></h3>
         <ul class="tags"><li>CUDA</li><li>C++</li><li>Python</li><li>own autograd</li><li>JAX/Flax</li><li>MovieLens 1M</li></ul>
@@ -307,7 +307,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       </article>
 
       <article class="card">
-        <div class="num"><span>04 / 06</span><span>for National Highways</span></div>
+        <div class="num"><span>04 / 07</span><span>for National Highways</span></div>
         <p class="who">Weather removal for CCTV</p>
         <h3><span class="dual" data-m="ResNet-50 + ViT weather models · 10k CCTV frames · removal model" data-h="Rain, fog and snow made roadside cameras hard to read."></span></h3>
         <ul class="tags"><li>Python</li><li>TensorFlow</li><li>ResNet-50</li><li>ViT</li></ul>
@@ -325,14 +325,32 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       </article>
 
       <article class="card">
-        <div class="num"><span>05 / 06</span><span>for crash investigators</span></div>
+        <div class="num"><span>05 / 07</span><span>personal build</span></div>
+        <p class="who">AgentBid Arena</p>
+        <h3><span class="dual" data-m="sealed bids → winner paid 2nd-lowest → AI client negotiation" data-h="A freelance marketplace where every bidder is an AI agent."></span></h3>
+        <ul class="tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>Supabase</li><li>OpenAI API</li><li>server-sent events</li></ul>
+        <div class="foot"><p class="big">live</p><p class="res">build an agent, enter it in auctions and watch it win or lose work.</p>
+          <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: AgentBid Arena">how it works →</button></div>
+        <div class="detail">
+          <p class="kick">05 · personal build · agentic systems</p><h3>AgentBid Arena</h3>
+          <div class="l2"><div><b>Problem</b><p>Freelance marketplaces are built for people. I wanted to see how autonomous AI agents behave when they compete for the same work with money on the line.</p></div>
+            <div><b>What I did</b><p>Built a full-stack marketplace where agents with plain-English strategies submit sealed bids on jobs across five categories, then negotiate with AI clients that have their own personalities and hidden budgets.</p></div>
+            <div><b>What changed</b><p>It runs live: anyone can build an agent, follow auctions as they happen, read insights on how it performs, and test a new strategy against past auctions before using it.</p></div></div>
+          <div class="l3"><p class="eyebrow"><b>under the hood</b></p>
+            <div data-flow="Agent builder/(strategy)|Sealed-bid/auction|AI client/negotiation|Live updates/(SSE)|Strategy/experiments"></div>
+            <p class="note">The lowest valid bid wins and is paid the second-lowest bid, a reverse Vickrey auction. Auction, negotiation and experiment flows have backend tests. Experiments replay past rival bids, so they compare strategies rather than predict the live market.</p>
+            <div class="btns"><a class="main" href="https://agentbid-arena.vercel.app/" target="_blank" rel="noopener">Play it live ↗</a><a href="https://github.com/Nwachukwu1300/agentbid-arena" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="num"><span>06 / 07</span><span>for crash investigators</span></div>
         <p class="who">Sentinel vehicle identification</p>
         <h3><span class="dual" data-m="two-branch ResNet50 · make / model / year · calibrated · Euro NCAP" data-h="Investigators need to know which car it was, from one photo."></span></h3>
         <ul class="tags"><li>PyTorch</li><li>ResNet50</li><li>calibration</li><li>Flask</li><li>Stanford Cars</li><li>Euro NCAP</li></ul>
         <div class="foot"><p class="big" data-count="46" data-unit=" ms">46 ms</p><p class="res">model inference per image.</p>
           <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: Sentinel">how it works →</button></div>
         <div class="detail">
-          <p class="kick">05 · dissertation · forensics</p><h3>Sentinel vehicle identification</h3>
+          <p class="kick">06 · dissertation · forensics</p><h3>Sentinel vehicle identification</h3>
           <div class="l2"><div><b>Problem</b><p>Crash investigators need to know exactly which car was involved, and how safe it is, often from a single photo.</p></div>
             <div><b>What I did</b><p>Built a two-branch ResNet50 that predicts make, model and year with calibrated confidence, trained on Stanford Cars (8,144 images, 196 classes), and matched to Euro NCAP safety ratings.</p></div>
             <div><b>What changed</b><p>46 ms model inference per image. Make 96.4%, model 91.0%, year 89.1%, and 81.7% with all three right.</p></div></div>
@@ -343,14 +361,14 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
       </article>
 
       <article class="card">
-        <div class="num"><span>06 / 06</span><span>for Samaritan's Purse</span></div>
+        <div class="num"><span>07 / 07</span><span>for Samaritan's Purse</span></div>
         <p class="who">Ordering and stock system</p>
         <h3><span class="dual" data-m="order form → payments → stock → live dashboard" data-h="£10,000 of gifts for 50 groups, all ordered through a spreadsheet."></span></h3>
         <ul class="tags"><li>order form</li><li>payments</li><li>stock dashboard</li><li>low-stock alerts</li><li>Netlify</li></ul>
         <div class="foot"><p class="big" data-count="10" data-pre="£" data-unit="k">£10k</p><p class="res">of gifts for 50 groups, ordered, paid and tracked in one system.</p>
           <button class="how" type="button" aria-haspopup="dialog" aria-label="How it works: ordering and stock system">how it works →</button></div>
         <div class="detail">
-          <p class="kick">06 · Samaritan's Purse · software engineer, volunteering</p><h3>Ordering and stock system</h3>
+          <p class="kick">07 · Samaritan's Purse · software engineer, volunteering</p><h3>Ordering and stock system</h3>
           <div class="l2"><div><b>Problem</b><p>£10,000 of discounted shoebox gifts had to reach 50 community groups, and every order went through a spreadsheet.</p></div>
             <div><b>What I did</b><p>Designed and built the whole system solo: an online order form, automatic payment and confirmation, and a live stock dashboard with low-stock alerts.</p></div>
             <div><b>What changed</b><p>£10k of products and 50 groups handled in one place, replacing the spreadsheet to cut admin time and order errors.</p></div></div>
