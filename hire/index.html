@@ -174,6 +174,18 @@ html:not(.swipe) .card{pointer-events:auto}
 .glory b{display:block;margin-top:18px;font-weight:700;font-size:19px;letter-spacing:-.02em;line-height:1.25}
 .glory span{display:block;margin-top:8px;font-family:var(--machine);font-size:12px;color:var(--soft);line-height:1.5}
 
+/* Testimonials: the headline quote shows; the full note opens in place */
+.words{list-style:none;margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
+.words>li{border:1px solid var(--rule);border-radius:18px;padding:28px;background:var(--card)}
+.words figure>blockquote p{font-weight:600;font-size:clamp(20px,1.8vw,24px);letter-spacing:-.02em;line-height:1.3;color:var(--ink)}
+.words figcaption{margin-top:18px}.words figcaption b{display:block;font-weight:700;font-size:16px}
+.words figcaption span{display:block;margin-top:4px;font-family:var(--machine);font-size:12px;color:var(--soft);line-height:1.5}
+.words details{margin-top:18px;border-top:1px solid var(--rule);padding-top:14px}
+.words summary{cursor:pointer;list-style:none;font-family:var(--machine);font-size:13px;color:var(--blue-2);padding:6px 0}
+.words summary::-webkit-details-marker{display:none}.words summary::after{content:" +"}.words details[open] summary::after{content:" −"}
+.words summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.words details blockquote p{margin-top:10px;font-size:16px;line-height:1.65;color:var(--ink-2)}
+
 /* Contact */
 .close{min-height:72vh;display:flex;align-items:center}
 .close>.wrap{width:100%}
@@ -189,7 +201,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
   .voice{margin-left:auto}
   .hgrid{grid-template-columns:1fr;gap:0}
   .avatar{width:min(46vw,190px);margin:0 0 20px;order:-1}
-  .steps,.glory{grid-template-columns:1fr}
+  .steps,.glory,.words{grid-template-columns:1fr}
   .exp li,.facts>div{grid-template-columns:1fr}
   .card{padding:22px}
   #zoom{width:100vw;height:100svh;max-height:100svh;margin:0;border:0;border-radius:0}
@@ -401,6 +413,25 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink)}
     <div class="facts">
       <div><span class="r">education</span><div><strong>BSc Computer Science, First Class Honours</strong><p>Coventry University · 2026</p></div></div>
     </div>
+  </div></section>
+
+  <section id="words"><div class="wrap">
+    <p class="eyebrow"><b>testimonials</b> · people I’ve worked with</p>
+    <h2><span class="dual" data-m="cat references/*.txt  // 4 files" data-h="In their words."></span></h2>
+    <ul class="words">
+      <li><figure><blockquote><p>“What I’d single out is his judgement. I’d trust him with a client’s project without question.”</p></blockquote>
+        <figcaption><b>James Stanbridge</b><span>Formerly Vice President at Oracle · Technical Advisor, Ventureship</span></figcaption></figure>
+        <details><summary>read the full note<span class="sr"> from James Stanbridge</span></summary><blockquote><p>“I worked with Mmesoma through weekly engineering reviews at Ventureship. His output was strong, but what I’d single out is his judgement. When a suggested fix was wrong, he showed why with a truth table and shipped the correct one. He settled design questions with data instead of opinion. He raised his own latent defects and said plainly whether each was exploitable. His PRs read as clear arguments, and the founder reviewing them independently re-derived his reasoning and confirmed it. I’d trust him with a client’s project without question.”</p></blockquote></details></li>
+      <li><figure><blockquote><p>“Soma built an AI system that replaced a process I used to run by hand, and I trusted him with it completely. I couldn’t recommend him enough.”</p></blockquote>
+        <figcaption><b>Victoria Perronet-Miller</b><span>Founder, Ventureship</span></figcaption></figure>
+        <details><summary>read the full note<span class="sr"> from Victoria Perronet-Miller</span></summary><blockquote><p>“Soma is the kind of engineer every founder hopes to find. He takes real ownership, he makes the technical decisions well, and I trusted him completely with something that mattered to my business. He’s easy to work with, honest when something isn’t right, and a joy to have on the team. I couldn’t recommend Soma enough, and I’d work with him again in a heartbeat.”</p></blockquote></details></li>
+      <li><figure><blockquote><p>“He took a real problem seriously and just got it done.”</p></blockquote>
+        <figcaption><b>Nick Cole</b><span>UK Director, Samaritan’s Purse</span></figcaption></figure>
+        <details><summary>read the full note<span class="sr"> from Nick Cole</span></summary><blockquote><p>“Mmesoma volunteered his time and treated our project like it was his own. He listened carefully to how we work, took complete ownership, and delivered something our team could use from day one. He was easy to deal with, reliable and always clear about what was happening. I’d gladly work with him again and I’d recommend him to any organisation that needs someone dependable.”</p></blockquote></details></li>
+      <li><figure><blockquote><p>“A standout from the day he joined.”</p></blockquote>
+        <figcaption><b>Nicolette Fermosa</b><span>Principal Data Scientist, National Highways</span></figcaption></figure>
+        <details><summary>read the full note<span class="sr"> from Nicolette Fermosa</span></summary><blockquote><p>“Mmesoma was one of the strongest people I’ve worked with in his year with us at National Highways. He learned quickly, asked good questions, and took on hard problems without needing to be chased. He communicates clearly with technical and non technical colleagues, and he’s a pleasure to work with. It didn’t surprise me that he was named Year in Industry Student of the Year. I’d welcome him on my team again.”</p></blockquote></details></li>
+    </ul>
   </div></section>
 
   <section id="awards"><div class="wrap">
